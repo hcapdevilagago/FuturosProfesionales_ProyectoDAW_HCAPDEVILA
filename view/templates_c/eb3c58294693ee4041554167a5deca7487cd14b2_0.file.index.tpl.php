@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-21 22:30:30
+/* Smarty version 3.1.32, created on 2018-05-21 23:48:02
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b032c66dd6ea3_87063539',
+  'unifunc' => 'content_5b033e92c99f53_03067523',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb3c58294693ee4041554167a5deca7487cd14b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
-      1 => 1526934621,
+      1 => 1526939225,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b032c66dd6ea3_87063539 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b033e92c99f53_03067523 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!--
 ******************************************************************
-******PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB******
+***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****
+***** El actual proyecto ha sido desarrollado por el alumno  *****
+***** HÉCTOR CAPDEVILA GAGO, estudiante de 2º de Desarrollo  *****
+***** de Aplicaciones Web del CPIFP Los Enlaces de Zaragoza  *****
 ******************************************************************
 -->
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="./estilos.css">       
@@ -41,6 +44,7 @@ function content_5b032c66dd6ea3_87063539 (Smarty_Internal_Template $_smarty_tpl)
         <?php echo '<script'; ?>
  src="//code.jquery.com/jquery-1.11.1.min.js"><?php echo '</script'; ?>
 >
+        <title>:: FUTUROS PROFESIONALES ::</title>
     </head>
     <body>       
         <div class="tile">
@@ -50,14 +54,14 @@ function content_5b032c66dd6ea3_87063539 (Smarty_Internal_Template $_smarty_tpl)
             <div class="tile-body">
                 <form id="form" action="index.php" method="POST">
                     <label class="form-input">
-                        <i class="material-icons">person</i>
-                        <input type="text" name="user" autofocus="true" required />
+                        <i class="material-icons">persona</i>
+                        <input type="text" name="user" autofocus="true" style="text-align: center;" required />
                         <span class="label">USUARIO</span>
                         <span class="underline"></span>
                     </label>
                     <label class="form-input">
                         <i class="material-icons">lock</i>
-                        <input type="password" name="pass" required/>
+                        <input type="password" name="pass" style="text-align: center;" required/>
                         <span class="label">CONTRASEÑA</span>
                         <div class="underline"></div>
                     </label>

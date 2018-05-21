@@ -183,14 +183,13 @@ class Database {
      */
     function obtieneUsuario($rol, $user) {
         //Generamos la sentencia que se encargará de devolver el usuario que coincida con el nombre de usuario en la tabla correspondiente
-        $select = "SELECT * FROM ? WHERE user = ?";
+        $select = "SELECT * FROM $rol WHERE user = ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
         $consulta = $this->conexion->prepare($select);
 
         //Preparamos la sentencia parametrizada
-        $consulta->bindParam(1, $rol);
-        $consulta->bindParam(2, $user);
+        $consulta->bindParam(1, $user);
 
         //Ejecutamos la consulta
         $consulta->execute();
