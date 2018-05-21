@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-22 01:38:35
+/* Smarty version 3.1.32, created on 2018-05-22 01:40:07
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\panel_administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b03587bea1da7_06127634',
+  'unifunc' => 'content_5b0358d78211b3_03200862',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07afedfbb36bc328ac60fe6b5196d8a471acf6ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\panel_administracion.tpl',
-      1 => 1526945913,
+      1 => 1526945966,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b03587bea1da7_06127634 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0358d78211b3_03200862 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -124,10 +124,10 @@ function content_5b03587bea1da7_06127634 (Smarty_Internal_Template $_smarty_tpl)
                         <?php if ($_smarty_tpl->tpl_vars['rol']->value == "alumno") {?>
                             <?php $_smarty_tpl->_subTemplateRender("file:alumnos/alumno.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['rol']->value == "tutor_empresa") {?>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['rol']->value == "empresas/tutor_empresa") {?>
                             <?php $_smarty_tpl->_subTemplateRender("file:tutor_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['rol']->value == "tutor_centro") {?>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['rol']->value == "centro/tutor_centro") {?>
                             <?php $_smarty_tpl->_subTemplateRender("file:tutor_centro.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
                         <?php }?>
