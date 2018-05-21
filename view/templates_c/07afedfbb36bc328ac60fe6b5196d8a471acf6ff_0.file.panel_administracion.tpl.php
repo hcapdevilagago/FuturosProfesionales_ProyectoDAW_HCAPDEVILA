@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-22 01:17:16
+/* Smarty version 3.1.32, created on 2018-05-22 01:38:35
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\panel_administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b03537c562876_29144180',
+  'unifunc' => 'content_5b03587bea1da7_06127634',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07afedfbb36bc328ac60fe6b5196d8a471acf6ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\panel_administracion.tpl',
-      1 => 1526944634,
+      1 => 1526945913,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:alumno.tpl' => 1,
+    'file:alumnos/alumno.tpl' => 1,
     'file:tutor_empresa.tpl' => 1,
     'file:tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b03537c562876_29144180 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b03587bea1da7_06127634 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -122,7 +122,7 @@ function content_5b03537c562876_29144180 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <?php if ($_smarty_tpl->tpl_vars['rol']->value == "alumno") {?>
-                            <?php $_smarty_tpl->_subTemplateRender("file:alumno.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                            <?php $_smarty_tpl->_subTemplateRender("file:alumnos/alumno.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
                         <?php } elseif ($_smarty_tpl->tpl_vars['rol']->value == "tutor_empresa") {?>
                             <?php $_smarty_tpl->_subTemplateRender("file:tutor_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -138,7 +138,7 @@ function content_5b03537c562876_29144180 (Smarty_Internal_Template $_smarty_tpl)
             <!-- Panel navegación izquierdo y superior -->
 
             <!-- Panel central -->
-            <div id="page-wrapper">
+            <div id="page-wrapper" style="height: 100%;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12" align="center">

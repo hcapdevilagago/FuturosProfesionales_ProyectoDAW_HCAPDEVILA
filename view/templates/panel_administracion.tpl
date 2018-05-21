@@ -92,10 +92,10 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         {if $rol eq "alumno"}
-                            {include file="alumno.tpl"}
-                        {elseif $rol eq "tutor_empresa"}
+                            {include file="alumnos/alumno.tpl"}
+                        {elseif $rol eq "empresas/tutor_empresa"}
                             {include file="tutor_empresa.tpl"}
-                        {elseif $rol eq "tutor_centro"}
+                        {elseif $rol eq "centro/tutor_centro"}
                             {include file="tutor_centro.tpl"}
                         {/if}
                     </ul>
@@ -105,7 +105,7 @@
             <!-- Panel navegación izquierdo y superior -->
 
             <!-- Panel central -->
-            <div id="page-wrapper">
+            <div id="page-wrapper" style="height: 100%;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12" align="center">
