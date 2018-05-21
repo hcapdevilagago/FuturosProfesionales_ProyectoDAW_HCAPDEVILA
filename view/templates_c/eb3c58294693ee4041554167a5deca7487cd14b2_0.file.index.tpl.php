@@ -1,0 +1,88 @@
+<?php
+/* Smarty version 3.1.32, created on 2018-05-21 22:30:30
+  from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.32',
+  'unifunc' => 'content_5b032c66dd6ea3_87063539',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'eb3c58294693ee4041554167a5deca7487cd14b2' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
+      1 => 1526934621,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5b032c66dd6ea3_87063539 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
+<!--
+******************************************************************
+******PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB******
+******************************************************************
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./estilos.css">       
+        <?php echo '<script'; ?>
+ type="text/javascript" src="./prueba.js"><?php echo '</script'; ?>
+>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <?php echo '<script'; ?>
+ src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="//code.jquery.com/jquery-1.11.1.min.js"><?php echo '</script'; ?>
+>
+    </head>
+    <body>       
+        <div class="tile">
+            <div class="tile-header">
+                <img src="./images/logo1.png" height="80%" width="80%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>
+            </div>
+            <div class="tile-body">
+                <form id="form" action="index.php" method="POST">
+                    <label class="form-input">
+                        <i class="material-icons">person</i>
+                        <input type="text" name="user" autofocus="true" required />
+                        <span class="label">USUARIO</span>
+                        <span class="underline"></span>
+                    </label>
+                    <label class="form-input">
+                        <i class="material-icons">lock</i>
+                        <input type="password" name="pass" required/>
+                        <span class="label">CONTRASEÑA</span>
+                        <div class="underline"></div>
+                    </label>
+                    <div class="submit-container clearfix" style="margin-top: 2rem;">  
+                        <input type="submit" value="INICIAR SESIÓN" class="btn btn-irenic float-right"/>
+                        <div class="login-pending">
+                            <div class=spinner>
+                                <span class="dot1"></span>
+                                <span class="dot2"></span>
+                            </div>
+                            <div class="login-granted-content">
+                                <i class="material-icons">done</i>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="label">USUARIO</span>
+                </form>
+                <?php if (isset($_smarty_tpl->tpl_vars['msj_error']->value)) {?>
+                        <!--En el caso de que el usuario introducido NO exista en la base de datos-->
+                        <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> <?php echo $_smarty_tpl->tpl_vars['msj_error']->value;?>
+</span>
+                        <div class="underline"></div>
+                <?php }?>
+            </div>
+        </div>
+    </body>
+</html><?php }
+}

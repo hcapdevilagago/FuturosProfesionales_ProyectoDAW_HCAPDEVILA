@@ -1,74 +1,40 @@
 <?php
-require_once './model/Database.php';
+//Cargamos las clases en el caso de que no hayan sido cargadas antes
+require_once ('Smarty.class.php');
+require_once ('./model/Database.php');
+
+//Creamos un objeto de la clase Smarty que hará referencia a la plantilla
+$plantilla = new Smarty();
+
+//Asignamos las plantillas en las rutas correspondientes
+$plantilla->template_dir = "./view/templates";
+$plantilla->compile_dir = "./view/templates_c";
+$plantilla->cache_dir = "./view/cache";
+$plantilla->config_dir = "./view/config";
+
+//Creamos un nuevo objeto de la clase Database
 $db = new Database();
-?>
-<!DOCTYPE html>
-<!--
-******************************************************************
-******PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB******
-******************************************************************
--->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="./estilos.css">       
-        <script type="text/javascript" src="./prueba.js"></script>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    </head>
-    <body>       
-        <div class="tile">
-            <div class="tile-header">
-                <img src="./images/logo1.png" height="80%" width="80%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>
-            </div>
-            <div class="tile-body">
-                <form id="form" action="index.php" method="POST">
-                    <label class="form-input">
-                        <i class="material-icons">person</i>
-                        <input type="text" name="user" autofocus="true" required />
-                        <span class="label">USUARIO</span>
-                        <span class="underline"></span>
-                    </label>
-                    <label class="form-input">
-                        <i class="material-icons">lock</i>
-                        <input type="password" name="pass" required/>
-                        <span class="label">CONTRASEÑA</span>
-                        <div class="underline"></div>
-                    </label>
-                    <div class="submit-container clearfix" style="margin-top: 2rem;">  
-                        <input type="submit" value="INICIAR SESIÓN" class="btn btn-irenic float-right"/>
-                        <div class="login-pending">
-                            <div class=spinner>
-                                <span class="dot1"></span>
-                                <span class="dot2"></span>
-                            </div>
-                            <div class="login-granted-content">
-                                <i class="material-icons">done</i>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="label">USUARIO</span>
-                </form>
-                <?php
-                if (isset($_POST['user']) && isset($_POST['pass'])) {
-                    if ($db->verificaUsuario($_POST['user'], md5($_POST['pass']))) {
-                        //En el caso de que el usuario introducido exista en la base de datos, y corresponde con un usuario existente
-                        session_start();
-                        $_SESSION['user'] = $_POST['user'];
-                        $_SESSION['pass'] = $_POST['pass'];
-                        header("Location: admin.php");
-                        exit;
-                    } else {
-                        //En el caso de que el usuario introducido NO exista en la base de datos
-                        ?>
-                        <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> Los datos introducidos no son válidos.</span>
-                        <div class="underline"></div>
-                        <?php
-                    }
-                }
-                ?>
-            </div>
-        </div>
-    </body>
-</html>
+
+//Iniciamos sesión para utilizar variables de este ámbito
+session_start();
+
+if (isset($_POST['user']) && isset($_POST['pass'])) {
+    if ($db->verificaUsuario($_POST['user'], md5($_POST['pass']))) {
+        //En el caso de que el usuario introducido exista en la base de datos, y corresponde con un usuario existente
+        $_SESSION['user'] = $_POST['user'];
+        $_SESSION['pass'] = $_POST['pass'];
+
+        //En este caso la contraseña es correcta, y redirigimos el flujo de la ejecución a admin.php
+        header("Location: admin.php");
+        exit;
+    } else {
+        //Asignamos la variable msj_error para poder visualizarla en el fichero .tpl
+        $plantilla->assign("msj_error", "Las credenciales introducidas no son correctas, vuelve a intentarlo de nuevo.");
+
+        //Indicamos que el fichero de la parte de vista es index.tpl
+        $plantilla->display("index.tpl");
+    }
+} else {
+    //Indicamos que el fichero de la parte de vista es index.tpl
+    $plantilla->display("index.tpl");
+}

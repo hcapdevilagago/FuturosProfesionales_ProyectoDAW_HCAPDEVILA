@@ -128,6 +128,59 @@ class Database {
      * @param string $rol hace referencia al rol del usuario que deseamos buscar
      * @return object [Alumno, TutorEmpresa, TutorCentro] encontrado dado el user pasado como parámetro de entrada
      */
+    function obtieneRol($user) {
+        for ($x = 1; $x < 4; $x++) {
+            switch ($x) {
+                //Generamos 3 sentencias, 3 roles que se encargarán de devolver el rol que coincida con el nombre de usuario pasado como parámetro
+                case 1:
+                    $rol = 'tutor_empresa';
+                    $sentencia = "SELECT * FROM $rol WHERE user = ?";
+                    break;
+                case 2:
+                    $rol = 'tutor_centro';
+                    $sentencia = "SELECT * FROM $rol WHERE user = ?";
+                    break;
+                case 3:
+                    $rol = 'alumno';
+                    $sentencia = "SELECT * FROM $rol WHERE user = ?";
+                    break;
+            }
+            //Preparamos la sentencia, nos devolverá la consulta
+            $consulta = $this->conexion->prepare($sentencia);
+
+            //Preparamos la sentencia parametrizada
+            $consulta->bindParam(1, $user);
+
+            //Ejecutamos la consulta
+            $consulta->execute();
+
+            if ($u = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                //Creamos un nuevo objeto con los datos del usuario con dicho ROL de acceso
+                switch ($rol) {
+                    case 'tutor_empresa':
+                        return $rol;
+                        break;
+                    case 'tutor_centro':
+                        return $rol;
+                        break;
+                    case 'alumno':
+                        return $rol;
+                        break;
+                }
+            }
+        }
+
+        //Retornamos null por el motivo de que el usuario es incorrecto, y no se ha encontrado en ninguna de las 3 tablas
+        return null;
+    }
+
+    /**
+     *
+     * @description Devuelve UN objeto del usuario del rol indicado que corresponde al user pasado como parámetro de entrada
+     * @param string $rol hace referencia al rol del usuario que deseamos buscar
+     * @param string $user hace referencia al nombre del usuario que deseamos buscar
+     * @return object [Alumno, TutorEmpresa, TutorCentro] encontrado dado el user pasado como parámetro de entrada
+     */
     function obtieneUsuario($rol, $user) {
         //Generamos la sentencia que se encargará de devolver el usuario que coincida con el nombre de usuario en la tabla correspondiente
         $select = "SELECT * FROM ? WHERE user = ?";
