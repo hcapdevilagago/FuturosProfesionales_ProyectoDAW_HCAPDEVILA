@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>:: {$rol} :: {$user} ::</title>
+        <title>:: {strtoupper($rol)} :: {$user} ::</title>
 
         <!-- Enlazamos los ficheros necesarios para el correcto funcionamiento de la aplicación-->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="./images/logo1.png" style="float: left; padding-top:0.5%; padding-bottom: -5%;" height="4%" width="4%"/>
+                    <img src="./images/logo4.png" style="float: left; padding-top:0.5%; padding-bottom: -5%;" height="4%" width="4%"/>
                     <a class="navbar-brand" href="index.php" >Bienvenid@ a Futuros Profesionales, {$nombre}</a>
                 </div>
                 <!-- Mensajería de la aplicación -->
@@ -88,272 +88,15 @@
                 </ul>
                 <!-- Mensajería de la aplicación -->
 
-                <!-- Panel navegación izquierdo -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        {if $rol eq "alumno"}
-                            {include file="alumnos/alumno.tpl"}
-                        {elseif $rol eq "empresas/tutor_empresa"}
-                            {include file="tutor_empresa.tpl"}
-                        {elseif $rol eq "centro/tutor_centro"}
-                            {include file="tutor_centro.tpl"}
-                        {/if}
-                    </ul>
-                </div>
-                <!-- Panel navegación izquierdo -->
-            </nav>
-            <!-- Panel navegación izquierdo y superior -->
+                {if $rol eq "alumno"}
+                    {include file="alumnos/menu_alumno.tpl"}
+                {elseif $rol eq "tutor_empresa"}
+                    {include file="empresas/menu_tutor_empresa.tpl"}
+                {elseif $rol eq "tutor_centro"}
+                    {include file="centro/menu_tutor_centro.tpl"}
+                {/if}
 
-            <!-- Panel central -->
-            <div id="page-wrapper" style="height: 100%;">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12" align="center">
-                            <h2 class="page-header">
-                                Panel de Administración :: <small> FUTUROS PROFESIONALES</small>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  <strong>¿Necesitas alumnos para realizar las prácticas en tu empresa?</strong> ¡Nuestros alumnos tienen las aptitudes y habilidades que estás buscando!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  <strong>¿Necesitas alumnos para realizar las prácticas en tu empresa?</strong> ¡Nuestros alumnos tienen las aptitudes y habilidades que estás buscando!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  <strong>¿Necesitas alumnos para realizar las prácticas en tu empresa?</strong> ¡Nuestros alumnos tienen las aptitudes y habilidades que estás buscando!
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  <strong>¿Necesitas alumnos para realizar las prácticas en tu empresa?</strong> ¡Nuestros alumnos tienen las aptitudes y habilidades que estás buscando!
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  <strong>¿Necesitas alumnos para realizar las prácticas en tu empresa?</strong> ¡Nuestros alumnos tienen las aptitudes y habilidades que estás buscando!
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>  <strong>¿Necesitas alumnos para realizar las prácticas en tu empresa?</strong> ¡Nuestros alumnos tienen las aptitudes y habilidades que estás buscando!
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DIV de colores -->
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">3</div>
-                                            <div>Nuevos comentarios!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-tasks fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">2</div>
-                                            <div>Nuevas tareas!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-shield fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">1</div>
-                                            <div>Certificado AENOR!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-support fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">7</div>
-                                            <div>Ciclos formativos!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- DIV de colores -->
-
-                    <!-- DIV de colores -->
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">3</div>
-                                            <div>Nuevos comentarios!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-tasks fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">2</div>
-                                            <div>Nuevas tareas!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-shield fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">1</div>
-                                            <div>Certificado AENOR!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-support fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">7</div>
-                                            <div>Ciclos formativos!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- DIV de colores -->
-                </div>
-            </div>
-            <!-- Panel central -->
         </div>
         <!-- DIV principal - Contenedor -->
 
