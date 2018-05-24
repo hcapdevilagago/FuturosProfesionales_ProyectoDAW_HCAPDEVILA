@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-21 23:48:02
+/* Smarty version 3.1.32, created on 2018-05-25 00:01:58
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b033e92c99f53_03067523',
+  'unifunc' => 'content_5b0736569a72a9_04011704',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb3c58294693ee4041554167a5deca7487cd14b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
-      1 => 1526939225,
+      1 => 1527199256,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b033e92c99f53_03067523 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0736569a72a9_04011704 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!--
 ******************************************************************
@@ -33,10 +33,7 @@ function content_5b033e92c99f53_03067523 (Smarty_Internal_Template $_smarty_tpl)
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="./estilos.css">       
-        <?php echo '<script'; ?>
- type="text/javascript" src="./prueba.js"><?php echo '</script'; ?>
->
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">       
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <?php echo '<script'; ?>
  src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"><?php echo '</script'; ?>
@@ -46,7 +43,7 @@ function content_5b033e92c99f53_03067523 (Smarty_Internal_Template $_smarty_tpl)
 >
         <title>:: FUTUROS PROFESIONALES ::</title>
     </head>
-    <body>       
+    <body>
         <div class="tile">
             <div class="tile-header">
                 <img src="./images/logo1.png" height="80%" width="80%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>

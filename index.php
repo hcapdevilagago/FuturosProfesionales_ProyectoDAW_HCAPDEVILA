@@ -33,7 +33,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
     } else {
         //Asignamos la variable msj_error para poder visualizarla en el fichero .tpl
         $plantilla->assign("msj_error", "Las datos introducidos no son correctos.");
-
+        
         //Indicamos que el fichero de la parte de vista es index.tpl
         $plantilla->display("index.tpl");
     }

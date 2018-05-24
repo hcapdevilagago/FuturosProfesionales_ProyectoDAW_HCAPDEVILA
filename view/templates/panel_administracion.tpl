@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="Gestión de Administración de FCT :: CPIFP Los Enlaces (Trabajo de Fin de Ciclo - DAW)">
+        <meta name="author" content="Héctor Capdevila Gago">
         <title>:: {strtoupper($rol)} :: {$user} ::</title>
 
         <!-- Enlazamos los ficheros necesarios para el correcto funcionamiento de la aplicación-->
@@ -87,7 +87,6 @@
                     </li>
                 </ul>
                 <!-- Mensajería de la aplicación -->
-
                 {if $rol eq "alumno"}
                     {include file="alumnos/menu_alumno.tpl"}
                 {elseif $rol eq "tutor_empresa"}
@@ -95,13 +94,8 @@
                 {elseif $rol eq "tutor_centro"}
                     {include file="centro/menu_tutor_centro.tpl"}
                 {/if}
-
-
         </div>
         <!-- DIV principal - Contenedor -->
-
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
@@ -111,5 +105,11 @@
         <script src="js/plugins/morris/morris.min.js"></script>
         <script src="js/plugins/morris/morris-data.js"></script>
 
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrapvalidator.min.js"></script>
+        <script src="js/validate.js"></script>
     </body>
 </html>
