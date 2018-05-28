@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 ******************************************************************
-***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****
+***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****e
 ***** El actual proyecto ha sido desarrollado por el alumno  *****
 ***** HÉCTOR CAPDEVILA GAGO, estudiante de 2º de Desarrollo  *****
 ***** de Aplicaciones Web del CPIFP Los Enlaces de Zaragoza  *****
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/estilos.css">       
-{*        <script type="text/javascript" src="./prueba.js"></script>*}
+        {*        <script type="text/javascript" src="./prueba.js"></script>*}
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -51,9 +51,9 @@
                     <span class="label">USUARIO</span>
                 </form>
                 {if isset($msj_error)}
-                        <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                        <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
-                        <div class="underline"></div>
+                    <!--En el caso de que el usuario introducido NO exista en la base de datos-->
+                    <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
+                    <div class="underline"></div>
                 {/if}
             </div>
         </div>

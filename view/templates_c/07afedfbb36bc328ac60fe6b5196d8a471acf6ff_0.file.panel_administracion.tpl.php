@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-24 22:28:13
+/* Smarty version 3.1.32, created on 2018-05-28 21:21:21
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\panel_administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b07205db1b9f7_02399390',
+  'unifunc' => 'content_5b0c56b1dfcc83_08760697',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07afedfbb36bc328ac60fe6b5196d8a471acf6ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\panel_administracion.tpl',
-      1 => 1527193689,
+      1 => 1527535279,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:centro/menu_tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b07205db1b9f7_02399390 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0c56b1dfcc83_08760697 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -54,7 +54,7 @@ function content_5b07205db1b9f7_02399390 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="icon-bar"></span>
                     </button>
                     <img src="./images/logo4.png" style="float: left; padding-top:0.5%; padding-bottom: -5%;" height="4%" width="4%"/>
-                    <a class="navbar-brand" href="index.php" >Bienvenid@ a Futuros Profesionales, <?php echo $_smarty_tpl->tpl_vars['nombre']->value;?>
+                    <a class="navbar-brand" href="index.php" >Bienvenid@, <?php echo $_smarty_tpl->tpl_vars['nombre']->value;?>
 </a>
                 </div>
                 <!-- Mensajería de la aplicación -->

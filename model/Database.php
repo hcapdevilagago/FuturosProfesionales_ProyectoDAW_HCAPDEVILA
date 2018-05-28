@@ -15,6 +15,9 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/TutorCentro.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/TutorEmpresa.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Alumno.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/FamiliaProfesional.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/CicloFormativo.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Empresa.php');
 
 //Iniciamos la sesión para poder utilizar las variables de este ámbito en esta clase
 session_start();
@@ -41,6 +44,76 @@ class Database {
         }
     }
 
+    /**
+     * @description Devuelve TODOS los objetos de las empresas que hay registradas en la base de datos
+     */
+    function devuelveEmpresas() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a las empresas que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM empresa");
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de una empresa
+        while ($e = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $empresa = new Empresa($e['id_empresa'], $e['cif'], $e['nombre_legal'], $e['direccion_fiscal'], $e['email_rrhh'], $e['horario'], $e['descripcion'], $e['telefono']);
+            $array_objetos->append($empresa);
+        }
+        
+        //Retornamos el array con los objetos de cada empresa
+        return $array_objetos;
+    }
+    
+    
+    /**
+     * @description Devuelve TODOS los objetos de las familias profesionales que hay en la base de datos
+     */
+    function devuelveFamilias() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a las familias profesionales que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM familia_profesional");
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de una familia profesional
+        while ($f = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $familia = new FamiliaProfesional($f['id_familia'], $f['nombre']);
+            $array_objetos->append($familia);
+        }
+        
+        //Retornamos el array con los objetos de cada familia
+        return $array_objetos;
+    }
+
+    /**
+     * @description Devuelve TODOS los objetos de las familias profesionales que hay en la base de datos
+     */
+    function devuelveCiclos() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a los ciclos formativos que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM ciclo_formativo");
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de un ciclo formativo
+        while ($c = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_familia'], $c['id_tutor_c'], $c['nombre']);
+            $array_objetos->append($ciclo);
+        }
+        
+        //Retornamos el array con los objetos de cada ciclo
+        return $array_objetos;
+    }
+    
     /**
      * @description Comprueba los métodos de verificación de usuarios y devuelve un booleano que indica si el usuario es válido o no
      */
@@ -302,7 +375,7 @@ class Database {
                 break;
         }
 
-        //Retornamos el array con los objetos de cada producto
+        //Retornamos el array con los objetos (usuario) cada rol
         return $array_objetos;
     }
 

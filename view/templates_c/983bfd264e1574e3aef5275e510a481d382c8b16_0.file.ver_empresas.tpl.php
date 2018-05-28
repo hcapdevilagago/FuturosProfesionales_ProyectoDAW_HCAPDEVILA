@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-25 00:50:38
+/* Smarty version 3.1.32, created on 2018-05-27 13:28:12
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\alumnos\ver_empresas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0741be886c75_66804677',
+  'unifunc' => 'content_5b0a964cac38e5_03989287',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '983bfd264e1574e3aef5275e510a481d382c8b16' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\alumnos\\ver_empresas.tpl',
-      1 => 1527202229,
+      1 => 1527202660,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0741be886c75_66804677 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0a964cac38e5_03989287 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white;">
     <div class="w3-row w3-padding w3-border">
@@ -32,7 +32,7 @@ function content_5b0741be886c75_66804677 (Smarty_Internal_Template $_smarty_tpl)
                             <br /><br />
                             <form class="form-horizontal" action=" " method="POST"  id="reg_form">
                                 <fieldset>
-                                    <legend> Ver empresas</legend>
+                                    <legend class="text-center"> Ver empresas</legend>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre completo</label>
                                         <div class="col-md-6  inputGroupContainer">

@@ -6,78 +6,29 @@ $(document).ready(function () {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            first_name: {
+            usuario: {
                 validators: {
+                    notEmpty: {
+                        message: 'Por favor, introduzca un nombre de usuario'
+                    },
                     stringLength: {
-                        min: 2,
-                    },
-                    notEmpty: {
-                        message: 'Por favor, introduzca su nombre completo.'
+                        min: 1,
+                        max: 30,
                     }
                 }
             },
-            phone: {
+            contrasena: {
                 validators: {
                     notEmpty: {
-                        message: 'Por favor, introduzca su número de teléfono'
+                        message: 'Por favor, introduzca una contraseña'
                     },
-                    phone: {
-                        country: 'US',
-                        message: 'Por favor, introduzca un número de teléfono válido'
-                    }
-                }
-            },
-            address: {
-                validators: {
                     stringLength: {
                         min: 8,
-                    },
-                    notEmpty: {
-                        message: 'Por favor, introduzca su dirección física'
+                        max: 255,
+                        message: 'Por favor, introduzca al menos 8 carácteres y un máximo de 255'
                     }
                 }
             },
-            city: {
-                validators: {
-                    stringLength: {
-                        min: 4,
-                    },
-                    notEmpty: {
-                        message: 'Por favor, introduzca su ciudad'
-                    }
-                }
-            },
-            state: {
-                validators: {
-                    notEmpty: {
-                        message: 'Por favor, introduzca su país'
-                    }
-                }
-            },
-
-            comment: {
-                validators: {
-                    stringLength: {
-                        min: 10,
-                        max: 1000,
-                        message: 'Por favor, introduzca al menos 10 carácteres y un máximo de 1000'
-                    },
-                    notEmpty: {
-                        message: 'Por favor, este campo es obligatorio'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'Por favor, introduzca su email'
-                    },
-                    emailAddress: {
-                        message: 'Por favor, introduzca un correo electrónico válido'
-                    }
-                }
-            },
-
             password: {
                 validators: {
                     identical: {
@@ -93,8 +44,83 @@ $(document).ready(function () {
                         message: 'Ambas contraseñas no coinciden, inténtelo de nuevo'
                     }
                 }
+},
+            nombre: {
+                validators: {
+                    stringLength: {
+                        min: 2,
+                        max: 50,
+                    },
+                    notEmpty: {
+                        message: 'Por favor, introduzca su nombre completo.'
+                    }
+                }
             },
-
+            dni: {
+                validators: {
+                    stringLength: {
+                        min: 9,
+                        max: 9,
+                    },
+                    notEmpty: {
+                        message: 'Por favor, introduzca su nombre completo.'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, introduzca su email'
+                    },
+                    emailAddress: {
+                        message: 'Por favor, introduzca un correo electrónico válido'
+                    }
+                }
+            },
+            tel: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, introduzca su número de teléfono'
+                    },
+                    phone: {
+                        country: 'US',
+                        message: 'Por favor, introduzca un número de teléfono válido'
+                    }
+                }
+            },
+            familias: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, seleccione una familia de la lista'
+                    }
+                }
+            },
+            ciclos: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, seleccione un ciclo formativo de la lista, antes deberá seleccionar una familia profesional'
+                    }
+                }
+            },
+            tutores: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, seleccione el tutor del ciclo formativo de la lista, antes deberá seleccionar una familia profesional y un ciclo formativo'
+                    }
+                }
+            },
+            comment: {
+                validators: {
+                    stringLength: {
+                        min: 10,
+                        max: 1000,
+                        message: 'Por favor, introduzca al menos 10 carácteres y un máximo de 1000'
+                    },
+                    notEmpty: {
+                        message: 'Por favor, este campo es obligatorio'
+                    }
+                }
+            }
         }
     }).on('success.form.bv', function (e) {
         $('#success_message').slideDown({opacity: "show"}, "slow")
