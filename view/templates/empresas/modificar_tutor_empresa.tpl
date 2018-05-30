@@ -7,7 +7,7 @@
                     <div class="container">
                         <div class="col-lg-9">
                             <br /><br />
-                            <form class="form-horizontal" action="panel_administracion.php" method="POST"  id="reg_form">
+                            <form class="form-horizontal" action="panel_administracion.php" method="POST" id="reg_form">
                                 <fieldset>
                                     <legend class="text-center"> Modificación del perfil del tutor de empresa</legend>        
                                     <div class="form-group">
@@ -19,14 +19,14 @@
                                         </div>
                                     </div>
                                     {*<div class="form-group">
-                                        <label class="col-md-4 control-label">Contraseña</label>
-                                        <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                                <input  name="pass" placeholder="Introduzca la contraseña de usuario" class="form-control" value="{$usuario->getPass()}" id="userPw" type="password" data-minLength="8" data-error="some error" required>
-                                                <span class="glyphicon form-control-feedback"></span>
-                                                <span class="help-block with-errors"></span>
-                                            </div>
-                                        </div>
+                                    <label class="col-md-4 control-label">Contraseña</label>
+                                    <div class="col-md-6  inputGroupContainer">
+                                    <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input  name="pass" placeholder="Introduzca la contraseña de usuario" class="form-control" value="{$usuario->getPass()}" id="userPw" type="password" data-minLength="8" data-error="some error" required>
+                                    <span class="glyphicon form-control-feedback"></span>
+                                    <span class="help-block with-errors"></span>
+                                    </div>
+                                    </div>
                                     </div>*}
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre completo</label>
@@ -60,11 +60,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    {*<div class="form-group">
                                         <label class="col-md-4 control-label">Nombre empresa a la que pertenece</label>
                                         <div class="col-md-6 selectContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                                <select name="ciclos" class="form-control selectpicker">
+                                                <select name="empresas" class="form-control selectpicker">
                                                     <option value=" " >Por favor, seleccione su empresa</option>
                                                     {foreach $empresas as $empresa}
                                                         <option>{$empresa->getNombre_legal()}</option>
@@ -72,14 +72,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <span class="col-md-4 control-label"></span>
-                                        <div class="input-group">
-                                            <input type="submit" name="clear" value="Limpiar formulario" class="btn btn-primary">
-                                            <input type="submit" name="edit" value="Modificar perfil del alumno" class="btn btn-primary">
-                                        </div>                                       
-                                    </div>
+                                    </div>*}
+                                    <span class="col-md-4 control-label"></span>
+                                    <div class="input-group">
+                                        <input type="submit" name="clear" value="Limpiar formulario" class="btn btn-primary">
+                                        <input type="submit" name="edit" value="Modificar perfil del alumno" class="btn btn-primary">
+                                    </div>                                       
+
                                 </fieldset>
                             </form>
                         </div>

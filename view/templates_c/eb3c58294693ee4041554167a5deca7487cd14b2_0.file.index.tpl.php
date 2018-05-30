@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-28 21:31:26
+/* Smarty version 3.1.32, created on 2018-05-29 22:33:36
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0c590e3b0744_37773619',
+  'unifunc' => 'content_5b0db920dc56c9_46690954',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb3c58294693ee4041554167a5deca7487cd14b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
-      1 => 1527533707,
+      1 => 1527625727,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0c590e3b0744_37773619 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0db920dc56c9_46690954 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!--
 ******************************************************************
-***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****e
+***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****
 ***** El actual proyecto ha sido desarrollado por el alumno  *****
 ***** HÉCTOR CAPDEVILA GAGO, estudiante de 2º de Desarrollo  *****
 ***** de Aplicaciones Web del CPIFP Los Enlaces de Zaragoza  *****
@@ -33,8 +33,8 @@ function content_5b0c590e3b0744_37773619 (Smarty_Internal_Template $_smarty_tpl)
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/estilos.css">       
-                <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <?php echo '<script'; ?>
  src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
@@ -62,28 +62,23 @@ function content_5b0c590e3b0744_37773619 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="label">CONTRASEÑA</span>
                         <div class="underline"></div>
                     </label>
-                    <div class="submit-container clearfix" style="margin-top: 2rem;">  
-                        <input type="submit" value="INICIAR SESIÓN" class="btn btn-irenic float-right"/>
-                        <div class="login-pending">
-                            <div class=spinner>
-                                <span class="dot1"></span>
-                                <span class="dot2"></span>
-                            </div>
-                            <div class="login-granted-content">
-                                <i class="material-icons">done</i>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="label">USUARIO</span>
+                    <div class="submit-container clearfix" style="text-align: center; margin-top: 4rem;">  
+                        <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>
                 </form>
-                <?php if (isset($_smarty_tpl->tpl_vars['msj_error']->value)) {?>
-                    <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                    <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> <?php echo $_smarty_tpl->tpl_vars['msj_error']->value;?>
-</span>
-                    <div class="underline"></div>
-                <?php }?>
+                <form id="form2" action="index.php" method="POST">
+                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR ALUMNO" class="btn btn-warning"/>
+                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR TUTOR DE EMPRESA" class="btn btn-warning"/>
+                </form>
             </div>
+            <span class="label">USUARIO</span>
+            <?php if (isset($_smarty_tpl->tpl_vars['msj_error']->value)) {?>
+                <!--En el caso de que el usuario introducido NO exista en la base de datos-->
+                <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> <?php echo $_smarty_tpl->tpl_vars['msj_error']->value;?>
+</span>
+                <div class="underline"></div>
+            <?php }?>
         </div>
-    </body>
+    </div>
+</body>
 </html><?php }
 }

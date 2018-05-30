@@ -33,7 +33,6 @@ class Database {
     public function __construct() {
         //El atributo privado $conexion lo inicializamos por defecto a null antes de realizar ninguna acción
         $this->conexion = null;
-
         try {
             //Instanciamos un objeto de la clase PDO e intentamos realizar la conexión            
             $this->conexion = new PDO("mysql:host=localhost;dbname=proyecto;charset=utf8", "root", "root");
@@ -45,49 +44,44 @@ class Database {
     }
 
     /**
-     * @description Devuelve TODOS los objetos de las empresas que hay registradas en la base de datos
+     * @description Devuelve un objeto correspondiente a la empresa pasada como parámetro
      */
-    function devuelveEmpresas() {
-        //Generamos un Array en el que almacenaremos objetos que harán referencia a las empresas que hay en la base de datos
-        $array_objetos = new ArrayObject();
-
+    function devuelveEmpresa($nombre) {
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare("SELECT * FROM empresa");
+        $consulta = $this->conexion->prepare("SELECT * FROM empresa WHERE nombre_legal = ?");
+
+        //Preparamos la sentencia parametrizada
+        $consulta->bindParam(1, $nombre);
 
         //Ejecutamos la consulta
         $consulta->execute();
 
         //Creamos un nuevo objeto con los datos de una empresa
+        if ($e = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $empresa = new Empresa($e['id_empresa'], $e['cif'], $e['nombre_legal'], $e['direccion_fiscal'], $e['email_rrhh'], $e['horario'], $e['descripcion'], $e['telefono']);
+        }
+
+        //Retornamos el objeto de la clase Empresa
+        return $empresa;
+    }
+
+    /**
+     * @description Devuelve TODOS los objetos de las empresas que hay registradas en la base de datos
+     */
+    function devuelveEmpresas() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a las empresas que hay en la base de datos
+        $array_objetos = new ArrayObject();
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM empresa");
+        //Ejecutamos la consulta
+        $consulta->execute();
+        //Creamos un nuevo objeto con los datos de una empresa
         while ($e = $consulta->fetch(PDO::FETCH_ASSOC)) {
             $empresa = new Empresa($e['id_empresa'], $e['cif'], $e['nombre_legal'], $e['direccion_fiscal'], $e['email_rrhh'], $e['horario'], $e['descripcion'], $e['telefono']);
             $array_objetos->append($empresa);
         }
-        
+
         //Retornamos el array con los objetos de cada empresa
-        return $array_objetos;
-    }
-    
-    
-    /**
-     * @description Devuelve TODOS los objetos de las familias profesionales que hay en la base de datos
-     */
-    function devuelveFamilias() {
-        //Generamos un Array en el que almacenaremos objetos que harán referencia a las familias profesionales que hay en la base de datos
-        $array_objetos = new ArrayObject();
-
-        //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare("SELECT * FROM familia_profesional");
-
-        //Ejecutamos la consulta
-        $consulta->execute();
-
-        //Creamos un nuevo objeto con los datos de una familia profesional
-        while ($f = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $familia = new FamiliaProfesional($f['id_familia'], $f['nombre']);
-            $array_objetos->append($familia);
-        }
-        
-        //Retornamos el array con los objetos de cada familia
         return $array_objetos;
     }
 
@@ -109,11 +103,34 @@ class Database {
             $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_familia'], $c['id_tutor_c'], $c['nombre']);
             $array_objetos->append($ciclo);
         }
-        
+
         //Retornamos el array con los objetos de cada ciclo
         return $array_objetos;
     }
-    
+
+    /**
+     * @description Devuelve TODOS los objetos de las familias profesionales que hay en la base de datos
+     */
+    function devuelveFamilias() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a las familias profesionales que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM familia_profesional");
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de una familia profesional
+        while ($f = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $familia = new FamiliaProfesional($f['id_familia'], $f['nombre']);
+            $array_objetos->append($familia);
+        }
+
+        //Retornamos el array con los objetos de cada familia
+        return $array_objetos;
+    }
+
     /**
      * @description Comprueba los métodos de verificación de usuarios y devuelve un booleano que indica si el usuario es válido o no
      */
@@ -377,6 +394,44 @@ class Database {
 
         //Retornamos el array con los objetos (usuario) cada rol
         return $array_objetos;
+    }
+
+    function modificaTutorEmpresa($id_tutor_e, $user, $nombre, $dni, $email, $telefono) {
+        try {
+            //Genero la consulta para realizar la actualización de los datos de la database
+            $sql = "UPDATE tutor_empresa SET user = ?, nombre = ?, dni = ?, email = ?, telefono = ? WHERE id_tutor_e = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sql);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $user, PDO::PARAM_STR);
+            $stmt->bindParam(2, $nombre, PDO::PARAM_STR);
+            $stmt->bindParam(3, $dni, PDO::PARAM_STR);
+            $stmt->bindParam(4, $email, PDO::PARAM_STR);
+            $stmt->bindParam(5, $telefono, PDO::PARAM_STR);
+            $stmt->bindParam(6, $id_tutor_e, PDO::PARAM_INT);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $ex = new Exception("No se ha podido ejecutar la modificación del perfil de usuario");
+        }
+    }
+
+    function modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono) {
+        try {
+            //Generamos la sentencia de actualización
+            $sql = "UPDATE tutor_centro SET user=?, nombre=?, dni=?, email=?, telefono=?, WHERE id=?";
+
+            //Preparamos la sentencia sql para actualizar el registro
+            $statement->prepare($sql)->execute([$user, $nombre, $dni, $email, $telefono, $id]);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            return $resultado = $statement->execute();
+        } catch (PDOException $ex) {
+            echo "<h1>$ex->getMessage()</h1>";
+        }
     }
 
 }

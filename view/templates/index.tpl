@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 ******************************************************************
-***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****e
+***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****
 ***** El actual proyecto ha sido desarrollado por el alumno  *****
 ***** HÉCTOR CAPDEVILA GAGO, estudiante de 2º de Desarrollo  *****
 ***** de Aplicaciones Web del CPIFP Los Enlaces de Zaragoza  *****
@@ -10,8 +10,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/estilos.css">       
-        {*        <script type="text/javascript" src="./prueba.js"></script>*}
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -36,26 +35,21 @@
                         <span class="label">CONTRASEÑA</span>
                         <div class="underline"></div>
                     </label>
-                    <div class="submit-container clearfix" style="margin-top: 2rem;">  
-                        <input type="submit" value="INICIAR SESIÓN" class="btn btn-irenic float-right"/>
-                        <div class="login-pending">
-                            <div class=spinner>
-                                <span class="dot1"></span>
-                                <span class="dot2"></span>
-                            </div>
-                            <div class="login-granted-content">
-                                <i class="material-icons">done</i>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="label">USUARIO</span>
+                    <div class="submit-container clearfix" style="text-align: center; margin-top: 4rem;">  
+                        <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>
                 </form>
-                {if isset($msj_error)}
-                    <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                    <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
-                    <div class="underline"></div>
-                {/if}
+                <form id="form2" action="index.php" method="POST">
+                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR ALUMNO" class="btn btn-warning"/>
+                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR TUTOR DE EMPRESA" class="btn btn-warning"/>
+                </form>
             </div>
+            <span class="label">USUARIO</span>
+            {if isset($msj_error)}
+                <!--En el caso de que el usuario introducido NO exista en la base de datos-->
+                <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
+                <div class="underline"></div>
+            {/if}
         </div>
-    </body>
+    </div>
+</body>
 </html>

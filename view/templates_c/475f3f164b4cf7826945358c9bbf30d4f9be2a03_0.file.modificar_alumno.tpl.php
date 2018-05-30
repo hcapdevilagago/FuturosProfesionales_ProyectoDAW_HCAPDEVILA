@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-28 21:39:09
+/* Smarty version 3.1.32, created on 2018-05-29 11:57:28
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\alumnos\modificar_alumno.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0c5addecaa05_38381103',
+  'unifunc' => 'content_5b0d24080c88b1_22192261',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '475f3f164b4cf7826945358c9bbf30d4f9be2a03' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\alumnos\\modificar_alumno.tpl',
-      1 => 1527536348,
+      1 => 1527587846,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0c5addecaa05_38381103 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0d24080c88b1_22192261 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white;">
     <div class="w3-row w3-padding w3-border">

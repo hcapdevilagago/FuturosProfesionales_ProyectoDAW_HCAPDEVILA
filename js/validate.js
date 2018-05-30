@@ -102,6 +102,13 @@ $(document).ready(function () {
                     }
                 }
             },
+            empresas: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, seleccione una empresa de la lista'
+                    }
+                }
+            },
             tutores: {
                 validators: {
                     notEmpty: {
