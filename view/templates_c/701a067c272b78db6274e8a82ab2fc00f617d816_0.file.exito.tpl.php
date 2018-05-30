@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-30 21:36:52
+/* Smarty version 3.1.32, created on 2018-05-30 21:52:17
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\exito.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0efd54e1f282_76089470',
+  'unifunc' => 'content_5b0f00f1a472e6_31647173',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '701a067c272b78db6274e8a82ab2fc00f617d816' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\exito.tpl',
-      1 => 1527709010,
+      1 => 1527709910,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0efd54e1f282_76089470 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_5b0f00f1a472e6_31647173 (Smarty_Internal_Template $_smarty_tpl) {
+echo '<?php
+';?>//Redirigimos el flujo de la ejecución al login de inicio
+header("Refresh: 1; url=index.php");
+exit;
+<?php echo '?>';?>
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8">

@@ -523,7 +523,7 @@ class Database {
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
         } catch (PDOException $ex) {
-            $ex = new Exception("No se ha podido ejecutar la modificación del perfil de usuario");
+            $_SESSION['error'] = true;
         }
     }
 

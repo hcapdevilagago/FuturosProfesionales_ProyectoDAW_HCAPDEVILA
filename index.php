@@ -76,9 +76,14 @@ if (isset($_POST['acceder'])) {
         $email = $_POST['email'];
         $telefono = $_POST['tel'];
         $db->altaAlumno($id_tutor_c, $id_ciclo, $user, $pass, $nombre, $dni, $email, $telefono);
-        $plantilla->display("exito.tpl");
+        if (!$_SESSION['error']) {
+            header('Location: exito.php');
+        } else {
+            session_unset();
+            header('Location: error.php');
+        }
     } else {
-        $plantilla->display("error.tpl");
+        header('Location: error.php');
     }
 } else {
     //Indicamos que el fichero de la parte de vista es index.tpl
