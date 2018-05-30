@@ -26,6 +26,9 @@ $plantilla->assign("familias", $db->devuelveFamilias());
 $plantilla->assign("ciclos", $db->devuelveCiclos());
 
 //Asignamos el array de los ciclos formativos a una variable Smarty
+$plantilla->assign("tutores", $db->devuelveTutoresCentro());
+
+//Asignamos el array de los ciclos formativos a una variable Smarty
 $plantilla->assign("empresas", $db->devuelveEmpresas());
 
 //Para evitar que se acceda a la cuenta de un perfil de usuario que se ha logueado anteriormente, deshechamos las variables de sesión que haya en el sistema
@@ -56,8 +59,26 @@ if (isset($_POST['acceder'])) {
             $plantilla->display("registrar_alumno.tpl");
             break;
         case 'REGISTRAR TUTOR DE EMPRESA':
+            //Indicamos que el fichero de la parte de vista es registrar_tutor.tpl
             $plantilla->display("registrar_tutor.tpl");
             break;
+    }
+} else if (isset($_POST['add_alumno'])) {
+    //Comprobamos que se haya pulsado el botón de añadir nuevo alumno
+    if (strlen($_POST['tutores']) > 0 && strlen($_POST['ciclos']) > 0) {
+        //Comprobamos que si se ha pulsado el botón de añadir nuevo alumno, ha seleccionado un tutor y un ciclo
+        $id_tutor_c = $db->devuelveTutorCentro($_POST['tutores'])->getId_tutor_c();
+        $id_ciclo = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
+        $user = $_POST['user'];
+        $pass = md5($_POST['pass']);
+        $nombre = $_POST['nombre'];
+        $dni = $_POST['dni'];
+        $email = $_POST['email'];
+        $telefono = $_POST['tel'];
+        $db->altaAlumno($id_tutor_c, $id_ciclo, $user, $pass, $nombre, $dni, $email, $telefono);
+        $plantilla->display("exito.tpl");
+    } else {
+        $plantilla->display("error.tpl");
     }
 } else {
     //Indicamos que el fichero de la parte de vista es index.tpl

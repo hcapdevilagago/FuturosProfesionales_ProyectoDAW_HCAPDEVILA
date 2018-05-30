@@ -46,6 +46,52 @@ class Database {
     /**
      * @description Devuelve un objeto correspondiente a la empresa pasada como parámetro
      */
+    function devuelveTutorCentro($nombre) {
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM tutor_centro WHERE nombre = ?");
+
+        //Preparamos la sentencia parametrizada
+        $consulta->bindParam(1, $nombre);
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de una empresa
+        if ($t = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['email'], $t['dni'], $t['telefono']);
+        }
+        
+        //Retornamos el objeto del tutor del centro educativo
+        return $tutor;
+    }
+    
+    
+    /**
+     * @description Devuelve TODOS los objetos de los tutores del centro educativo que hay registradas en la base de datos
+     */
+    function devuelveTutoresCentro() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a los tutores del centro educativo que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM tutor_centro");
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de un tutor de centro educativo
+        while ($t = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['email'], $t['dni'], $t['telefono']);
+            $array_objetos->append($tutor);
+        }
+
+        //Retornamos el array con los objetos de los tutores del centro educativo
+        return $array_objetos;
+    }
+
+    /**
+     * @description Devuelve un objeto correspondiente a la empresa pasada como parámetro
+     */
     function devuelveEmpresa($nombre) {
         //Preparamos la sentencia, nos devolverá la consulta
         $consulta = $this->conexion->prepare("SELECT * FROM empresa WHERE nombre_legal = ?");
@@ -83,6 +129,28 @@ class Database {
 
         //Retornamos el array con los objetos de cada empresa
         return $array_objetos;
+    }
+
+    /**
+     * @description Devuelve un objeto correspondiente al ciclo formativo pasado como parámetro
+     */
+    function devuelveCiclo($nombre) {
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM ciclo_formativo WHERE nombre = ?");
+
+        //Preparamos la sentencia parametrizada
+        $consulta->bindParam(1, $nombre);
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de una empresa
+        if ($c = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_familia'], $c['id_tutor_c'], $c['nombre']);
+        }
+
+        //Retornamos el objeto de la clase Empresa
+        return $ciclo;
     }
 
     /**
@@ -412,7 +480,7 @@ class Database {
             $stmt->bindParam(5, $telefono, PDO::PARAM_STR);
             $stmt->bindParam(6, $id_tutor_e, PDO::PARAM_INT);
 
-            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            //Ejecutamos la consulta para modificar el registro de la base de datos
             $stmt->execute();
         } catch (PDOException $ex) {
             $ex = new Exception("No se ha podido ejecutar la modificación del perfil de usuario");
@@ -431,6 +499,31 @@ class Database {
             return $resultado = $statement->execute();
         } catch (PDOException $ex) {
             echo "<h1>$ex->getMessage()</h1>";
+        }
+    }
+
+    function altaAlumno($id_tutor_c, $id_ciclo, $user, $pass, $nombre, $dni, $email, $telefono) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sql = "INSERT INTO alumno (id_tutor_c, id_ciclo, user, pass, nombre, dni, email, telefono) VALUES (?,?,?,?,?,?,?,?)";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sql);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_tutor_c, PDO::PARAM_INT);
+            $stmt->bindParam(2, $id_ciclo, PDO::PARAM_INT);
+            $stmt->bindParam(3, $user, PDO::PARAM_STR);
+            $stmt->bindParam(4, $pass, PDO::PARAM_STR);
+            $stmt->bindParam(5, $nombre, PDO::PARAM_STR);
+            $stmt->bindParam(6, $dni, PDO::PARAM_STR);
+            $stmt->bindParam(7, $email, PDO::PARAM_STR);
+            $stmt->bindParam(8, $telefono, PDO::PARAM_STR);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $ex = new Exception("No se ha podido ejecutar la modificación del perfil de usuario");
         }
     }
 
