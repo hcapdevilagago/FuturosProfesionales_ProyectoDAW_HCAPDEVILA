@@ -70,16 +70,15 @@
                         </div>
                     </label>
                     <div class="submit-container clearfix" style="text-align: center; margin-top: 1%;">  
-                        <input type="reset" style="margin-top: 1%; display: inline-block; width: 250px;" name="clear" value="LIMPIAR FORMULARIO" class="btn btn-warning"/>
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="add_alumno" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
+                        <input type="reset" style="margin-top: 1%; display: inline-block; width: 250px;" name="limpiar" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
+                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="añadir_alumno" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
                     </div>
                 </form>
-                <span class="label">USUARIO</span>
-                {if isset($msj_error)}
-                    <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                    <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
-                    <div class="underline"></div>
-                {/if}
+                <form id="form" action="index.php" method="POST">
+                    <div class="submit-container clearfix" style="text-align: center; margin-top: 1%;">  
+                        <input type="submit" style="margin-top: 1%; width: 500px;" name="volver" value="VOLVER AL LOGIN DE INICIO" class="btn btn-info"/>
+                    </div>  
+                </form>
             </div>
         </div>
     </body>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-30 01:02:20
+/* Smarty version 3.1.32, created on 2018-05-30 22:19:08
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\registrar_tutor.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0ddbfce38ff4_30940664',
+  'unifunc' => 'content_5b0f073cc1b9b6_09868473',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '878573f0798dbb283c7249bb102dc88cefe5d46c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\registrar_tutor.tpl',
-      1 => 1527634938,
+      1 => 1527711545,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0ddbfce38ff4_30940664 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0f073cc1b9b6_09868473 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -73,9 +73,10 @@ function content_5b0ddbfce38ff4_30940664 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="label">TELÉFONO DE CONTACTO</span>
                         <div class="underline"></div>
                     </label>
-                    <label class="form-input" style="margin-top: 2%;">
+                    <label class="form-input text-center">
+                        <span class="select">EMPRESA</span>
                         <select name="empresas" class="form-control selectpicker">
-                            <option value=" " >Por favor, seleccione la empresa a la que ud perteneceempresa</option>
+                            <option value=" " >Por favor, seleccione la empresa a la que pertenece</option>
                             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['empresas']->value, 'empresa');
 if ($_from !== null) {
@@ -95,17 +96,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                     </label>
                     <div class="submit-container clearfix" style="text-align: center; margin-top: 5%;">
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="clear" value="LIMPIAR FORMULARIO" class="btn btn-warning"/>
+                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="clear" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
                         <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="acceder" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
                     </div>
                 </form>
-                <span class="label">USUARIO</span>
-                <?php if (isset($_smarty_tpl->tpl_vars['msj_error']->value)) {?>
-                    <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                    <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> <?php echo $_smarty_tpl->tpl_vars['msj_error']->value;?>
-</span>
-                    <div class="underline"></div>
-                <?php }?>
+                <form id="form" action="index.php" method="POST">
+                    <div class="submit-container clearfix" style="text-align: center; margin-top: 1%;">  
+                        <input type="submit" style="margin-top: 1%; width: 500px;" name="volver" value="VOLVER AL LOGIN DE INICIO" class="btn btn-info"/>
+                    </div>  
+                </form>
             </div>
         </div>
     </body>

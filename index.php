@@ -51,6 +51,9 @@ if (isset($_POST['acceder'])) {
             //Indicamos que el fichero de la parte de vista es index.tpl
             $plantilla->display("index.tpl");
         }
+    } else {
+        //Indicamos que el fichero de la parte de vista es index.tpl porque se ha pulsado el botón de volver
+        $plantilla->display("index.tpl");
     }
 } else if (isset($_POST['registrar'])) {
     switch ($_POST['registrar']) {
@@ -63,7 +66,7 @@ if (isset($_POST['acceder'])) {
             $plantilla->display("registrar_tutor.tpl");
             break;
     }
-} else if (isset($_POST['add_alumno'])) {
+} else if (isset($_POST['añadir_alumno'])) {
     //Comprobamos que se haya pulsado el botón de añadir nuevo alumno
     if (strlen($_POST['tutores']) > 0 && strlen($_POST['ciclos']) > 0) {
         //Comprobamos que si se ha pulsado el botón de añadir nuevo alumno, ha seleccionado un tutor y un ciclo
