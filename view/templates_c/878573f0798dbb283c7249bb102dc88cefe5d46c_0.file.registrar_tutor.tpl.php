@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-30 22:19:08
+/* Smarty version 3.1.32, created on 2018-05-31 00:08:19
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\registrar_tutor.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f073cc1b9b6_09868473',
+  'unifunc' => 'content_5b0f20d35668c5_26008280',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '878573f0798dbb283c7249bb102dc88cefe5d46c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\registrar_tutor.tpl',
-      1 => 1527711545,
+      1 => 1527718097,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f073cc1b9b6_09868473 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0f20d35668c5_26008280 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -96,8 +96,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                     </label>
                     <div class="submit-container clearfix" style="text-align: center; margin-top: 5%;">
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="clear" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="acceder" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
+                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 200px;" name="limpiar" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
+                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 300px;" name="anadir_tutor_e" value="REGISTRAR NUEVO TUTOR EMPRESA" class="btn btn-success"/>
                     </div>
                 </form>
                 <form id="form" action="index.php" method="POST">

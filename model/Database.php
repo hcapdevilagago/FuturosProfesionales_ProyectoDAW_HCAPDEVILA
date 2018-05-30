@@ -60,12 +60,11 @@ class Database {
         if ($t = $consulta->fetch(PDO::FETCH_ASSOC)) {
             $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['email'], $t['dni'], $t['telefono']);
         }
-        
+
         //Retornamos el objeto del tutor del centro educativo
         return $tutor;
     }
-    
-    
+
     /**
      * @description Devuelve TODOS los objetos de los tutores del centro educativo que hay registradas en la base de datos
      */
@@ -519,6 +518,30 @@ class Database {
             $stmt->bindParam(6, $dni, PDO::PARAM_STR);
             $stmt->bindParam(7, $email, PDO::PARAM_STR);
             $stmt->bindParam(8, $telefono, PDO::PARAM_STR);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function altaTutorEmpresa($id_empresa, $user, $pass, $nombre, $telefono, $email, $dni) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sql = "INSERT INTO tutor_empresa (id_empresa, user, pass, nombre, telefono, email, dni) VALUES (?,?,?,?,?,?,?)";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sql);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_empresa, PDO::PARAM_INT);
+            $stmt->bindParam(2, $user, PDO::PARAM_STR);
+            $stmt->bindParam(3, $pass, PDO::PARAM_STR);
+            $stmt->bindParam(4, $nombre, PDO::PARAM_STR);
+            $stmt->bindParam(5, $telefono, PDO::PARAM_STR);
+            $stmt->bindParam(6, $email, PDO::PARAM_STR);
+            $stmt->bindParam(7, $dni, PDO::PARAM_STR);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();

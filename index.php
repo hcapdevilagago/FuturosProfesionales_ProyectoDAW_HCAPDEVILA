@@ -65,20 +65,44 @@ if (isset($_POST['acceder'])) {
             //Indicamos que el fichero de la parte de vista es registrar_tutor.tpl
             $plantilla->display("registrar_tutor.tpl");
             break;
+        case '¿Ha olvidado la contraseña?':
+            $plantilla->display("recuperar.tpl");
+            break;
     }
-} else if (isset($_POST['añadir_alumno'])) {
+} else if (isset($_POST['anadir_alumno'])) {
     //Comprobamos que se haya pulsado el botón de añadir nuevo alumno
     if (strlen($_POST['tutores']) > 0 && strlen($_POST['ciclos']) > 0) {
         //Comprobamos que si se ha pulsado el botón de añadir nuevo alumno, ha seleccionado un tutor y un ciclo
         $id_tutor_c = $db->devuelveTutorCentro($_POST['tutores'])->getId_tutor_c();
-        $id_ciclo = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
-        $user = $_POST['user'];
-        $pass = md5($_POST['pass']);
-        $nombre = $_POST['nombre'];
-        $dni = $_POST['dni'];
-        $email = $_POST['email'];
-        $telefono = $_POST['tel'];
-        $db->altaAlumno($id_tutor_c, $id_ciclo, $user, $pass, $nombre, $dni, $email, $telefono);
+        $id_ciclo_a = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
+        $user_a = $_POST['user'];
+        $pass_a = md5($_POST['pass']);
+        $nombre_a = $_POST['nombre'];
+        $dni_a = $_POST['dni'];
+        $email_a = $_POST['email'];
+        $telefono_a = $_POST['tel'];
+        $db->altaAlumno($id_tutor_c, $id_ciclo_a, $user_a, $pass_a, $nombre_a, $dni_a, $email_a, $telefono_a);
+        if (!$_SESSION['error']) {
+            header('Location: exito.php');
+        } else {
+            session_unset();
+            header('Location: error.php');
+        }
+    } else {
+        header('Location: error.php');
+    }
+} else if (isset($_POST['anadir_tutor_e'])) {
+    //Comprobamos que se haya pulsado el botón de añadir nuevo tutor empresa
+    if (strlen($_POST['empresas']) > 0) {
+        //Comprobamos que si se ha pulsado el botón de añadir nuevo tutor empresa, ha seleccionado una empresa
+        $id_empresa_e = $db->devuelveEmpresa($_POST['empresas'])->getId_empresa();
+        $user_t = $_POST['user'];
+        $pass_t = md5($_POST['pass']);
+        $nombre_t = $_POST['nombre'];
+        $dni_t = $_POST['dni'];
+        $telefono_t = $_POST['tel'];
+        $email_t = $_POST['email'];
+        $db->altaTutorEmpresa($id_empresa_e, $user_t, $pass_t, $nombre_t, $telefono_t, $email_t, $dni_t);
         if (!$_SESSION['error']) {
             header('Location: exito.php');
         } else {

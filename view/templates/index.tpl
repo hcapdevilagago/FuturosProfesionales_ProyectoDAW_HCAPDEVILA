@@ -19,7 +19,7 @@
     <body>
         <div class="tile">
             <div class="tile-header">
-                <img src="./images/logo1.png" height="80%" width="80%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>
+                <img src="./images/logo1.png" height="75%" width="75%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>
             </div>
             <div class="tile-body">
                 <form id="form" action="index.php" method="POST">
@@ -41,12 +41,13 @@
                 <form id="form2" action="index.php" method="POST">
                     <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR ALUMNO" class="btn btn-warning"/>
                     <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR TUTOR DE EMPRESA" class="btn btn-warning"/>
+                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
                 </form>
             </div>
             <span class="label">USUARIO</span>
             {if isset($msj_error)}
                 <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                <span class="label" style="margin-top: 2%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
+                <span class="label" style="margin-top: 1%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
                 <div class="underline"></div>
             {/if}
         </div>

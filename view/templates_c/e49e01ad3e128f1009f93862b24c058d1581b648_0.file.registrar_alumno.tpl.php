@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-30 22:19:14
+/* Smarty version 3.1.32, created on 2018-05-31 00:53:32
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\registrar_alumno.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f0742dbb841_99435941',
+  'unifunc' => 'content_5b0f2b6cd2ede8_66273408',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e49e01ad3e128f1009f93862b24c058d1581b648' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\registrar_alumno.tpl',
-      1 => 1527711465,
+      1 => 1527717536,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f0742dbb841_99435941 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0f2b6cd2ede8_66273408 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -114,7 +114,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </label>
                     <div class="submit-container clearfix" style="text-align: center; margin-top: 1%;">  
                         <input type="reset" style="margin-top: 1%; display: inline-block; width: 250px;" name="limpiar" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="añadir_alumno" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
+                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="anadir_alumno" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
                     </div>
                 </form>
                 <form id="form" action="index.php" method="POST">

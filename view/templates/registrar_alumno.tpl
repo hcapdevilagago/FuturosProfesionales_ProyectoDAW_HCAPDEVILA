@@ -71,7 +71,7 @@
                     </label>
                     <div class="submit-container clearfix" style="text-align: center; margin-top: 1%;">  
                         <input type="reset" style="margin-top: 1%; display: inline-block; width: 250px;" name="limpiar" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="añadir_alumno" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
+                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 250px;" name="anadir_alumno" value="REGISTRAR NUEVO ALUMNO" class="btn btn-success"/>
                     </div>
                 </form>
                 <form id="form" action="index.php" method="POST">

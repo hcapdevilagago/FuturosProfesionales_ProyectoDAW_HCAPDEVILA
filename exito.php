@@ -23,6 +23,6 @@
 </html>
 <?php
 //Redirigimos el flujo de la ejecución al login de inicio
-header("Refresh: 4; url=index.php");
+header("Refresh: 5; url=index.php");
 exit;
 ?>
