@@ -38,7 +38,7 @@ if (isset($_SESSION['user'])) {
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado
     $tabla = $_SESSION['rol'];
 
-    if (isset($_POST['edit'])) {
+    if (isset($_POST['editar'])) {
         switch ($tabla) {
             //Identificamos el rol del usuario logueado
             case "tutor_empresa":
@@ -51,6 +51,30 @@ if (isset($_SESSION['user'])) {
                 $tel = $_POST['tel'];
                 $db->modificaTutorEmpresa($id_tutor, $usuario, $nombre, $dni, $email, $tel);
                 $_SESSION['user'] = $usuario;
+                break;
+            case "tutor_centro":
+
+                break;
+            case "alumno":
+
+                break;
+        }
+    } else if (isset($_POST['baja'])) {
+        switch ($tabla) {
+            //Identificamos el rol del usuario logueado
+            case "tutor_empresa":
+                $pass = md5($_POST['password']);
+                if ($db->verificaTutorEmpresa($u->getUser(), $pass)) {
+                    if ($db->bajaUsuario($u->getId_tutor_e(), $u->getUser(), $tabla)) {
+//                        header('Location: exito_admin.php');
+                        header("Location: index.php");
+                    } else {
+                        echo("<h1>OKKKKKKKKKKKKKKKKKKKKKKKK nooooooooooooooooooooo</h1>");
+//                        header('Location: error_admin.php');
+                    }
+                } else {
+                    header('Location: error_admin.php');
+                }
                 break;
             case "tutor_centro":
 

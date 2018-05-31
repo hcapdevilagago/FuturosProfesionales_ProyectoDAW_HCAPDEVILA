@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-31 00:55:55
+/* Smarty version 3.1.32, created on 2018-05-31 01:02:34
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\recuperar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f2bfbb736a2_55908307',
+  'unifunc' => 'content_5b0f2d8ad8f377_30680168',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f613dded79f4c9ae21415795ffe5c38dfc8c59ac' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\recuperar.tpl',
-      1 => 1527720953,
+      1 => 1527721352,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f2bfbb736a2_55908307 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b0f2d8ad8f377_30680168 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -43,6 +43,7 @@ function content_5b0f2bfbb736a2_55908307 (Smarty_Internal_Template $_smarty_tpl)
                     <h4 class="text-center">RECUPERACIÓN DE CONTRASEÑA DE ACCESO</h4><hr/>
                 </div>
                 <label class="form-input">
+                    <i class="material-icons">email</i>
                     <input type="email" name="email" autofocus="true" style="text-align: center;" required />
                     <span class="label">INTRODUZCA EL CORREO ELÉCTRONICO DEL USUARIO QUE QUIERA RECUPERAR LA CONTRASEÑA DE ACCESO</span>
                     <span class="underline"></span>

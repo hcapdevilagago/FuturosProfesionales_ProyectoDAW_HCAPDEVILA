@@ -221,10 +221,10 @@ class Database {
      */
     function verificaAlumno($user, $pass) {
         //Generamos la sentencia para realizar la comprobación, el usuario introducido debe existir y la password coincida
-        $select = "SELECT * FROM alumno WHERE user = ? AND pass = ?";
+        $sentencia = "SELECT * FROM alumno WHERE user = ? AND pass = ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare($select);
+        $consulta = $this->conexion->prepare($sentencia);
 
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $user);
@@ -242,10 +242,10 @@ class Database {
      */
     function verificaTutorEmpresa($user, $pass) {
         //Generamos la sentencia para realizar la comprobación, el usuario introducido debe existir y la password coincida
-        $select = "SELECT * FROM tutor_empresa WHERE user = ? AND pass = ?";
+        $sentencia = "SELECT * FROM tutor_empresa WHERE user = ? AND pass = ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare($select);
+        $consulta = $this->conexion->prepare($sentencia);
 
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $user);
@@ -263,10 +263,10 @@ class Database {
      */
     function verificaTutorCentro($user, $pass) {
         //Generamos la sentencia para realizar la comprobación, el usuario introducido debe existir y la password coincida
-        $select = "SELECT * FROM tutor_centro WHERE user = ? AND pass = ?";
+        $sentencia = "SELECT * FROM tutor_centro WHERE user = ? AND pass = ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare($select);
+        $consulta = $this->conexion->prepare($sentencia);
 
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $user);
@@ -340,10 +340,10 @@ class Database {
      */
     function obtieneUsuario($rol, $user) {
         //Generamos la sentencia que se encargará de devolver el usuario que coincida con el nombre de usuario en la tabla correspondiente
-        $select = "SELECT * FROM $rol WHERE user = ?";
+        $sentencia = "SELECT * FROM $rol WHERE user = ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare($select);
+        $consulta = $this->conexion->prepare($sentencia);
 
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $user);
@@ -402,10 +402,10 @@ class Database {
         $array_objetos = new ArrayObject();
 
         //Generamos la sentencia que se encargará de devolver todos los usuarios según el rol pasado
-        $select = "SELECT * FROM ?";
+        $sentencia = "SELECT * FROM ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare($select);
+        $consulta = $this->conexion->prepare($sentencia);
 
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $rol);
@@ -466,10 +466,10 @@ class Database {
     function modificaTutorEmpresa($id_tutor_e, $user, $nombre, $dni, $email, $telefono) {
         try {
             //Genero la consulta para realizar la actualización de los datos de la database
-            $sql = "UPDATE tutor_empresa SET user = ?, nombre = ?, dni = ?, email = ?, telefono = ? WHERE id_tutor_e = ?";
+            $sentencia = "UPDATE tutor_empresa SET user = ?, nombre = ?, dni = ?, email = ?, telefono = ? WHERE id_tutor_e = ?";
 
             //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sql);
+            $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
             $stmt->bindParam(1, $user, PDO::PARAM_STR);
@@ -489,10 +489,10 @@ class Database {
     function modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono) {
         try {
             //Generamos la sentencia de actualización
-            $sql = "UPDATE tutor_centro SET user=?, nombre=?, dni=?, email=?, telefono=?, WHERE id=?";
+            $sentencia = "UPDATE tutor_centro SET user=?, nombre=?, dni=?, email=?, telefono=?, WHERE id=?";
 
-            //Preparamos la sentencia sql para actualizar el registro
-            $statement->prepare($sql)->execute([$user, $nombre, $dni, $email, $telefono, $id]);
+            //Preparamos la sentencia sentencia para actualizar el registro
+            $statement->prepare($sentencia)->execute([$user, $nombre, $dni, $email, $telefono, $id]);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             return $resultado = $statement->execute();
@@ -504,10 +504,10 @@ class Database {
     function altaAlumno($id_tutor_c, $id_ciclo, $user, $pass, $nombre, $dni, $email, $telefono) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sql = "INSERT INTO alumno (id_tutor_c, id_ciclo, user, pass, nombre, dni, email, telefono) VALUES (?,?,?,?,?,?,?,?)";
+            $sentencia = "INSERT INTO alumno (id_tutor_c, id_ciclo, user, pass, nombre, dni, email, telefono) VALUES (?,?,?,?,?,?,?,?)";
 
             //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sql);
+            $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
             $stmt->bindParam(1, $id_tutor_c, PDO::PARAM_INT);
@@ -529,10 +529,10 @@ class Database {
     function altaTutorEmpresa($id_empresa, $user, $pass, $nombre, $telefono, $email, $dni) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sql = "INSERT INTO tutor_empresa (id_empresa, user, pass, nombre, telefono, email, dni) VALUES (?,?,?,?,?,?,?)";
+            $sentencia = "INSERT INTO tutor_empresa (id_empresa, user, pass, nombre, telefono, email, dni) VALUES (?,?,?,?,?,?,?)";
 
             //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sql);
+            $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
             $stmt->bindParam(1, $id_empresa, PDO::PARAM_INT);
@@ -548,6 +548,51 @@ class Database {
         } catch (PDOException $ex) {
             $_SESSION['error'] = true;
         }
+    }
+
+    /**
+     * @description Devuelve un booleano que indica si se ha podido eliminar el usuario
+     */
+    function bajaUsuario($id, $user, $tabla) {
+        switch ($tabla) {
+            case "tutor_empresa":
+                //Generamos la sentencia para realizar la eliminación del usuario
+                $sentencia = "DELETE FROM solicitud WHERE id_tutor_e = ?";
+
+                //Preparamos la sentencia, nos devolverá la consulta
+                $consulta = $this->conexion->prepare($sentencia);
+
+                //Preparamos la sentencia parametrizada
+                $consulta->bindParam(1, $id);
+
+                //Ejecutamos la consulta
+                $consulta->execute();
+
+                $sentencia = "DELETE FROM $tabla WHERE user = ?";
+
+                break;
+            case "tutor_centro":
+                $sentencia = "DELETE FROM $tabla WHERE user = ?";
+
+                break;
+            case "alumno":
+                $sentencia = "DELETE FROM $tabla WHERE user = ?";
+
+                break;
+        }
+
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare($sentencia);
+
+        //Preparamos la sentencia parametrizada
+        $consulta->bindParam(1, $user);
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //En el caso de que el usuario se haya eliminado, devolvemos TRUE, en caso contrario devolvemos FALSE
+        return ($consulta->rowCount()) ? true : false;
     }
 
 }

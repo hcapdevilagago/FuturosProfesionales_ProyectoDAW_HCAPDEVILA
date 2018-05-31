@@ -16,6 +16,7 @@
                     <h4 class="text-center">RECUPERACIÓN DE CONTRASEÑA DE ACCESO</h4><hr/>
                 </div>
                 <label class="form-input">
+                    <i class="material-icons">email</i>
                     <input type="email" name="email" autofocus="true" style="text-align: center;" required />
                     <span class="label">INTRODUZCA EL CORREO ELÉCTRONICO DEL USUARIO QUE QUIERA RECUPERAR LA CONTRASEÑA DE ACCESO</span>
                     <span class="underline"></span>

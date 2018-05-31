@@ -75,8 +75,8 @@
                                     </div>*}
                                     <span class="col-md-4 control-label"></span>
                                     <div class="input-group">
-                                        <input type="submit" name="clear" value="Limpiar formulario" class="btn btn-primary">
-                                        <input type="submit" name="edit" value="Modificar perfil del alumno" class="btn btn-primary">
+                                        <input type="reset" name="limpiar" value="Limpiar formulario" class="btn btn-primary">
+                                        <input type="submit" name="editar" value="Modificar perfil del alumno" class="btn btn-primary">
                                     </div>                                       
 
                                 </fieldset>
