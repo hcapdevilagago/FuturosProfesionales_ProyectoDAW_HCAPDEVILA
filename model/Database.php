@@ -43,6 +43,8 @@ class Database {
         }
     }
 
+    
+    
     /**
      * @description Devuelve un objeto correspondiente a la empresa pasada como parámetro
      */
@@ -573,11 +575,9 @@ class Database {
                 break;
             case "tutor_centro":
                 $sentencia = "DELETE FROM $tabla WHERE user = ?";
-
                 break;
             case "alumno":
                 $sentencia = "DELETE FROM $tabla WHERE user = ?";
-
                 break;
         }
 
@@ -594,5 +594,26 @@ class Database {
         //En el caso de que el usuario se haya eliminado, devolvemos TRUE, en caso contrario devolvemos FALSE
         return ($consulta->rowCount()) ? true : false;
     }
+    
+    function altaSolicitud($id_tutor_e, $id_ciclo, $cantidad_alumnos) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sentencia = "INSERT INTO solicitud (id_tutor_e, id_ciclo, cantidad_alumnos) VALUES (?,?,?)";
+            
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_tutor_e, PDO::PARAM_INT);
+            $stmt->bindParam(2, $id_ciclo, PDO::PARAM_STR);
+            $stmt->bindParam(3, $cantidad_alumnos, PDO::PARAM_INT);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+    
 
 }

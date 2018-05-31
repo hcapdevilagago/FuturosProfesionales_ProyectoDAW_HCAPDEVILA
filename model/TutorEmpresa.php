@@ -17,7 +17,7 @@ class TutorEmpresa {
      * @description Características de cada Tutor de la Empresa Formadora
      */
     private $id_tutor_e;
-    private $id_empresa_e;
+    private $id_empresa;
     private $user;
     private $pass;
     private $nombre;
@@ -28,9 +28,9 @@ class TutorEmpresa {
     /**
      * @description Este constructor es invocado a la hora de realizar una instancia de un nuevo objeto new TutorEmpresa()
      */
-    function __construct($id_tutor_e, $id_empresa_e, $user, $pass, $nombre, $dni, $telefono, $email) {
+    function __construct($id_tutor_e, $id_empresa, $user, $pass, $nombre, $dni, $telefono, $email) {
         $this->id_tutor_e = $id_tutor_e;
-        $this->id_empresa_e = $id_empresa_e;
+        $this->id_empresa = $id_empresa;
         $this->user = $user;
         $this->pass = $pass;
         $this->nombre = $nombre;
@@ -43,8 +43,8 @@ class TutorEmpresa {
         return $this->id_tutor_e;
     }
 
-    function getId_empresa_e() {
-        return $this->id_empresa_e;
+    function getId_empresa() {
+        return $this->id_empresa;
     }
 
     function getUser() {
@@ -75,8 +75,8 @@ class TutorEmpresa {
         $this->id_tutor_e = $id_tutor_e;
     }
 
-    function setId_empresa_e($id_empresa_e) {
-        $this->id_empresa_e = $id_empresa_e;
+    function setId_empresa($id_empresa) {
+        $this->id_empresa = $id_empresa;
     }
 
     function setUser($user) {

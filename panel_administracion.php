@@ -42,7 +42,7 @@ if (isset($_SESSION['user'])) {
 
     //Asignamos el array de los ciclos formativos a una variable Smarty
     $plantilla->assign("ciclos", $ciclos);
-    
+
     if ($u instanceof Alumno) {
         //En el caso de que $u sea una instancia de Alumno
         foreach ($ciclos as $ciclo) {
@@ -51,8 +51,16 @@ if (isset($_SESSION['user'])) {
                 $plantilla->assign("ciclo_usuario", $ciclo->getNombre());
             }
         }
+    } else if ($u instanceof TutorEmpresa) {
+        //En el caso de que $u sea una instancia de TutorEmpresa
+        foreach ($db->devuelveEmpresas() as $empresa) {
+            if ($empresa->getId_empresa() == $u->getId_empresa()) {
+                //Asignamos el nombre de la empresa del tutor empresa a una variable Smarty
+                $plantilla->assign("nombre_empresa", $empresa->getNombre_legal());
+            }
+        }
     }
-    
+
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado
     $tabla = $_SESSION['rol'];
 
@@ -116,6 +124,24 @@ if (isset($_SESSION['user'])) {
             case "alumno":
 
                 break;
+        }
+    } else if (isset($_POST['solicitar'])) {
+        //Rescatamos los valores introducidos por el tutor de empresa
+        $cantidad = $_POST['cantidad'];
+        $id_ciclo =$db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
+        
+        if (is_numeric($cantidad)) {
+            //Comprobamos que la cantidad introducida es un número
+            
+            $db->altaSolicitud($u->getId_tutor_e(), $id_ciclo, $cantidad);
+            if (!$_SESSION['error']) {
+                header('Location: exito_admin.php');
+            } else {
+                session_unset();
+                header('Location: error_admin.php');
+            }
+        } else {
+            header('Location: error_admin.php');
         }
     }
 

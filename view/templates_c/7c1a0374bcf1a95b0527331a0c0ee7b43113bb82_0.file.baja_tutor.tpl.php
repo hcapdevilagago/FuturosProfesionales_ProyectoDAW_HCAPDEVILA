@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-31 02:15:42
+/* Smarty version 3.1.32, created on 2018-06-01 01:02:15
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\baja_tutor.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f3eae47f910_44099033',
+  'unifunc' => 'content_5b107ef7089645_66690902',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7c1a0374bcf1a95b0527331a0c0ee7b43113bb82' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\baja_tutor.tpl',
-      1 => 1527725740,
+      1 => 1527805662,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f3eae47f910_44099033 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b107ef7089645_66690902 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -60,7 +60,7 @@ function content_5b0f3eae47f910_44099033 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;">Estoy seguro, y soy consciente de que se va a proceder con la baja del perfil de <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['nombre']->value, 'UTF-8');?>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del perfil de <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['nombre']->value, 'UTF-8');?>
  con rol <?php echo (mb_strtoupper($_smarty_tpl->tpl_vars['rol']->value, 'UTF-8'));?>
 .<br/>También se eliminarán las solicitudes de alumnos realizadas por este usuario.</span>
                                             </div>

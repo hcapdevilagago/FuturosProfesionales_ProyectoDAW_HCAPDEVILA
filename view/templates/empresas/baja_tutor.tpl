@@ -35,7 +35,7 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;">Estoy seguro, y soy consciente de que se va a proceder con la baja del perfil de {$nombre|upper} con rol {($rol|upper)}.<br/>También se eliminarán las solicitudes de alumnos realizadas por este usuario.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del perfil de {$nombre|upper} con rol {($rol|upper)}.<br/>También se eliminarán las solicitudes de alumnos realizadas por este usuario.</span>
                                             </div>
                                         </label>   
                                     </div>                

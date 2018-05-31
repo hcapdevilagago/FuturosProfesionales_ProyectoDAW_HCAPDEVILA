@@ -12,18 +12,20 @@
  * 
  */
 class Solicitud {
-    
     /*
      * @description Características de cada Solicitud de alumnos que realizan los tutores de la Empresa
      */
+
     private $id_solicitud;
+    private $id_tutor_e;
     private $id_ciclo;
     private $cantidad_alumnos;
 
     /**
      * @description Este constructor es invocado a la hora de realizar una instancia de un nuevo objeto new Solicitud()
      */
-    function __construct($id_solicitud, $id_ciclo, $cantidad_alumnos) {
+    function __construct($id_solicitud, $id_tutor_e, $id_ciclo, $cantidad_alumnos) {
+        $this->$id_tutor_e = $$id_tutor_e;
         $this->id_solicitud = $id_solicitud;
         $this->id_ciclo = $id_ciclo;
         $this->cantidad_alumnos = $cantidad_alumnos;
@@ -31,6 +33,10 @@ class Solicitud {
 
     function getId_solicitud() {
         return $this->id_solicitud;
+    }
+
+    function getId_tutor_e() {
+        return $this->id_tutor_e;
     }
 
     function getId_ciclo() {
@@ -43,6 +49,10 @@ class Solicitud {
 
     function setId_solicitud($id_solicitud) {
         $this->id_solicitud = $id_solicitud;
+    }
+
+    function setId_tutor_e($id_tutor_e) {
+        $this->id_tutor_e = $id_tutor_e;
     }
 
     function setId_ciclo($id_ciclo) {
