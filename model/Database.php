@@ -489,7 +489,7 @@ class Database {
     function modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono) {
         try {
             //Generamos la sentencia de actualización
-            $sentencia = "UPDATE tutor_centro SET user=?, nombre=?, dni=?, email=?, telefono=?, WHERE id=?";
+            $sentencia = "UPDATE tutor_centro SET user=?, nombre=?, dni=?, email=?, telefono=? WHERE id=?";
 
             //Preparamos la sentencia sentencia para actualizar el registro
             $statement->prepare($sentencia)->execute([$user, $nombre, $dni, $email, $telefono, $id]);

@@ -18,16 +18,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {*<div class="form-group">
-                                    <label class="col-md-4 control-label">Contraseña</label>
-                                    <div class="col-md-6  inputGroupContainer">
-                                    <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input  name="pass" placeholder="Introduzca la contraseña de usuario" class="form-control" value="{$usuario->getPass()}" id="userPw" type="password" data-minLength="8" data-error="some error" required>
-                                    <span class="glyphicon form-control-feedback"></span>
-                                    <span class="help-block with-errors"></span>
-                                    </div>
-                                    </div>
-                                    </div>*}
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre completo</label>
                                         <div class="col-md-6  inputGroupContainer">
@@ -60,25 +50,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {*<div class="form-group">
-                                        <label class="col-md-4 control-label">Nombre empresa a la que pertenece</label>
-                                        <div class="col-md-6 selectContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                                <select name="empresas" class="form-control selectpicker">
-                                                    <option value=" " >Por favor, seleccione su empresa</option>
-                                                    {foreach $empresas as $empresa}
-                                                        <option>{$empresa->getNombre_legal()}</option>
-                                                    {/foreach}
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>*}
                                     <span class="col-md-4 control-label"></span>
                                     <div class="input-group">
                                         <input type="reset" name="limpiar" value="Limpiar formulario" class="btn btn-primary">
                                         <input type="submit" name="editar" value="Modificar perfil del alumno" class="btn btn-primary">
-                                    </div>                                       
-
+                                    </div>
                                 </fieldset>
                             </form>
                         </div>

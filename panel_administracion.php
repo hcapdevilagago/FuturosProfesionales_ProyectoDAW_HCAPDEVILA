@@ -35,6 +35,24 @@ if (isset($_SESSION['user'])) {
     //Asignamos el objeto del usuario a una variable Smarty
     $plantilla->assign("usuario", $u);
 
+    //Asignamos el array de las familias profesionales a una variable Smarty
+    $plantilla->assign("familias", $db->devuelveFamilias());
+
+    $ciclos = $db->devuelveCiclos();
+
+    //Asignamos el array de los ciclos formativos a una variable Smarty
+    $plantilla->assign("ciclos", $ciclos);
+    
+    if ($u instanceof Alumno) {
+        //En el caso de que $u sea una instancia de Alumno
+        foreach ($ciclos as $ciclo) {
+            if ($ciclo->getId_ciclo() == $u->getId_ciclo()) {
+                //Asignamos el nombre del ciclo formativo que cursa el alumno a una variable Smarty
+                $plantilla->assign("ciclo_usuario", $ciclo->getNombre());
+            }
+        }
+    }
+    
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado
     $tabla = $_SESSION['rol'];
 
@@ -53,10 +71,26 @@ if (isset($_SESSION['user'])) {
                 $_SESSION['user'] = $usuario;
                 break;
             case "tutor_centro":
-
+                $id = $u->getId_tutor_c();
+                $id_ciclo = $_POST[''];
+                $usuario = $_POST['usuario'];
+                $nombre = $_POST['nombre'];
+                $dni = $_POST['dni'];
+                $email = $_POST['email'];
+                $tel = $_POST['tel'];
+                $db->modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono);
+                $_SESSION['user'] = $usuario;
                 break;
             case "alumno":
-
+//                $id_tutor = $u->getId_tutor_e();
+//                $empresa = $db->devuelveEmpresa($_POST['empresa']);
+//                $usuario = $_POST['usuario'];
+//                $nombre = $_POST['nombre'];
+//                $dni = $_POST['dni'];
+//                $email = $_POST['email'];
+//                $tel = $_POST['tel'];
+//                $db->modificaTutorEmpresa($id_tutor, $usuario, $nombre, $dni, $email, $tel);
+//                $_SESSION['user'] = $usuario;
                 break;
         }
     } else if (isset($_POST['baja'])) {
@@ -84,12 +118,6 @@ if (isset($_SESSION['user'])) {
                 break;
         }
     }
-
-    //Asignamos el array de las familias profesionales a una variable Smarty
-    $plantilla->assign("familias", $db->devuelveFamilias());
-
-    //Asignamos el array de los ciclos formativos a una variable Smarty
-    $plantilla->assign("ciclos", $db->devuelveCiclos());
 
     //Asignamos el array de los ciclos formativos a una variable Smarty
     $plantilla->assign("empresas", $db->devuelveEmpresas());
