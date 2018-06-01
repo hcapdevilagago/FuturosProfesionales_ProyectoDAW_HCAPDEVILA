@@ -9,7 +9,7 @@
                             <br /><br />
                             <form class="form-horizontal" action="panel_administracion.php" method="POST" id="reg_form">
                                 <fieldset>
-                                    <legend class="text-center"> Modificación del perfil del tutor de empresa</legend>        
+                                    <legend class="text-center"> MODIFICACIÓN PERFIL CON ROL {$rol|upper}</legend>        
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre de usuario</label>
                                         <div class="col-md-6  inputGroupContainer">
@@ -47,19 +47,6 @@
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                                                 <input name="tel" placeholder="Introduzca su teléfono (9 dígitos numéricos)" value="{$usuario->getTelefono()}" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Ciclo Formativo</label>
-                                        <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
-                                                <select name="ciclos" class="form-control selectpicker" required>
-                                                    <option value="{ciclo_usuario}">hola</option>
-                                                    {foreach $ciclos as $ciclo}
-                                                        <option>{$ciclo->getNombre()}</option>
-                                                    {/foreach}
-                                                </select>
                                             </div>
                                         </div>
                                     </div>

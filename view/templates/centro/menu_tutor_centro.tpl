@@ -5,16 +5,13 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#tutores"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Tutores<i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="tutores" class="collapse">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-plus"></i> Registrar tutor</a>
+                    <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-edit"></i> Ofertar alumnos</a>
+                    <a href="panel_administracion.php?accion=modificar_tutor"><i class="fa fa-fw fa-pencil"></i> Modificar tutor</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-pencil"></i> Editar tutor</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-trash"></i> Baja tutor</a>
+                    <a href="panel_administracion.php?accion=baja_tutor"><i class="fa fa-fw fa-trash"></i> Baja tutor</a>
                 </li>
             </ul>
         </li>           
@@ -26,12 +23,16 @@
 
 <!-- Panel central -->
 <div id="page-wrapper" style="height: 100%;">
-
-
-
-
-
-
-
+    {if isset($smarty.get.accion)}
+        {if $smarty.get.accion eq 'solicitar_alumnos'}
+            {include file="centro/ver_solicitudes.tpl"}
+        {elseif $smarty.get.accion eq 'modificar_tutor'}
+            {include file="modificar_tutor.tpl"}
+        {elseif $smarty.get.accion eq 'baja_tutor'}
+            {include file="baja_tutor.tpl"}
+        {/if}
+    {else}
+        <h1>BIENVENIDO HECTOR</h1>
+    {/if}
 </div>
 <!-- Panel central -->

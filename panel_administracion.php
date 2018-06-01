@@ -102,37 +102,57 @@ if (isset($_SESSION['user'])) {
                 break;
         }
     } else if (isset($_POST['baja'])) {
+        //En el caso de que se quiera eliminar el usuario con el que se ha accedido a la plataforma
+        $pass = md5($_POST['password']);
         switch ($tabla) {
             //Identificamos el rol del usuario logueado
             case "tutor_empresa":
-                $pass = md5($_POST['password']);
                 if ($db->verificaTutorEmpresa($u->getUser(), $pass)) {
-                    if ($db->bajaUsuario($u->getId_tutor_e(), $u->getUser(), $tabla)) {
-//                        header('Location: exito_admin.php');
-                        header("Location: index.php");
+                    if ($db->bajaUsuario($u->getId_tutor_e(), $u->getUser(), $tabla, null)) {
+                        header('Location: exito_admin.php');
                     } else {
-                        echo("<h1>OKKKKKKKKKKKKKKKKKKKKKKKK nooooooooooooooooooooo</h1>");
-//                        header('Location: error_admin.php');
+                        header('Location: error_admin.php');
                     }
                 } else {
                     header('Location: error_admin.php');
                 }
                 break;
             case "tutor_centro":
-
+                if ($db->verificaTutorCentro($u->getUser(), $pass)) {
+                    foreach ($ciclos as $ciclo) {
+                        if ($ciclo->getId_tutor_c() == $u->getId_tutor_c()) {
+                            $id_ciclo = $ciclo->getId_ciclo();
+                        }
+                    }
+                    if ($db->bajaUsuario($u->getId_tutor_c(), $u->getUser(), $tabla, $id_ciclo)) {
+                        header('Location: exito_admin.php');
+                    } else {
+                        header('Location: error_admin.php');
+                    }
+                } else {
+                    header('Location: error_admin.php');
+                }
                 break;
             case "alumno":
-
+                if ($db->verificaAlumno($u->getUser(), $pass)) {
+                    if ($db->bajaUsuario($u->getId_alumno(), $u->getUser(), $tabla, null)) {
+                        header('Location: exito_admin.php');
+                    } else {
+                        header('Location: error_admin.php');
+                    }
+                } else {
+                    header('Location: error_admin.php');
+                }
                 break;
         }
     } else if (isset($_POST['solicitar'])) {
         //Rescatamos los valores introducidos por el tutor de empresa
         $cantidad = $_POST['cantidad'];
-        $id_ciclo =$db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
-        
+        $id_ciclo = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
+
         if (is_numeric($cantidad)) {
             //Comprobamos que la cantidad introducida es un número
-            
+
             $db->altaSolicitud($u->getId_tutor_e(), $id_ciclo, $cantidad);
             if (!$_SESSION['error']) {
                 header('Location: exito_admin.php');

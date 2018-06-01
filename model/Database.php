@@ -43,8 +43,6 @@ class Database {
         }
     }
 
-    
-    
     /**
      * @description Devuelve un objeto correspondiente a la empresa pasada como parámetro
      */
@@ -555,10 +553,10 @@ class Database {
     /**
      * @description Devuelve un booleano que indica si se ha podido eliminar el usuario
      */
-    function bajaUsuario($id, $user, $tabla) {
+    function bajaUsuario($id, $user, $tabla, $id_ciclo) {
         switch ($tabla) {
             case "tutor_empresa":
-                //Generamos la sentencia para realizar la eliminación del usuario
+                //Generamos la sentencia para realizar la eliminación de la solicitud
                 $sentencia = "DELETE FROM solicitud WHERE id_tutor_e = ?";
 
                 //Preparamos la sentencia, nos devolverá la consulta
@@ -570,10 +568,48 @@ class Database {
                 //Ejecutamos la consulta
                 $consulta->execute();
 
+                //Generamos la sentencia para realizar la eliminación del usuario
                 $sentencia = "DELETE FROM $tabla WHERE user = ?";
 
                 break;
             case "tutor_centro":
+                //Generamos la sentencia para realizar la eliminación de los alumnos
+                $sentencia = "DELETE FROM alumno WHERE id_tutor_c = ?";
+
+                //Preparamos la sentencia, nos devolverá la consulta
+                $consulta = $this->conexion->prepare($sentencia);
+
+                //Preparamos la sentencia parametrizada
+                $consulta->bindParam(1, $id);
+
+                //Ejecutamos la consulta
+                $consulta->execute();
+
+                //Generamos la sentencia para realizar la eliminación de la solicitud
+                $sentencia = "DELETE FROM solicitud WHERE id_ciclo = ?";
+
+                //Preparamos la sentencia, nos devolverá la consulta
+                $consulta = $this->conexion->prepare($sentencia);
+
+                //Preparamos la sentencia parametrizada
+                $consulta->bindParam(1, $id_ciclo);
+
+                //Ejecutamos la consulta
+                $consulta->execute();
+
+                //Generamos la sentencia para realizar la eliminación de los ciclos formativos de este tutor
+                $sentencia = "DELETE FROM ciclo_formativo WHERE id_tutor_c = ?";
+
+                //Preparamos la sentencia, nos devolverá la consulta
+                $consulta = $this->conexion->prepare($sentencia);
+
+                //Preparamos la sentencia parametrizada
+                $consulta->bindParam(1, $id);
+
+                //Ejecutamos la consulta
+                $consulta->execute();
+
+                //Generamos la sentencia para realizar la eliminación del usuario
                 $sentencia = "DELETE FROM $tabla WHERE user = ?";
                 break;
             case "alumno":
@@ -594,12 +630,12 @@ class Database {
         //En el caso de que el usuario se haya eliminado, devolvemos TRUE, en caso contrario devolvemos FALSE
         return ($consulta->rowCount()) ? true : false;
     }
-    
+
     function altaSolicitud($id_tutor_e, $id_ciclo, $cantidad_alumnos) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
             $sentencia = "INSERT INTO solicitud (id_tutor_e, id_ciclo, cantidad_alumnos) VALUES (?,?,?)";
-            
+
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
@@ -614,6 +650,5 @@ class Database {
             $_SESSION['error'] = true;
         }
     }
-    
 
 }

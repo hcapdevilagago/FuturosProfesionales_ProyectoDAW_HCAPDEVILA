@@ -5,7 +5,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#empresas"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Empresas<i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="empresas" class="collapse">
                 <li>
-                    <a href="panel_administracion.php?accion=solicitar_alumnos"><i class="fa fa-fw fa-plus"></i> Solicitar alumnos</a>
+                    <a href="panel_administracion.php?accion=solicitar_alumnos"><i class="fa fa-fw fa-graduation-cap"></i> Solicitar alumnos</a>
                 </li>
                 <li>
                     <a href="panel_administracion.php?accion=modificar_tutor"><i class="fa fa-fw fa-edit"></i> Modificar tutor</a>
@@ -25,9 +25,9 @@
     {if $smarty.get.accion eq 'solicitar_alumnos'}
         {include file="empresas/solicitar_alumnos.tpl"}
     {elseif $smarty.get.accion eq 'modificar_tutor'}
-        {include file="empresas/modificar_tutor_empresa.tpl"}
+        {include file="modificar_tutor.tpl"}
     {elseif $smarty.get.accion eq 'baja_tutor'}
-        {include file="empresas/baja_tutor.tpl"}
+        {include file="baja_tutor.tpl"}
     {/if}
 {else}
     <h1>BIENVENIDO HECTOR</h1>

@@ -105,9 +105,3 @@
     </div>
 </div>
 <!-- Panel central -->
-<script>
-    function familias() {
-        var x = document.getElementById("familias").value;
-        document.write('HOLAAA' + x);
-    }
-</script>
