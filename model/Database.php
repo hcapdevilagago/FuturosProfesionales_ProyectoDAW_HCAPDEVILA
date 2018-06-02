@@ -542,6 +542,35 @@ class Database {
         }
     }
 
+    function altaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $user, $pass) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sentencia = "INSERT INTO empresa (nombre, cif, direccion_fiscal, telefono, email, horario, representante_nombre, representante_dni, descripcion, actividad, user, pass) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $nombre);
+            $stmt->bindParam(2, $cif);
+            $stmt->bindParam(3, $direccion_fiscal);
+            $stmt->bindParam(4, $telefono);
+            $stmt->bindParam(5, $email);
+            $stmt->bindParam(6, $horario);
+            $stmt->bindParam(7, $representante_nombre);
+            $stmt->bindParam(8, $representante_dni);
+            $stmt->bindParam(9, $descripcion);
+            $stmt->bindParam(10, $actividad, PDO::PARAM_STR);
+            $stmt->bindParam(11, $user);
+            $stmt->bindParam(12, $pass);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
     function altaTutorEmpresa($id_empresa, $user, $pass, $nombre, $telefono, $email, $dni) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database

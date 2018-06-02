@@ -59,11 +59,11 @@ if (isset($_POST['acceder'])) {
     switch ($_POST['registrar']) {
         case 'REGISTRAR ALUMNO':
             //Indicamos que el fichero de la parte de vista es registrar_alumno.tpl
-            $plantilla->display("registrar_alumno.tpl");
+            $plantilla->display("alumnos/registrar_alumno.tpl");
             break;
-        case 'REGISTRAR TUTOR DE EMPRESA':
-            //Indicamos que el fichero de la parte de vista es registrar_tutor.tpl
-            $plantilla->display("registrar_tutor.tpl");
+        case 'REGISTRAR EMPRESA':
+            //Indicamos que el fichero de la parte de vista es registrar_empresa.tpl
+            $plantilla->display("empresas/registrar_empresa.tpl");
             break;
         case '¿Ha olvidado la contraseña?':
             $plantilla->display("recuperar.tpl");
@@ -91,25 +91,25 @@ if (isset($_POST['acceder'])) {
     } else {
         header('Location: error.php');
     }
-} else if (isset($_POST['anadir_tutor_e'])) {
-    //Comprobamos que se haya pulsado el botón de añadir nuevo tutor empresa
-    if (strlen($_POST['empresas']) > 0) {
-        //Comprobamos que si se ha pulsado el botón de añadir nuevo tutor empresa, ha seleccionado una empresa
-        $id_empresa_e = $db->devuelveEmpresa($_POST['empresas'])->getId_empresa();
-        $user_t = $_POST['user'];
-        $pass_t = sha1($_POST['pass']);
-        $nombre_t = $_POST['nombre'];
-        $dni_t = $_POST['dni'];
-        $telefono_t = $_POST['tel'];
-        $email_t = $_POST['email'];
-        $db->altaTutorEmpresa($id_empresa_e, $user_t, $pass_t, $nombre_t, $telefono_t, $email_t, $dni_t);
-        if (!$_SESSION['error']) {
-            header('Location: exito.php');
-        } else {
-            session_unset();
-            header('Location: error.php');
-        }
+} else if (isset($_POST['anadir_empresa'])) {
+    //Comprobamos que se haya pulsado el botón de añadir nueva empresa
+    $nombre = strtoupper($_POST['nombre']);
+    $cif = strtoupper($_POST['cif']);
+    $direccion_fiscal = strtoupper($_POST['direccion_fiscal']);
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $horario = strtoupper($_POST['horario']);
+    $representante_nombre = strtoupper($_POST['representante_nombre']);
+    $representante_dni = strtoupper($_POST['representante_dni']);
+    $descripcion = $_POST['descripcion'];
+    $actividad = $_POST['actividad'];
+    $user = $_POST['user'];
+    $pass = sha1($_POST['pass']);
+    $db->altaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $user, $pass);
+    if (!$_SESSION['error']) {
+        header('Location: exito.php');
     } else {
+        session_unset();
         header('Location: error.php');
     }
 } else {

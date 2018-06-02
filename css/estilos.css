@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 3%;
     margin-bottom: 3%;
     width: 700px;
-    height: 830px;
+    height: 1170px;
 }
 .recuperacion {
     background-color: #ffffff;
@@ -104,6 +104,17 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 .form-input input ~ .label {
+    color: #868e96;
+    font-size: 1rem;
+    margin: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    transition: top .2s,font .2s;
+    z-index: 1;
+}
+.textarea{
     color: #868e96;
     font-size: 1rem;
     margin: 0;

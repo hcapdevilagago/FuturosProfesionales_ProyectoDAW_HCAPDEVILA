@@ -52,10 +52,10 @@ if (isset($_SESSION['user'])) {
             }
         }
     } else if ($u instanceof Empresa) {
-        //En el caso de que $u sea una instancia de TutorEmpresa
+        //En el caso de que $u sea una instancia de Empresa
         foreach ($db->devuelveEmpresas() as $empresa) {
             if ($empresa->getId_empresa() == $u->getId_empresa()) {
-                //Asignamos el nombre de la empresa del tutor empresa a una variable Smarty
+                //Asignamos el nombre de la empresa a una variable Smarty
                 $plantilla->assign("nombre_empresa", $empresa->getNombre());
             }
         }
@@ -66,16 +66,16 @@ if (isset($_SESSION['user'])) {
     if (isset($_POST['editar'])) {
         switch ($tabla) {
             //Identificamos el rol del usuario logueado
-            case "tutor_empresa":
-                $id_tutor = $u->getId_tutor_e();
-                $empresa = $db->devuelveEmpresa($_POST['empresa']);
-                $usuario = $_POST['usuario'];
-                $nombre = $_POST['nombre'];
-                $dni = $_POST['dni'];
-                $email = $_POST['email'];
-                $tel = $_POST['tel'];
-                $db->modificaTutorEmpresa($id_tutor, $usuario, $nombre, $dni, $email, $tel);
-                $_SESSION['user'] = $usuario;
+            case "empresa":
+//                $id_tutor = $u->getId_tutor_e();
+//                $empresa = $db->devuelveEmpresa($_POST['empresa']);
+//                $usuario = $_POST['usuario'];
+//                $nombre = $_POST['nombre'];
+//                $dni = $_POST['dni'];
+//                $email = $_POST['email'];
+//                $tel = $_POST['tel'];
+//                $db->modificaTutorEmpresa($id_tutor, $usuario, $nombre, $dni, $email, $tel);
+//                $_SESSION['user'] = $usuario;
                 break;
             case "tutor_centro":
                 $id = $u->getId_tutor_c();
@@ -105,7 +105,7 @@ if (isset($_SESSION['user'])) {
         $pass = sha1($_POST['password']);
         switch ($tabla) {
             //Identificamos el rol del usuario logueado
-            case "tutor_empresa":
+            case "empresa":
                 if ($db->verificaEmpresa($u->getUser(), $pass)) {
                     if ($db->bajaUsuario($u->getId_tutor_e(), $u->getUser(), $tabla, null)) {
                         header('Location: exito_admin.php');

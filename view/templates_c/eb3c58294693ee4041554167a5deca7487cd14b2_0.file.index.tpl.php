@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-31 00:44:15
+/* Smarty version 3.1.32, created on 2018-06-02 11:11:21
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f293f1ea822_29424965',
+  'unifunc' => 'content_5b125f399409f9_93108613',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb3c58294693ee4041554167a5deca7487cd14b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
-      1 => 1527720252,
+      1 => 1527930678,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f293f1ea822_29424965 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b125f399409f9_93108613 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!--
 ******************************************************************
@@ -67,7 +67,7 @@ function content_5b0f293f1ea822_29424965 (Smarty_Internal_Template $_smarty_tpl)
                 </form>
                 <form id="form2" action="index.php" method="POST">
                     <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR ALUMNO" class="btn btn-warning"/>
-                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR TUTOR DE EMPRESA" class="btn btn-warning"/>
+                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR EMPRESA" class="btn btn-warning"/>
                     <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
                 </form>
             </div>
