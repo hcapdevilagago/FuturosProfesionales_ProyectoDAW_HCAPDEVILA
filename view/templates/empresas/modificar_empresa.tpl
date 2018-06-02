@@ -14,7 +14,7 @@
                                         <label class="col-md-4 control-label">Nombre de la empresa <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                <input  maxlength="50" name="nombre" value="{$usuario->getNombre()}" class="form-control text-center"  type="text" required>
+                                                <input  maxlength="50" name="nombre" value="{$usuario->getNombre()}" class="form-control text-center" type="text" required>
                                             </div>
                                         </div>
                                     </div>

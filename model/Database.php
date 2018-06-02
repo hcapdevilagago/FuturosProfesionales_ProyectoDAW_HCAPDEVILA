@@ -332,7 +332,6 @@ class Database {
     }
 
     /**
-     *
      * @description Devuelve UN objeto del usuario del rol indicado que corresponde al user pasado como parámetro de entrada
      * @param string $rol hace referencia al rol del usuario que deseamos buscar
      * @param string $user hace referencia al nombre del usuario que deseamos buscar
@@ -517,22 +516,29 @@ class Database {
             //Ejecutamos la consulta para modificar el registro de la base de datos
             $stmt->execute();
         } catch (PDOException $ex) {
-            $ex = new Exception("No se ha podido ejecutar la modificación del perfil de usuario");
+            $_SESSION['error'] = true;
         }
     }
 
-    function modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono) {
+    function modificaTutorCentro($id, $nombre, $dni, $email, $telefono) {
         try {
             //Generamos la sentencia de actualización
-            $sentencia = "UPDATE tutor_centro SET user=?, nombre=?, dni=?, email=?, telefono=? WHERE id=?";
+            $sentencia = "UPDATE tutor_centro SET nombre = ?, dni = ?, email = ?, telefono = ? WHERE id_tutor_c = ?";
 
-            //Preparamos la sentencia sentencia para actualizar el registro
-            $statement->prepare($sentencia)->execute([$user, $nombre, $dni, $email, $telefono, $id]);
+            //Preparamos la sentencia, nos devolverá la consulta
+            $consulta = $this->conexion->prepare($sentencia);
 
-            //Devolvemos un boolean, que indica si se han añadido nuevos registros
-            return $resultado = $statement->execute();
+            //Preparamos la sentencia parametrizada
+            $consulta->bindParam(1, $nombre);
+            $consulta->bindParam(2, $dni);
+            $consulta->bindParam(3, $email);
+            $consulta->bindParam(4, $telefono);
+            $consulta->bindParam(5, $id);
+
+            //Ejecutamos la consulta
+            $consulta->execute();
         } catch (PDOException $ex) {
-            echo "<h1>$ex->getMessage()</h1>";
+            $_SESSION['error'] = true;
         }
     }
 

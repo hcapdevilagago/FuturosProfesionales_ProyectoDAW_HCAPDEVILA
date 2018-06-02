@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-02 19:04:53
+/* Smarty version 3.1.32, created on 2018-06-02 22:04:25
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\modificar_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b12ce35a89635_49585585',
+  'unifunc' => 'content_5b12f849874b97_99186872',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02b751c57c255793d7a18113dff5e02ef03d9036' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\modificar_empresa.tpl',
-      1 => 1527959092,
+      1 => 1527966062,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b12ce35a89635_49585585 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b12f849874b97_99186872 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white;">
     <div class="w3-row w3-padding w3-border">
@@ -39,7 +39,7 @@ function content_5b12ce35a89635_49585585 (Smarty_Internal_Template $_smarty_tpl)
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                 <input  maxlength="50" name="nombre" value="<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getNombre();?>
-" class="form-control text-center"  type="text" required>
+" class="form-control text-center" type="text" required>
                                             </div>
                                         </div>
                                     </div>

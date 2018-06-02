@@ -84,17 +84,27 @@ if (isset($_SESSION['user'])) {
                 $actividad = $_POST['actividad'];
                 $id_empresa = $u->getId_empresa();
                 $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
-                $_SESSION['user'] = $db->obtieneUsuario($tabla, $u->getUser());
                 break;
             case "tutor_centro":
-//                $id = $u->getId_tutor_c();
-//                $id_ciclo = $_POST[''];
-//                $usuario = $_POST['usuario'];
-//                $nombre = $_POST['nombre'];
-//                $dni = $_POST['dni'];
-//                $email = $_POST['email'];
-//                $tel = $_POST['tel'];
-//                $db->modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono);
+                $id = $u->getId_tutor_c();
+                $nombre = $_POST['nombre'];
+                $dni = $_POST['dni'];
+                $email = $_POST['email'];
+                $telefono = $_POST['telefono'];
+                $db->modificaTutorCentro($id, $nombre, $dni, $email, $telefono);
+                //Sobreescribimos en la variable de sesión user con el usuario actualizado.
+                $u = $db->obtieneUsuario($tabla, $u->getUser());
+                $_SESSION['user'] = $u;
+
+                //Asignamos el objeto del usuario modificado a la variable Smarty
+                $plantilla->assign("usuario", $u);
+
+                if (!$_SESSION['error']) {
+                    header('Location: exito_admin.php');
+                } else {
+                    session_unset();
+                    header('Location: error_admin.php');
+                }
                 break;
             case "alumno":
 //                $id_tutor = $u->getId_tutor_e();
