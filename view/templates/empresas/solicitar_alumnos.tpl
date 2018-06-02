@@ -38,10 +38,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="cantidad_alumnos"  class="col-md-4 control-label">Cantidad de alumnos formativo</label>
+                                        <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo</label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                                <input  name="cantidad" type="number" value="" class="form-control" >
+                                                <input  name="cantidad_alumnos" type="number" value="1" class="form-control" >
                                                 <span class="glyphicon form-control-feedback"></span>
                                                 <span class="help-block with-errors"></span>
                                             </div>
@@ -50,7 +50,17 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Confirmo que estoy de acuerdo con solicitar al CPIFP Los Enlaces el número de alumnos arriba específicado.</span>
+                                                <input type="checkbox" name="proyecto" /><span style="font-size: 12px;"> El/los alumno/s que solicita SI podrán avanzar proyecto final de ciclo en {$nombre_empresa} durante el período que estén de prácticas.</span>
+                                            </div>
+                                        </label>   
+                                    </div>
+                                    <div class="form-group text-center" style="margin: 0 auto; margin-top: 1%; width: 80%;">
+                                        <textarea name="observaciones" placeholder="Indique cualquier observación oportuna que quiera dejar reflejada en su solicitud, por ejemplo las actividades que van a desarrollar el/los alumno/s que solicitan." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group has-feedback text-center">
+                                        <label>
+                                            <div style="margin-top: 1%;">
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy de acuerdo con solicitar al CPIFP Los Enlaces el número de alumnos arriba específicado.</span>
                                             </div>
                                         </label>   
                                     </div>                

@@ -51,16 +51,15 @@ if (isset($_SESSION['user'])) {
                 $plantilla->assign("ciclo_usuario", $ciclo->getNombre());
             }
         }
-    } else if ($u instanceof TutorEmpresa) {
+    } else if ($u instanceof Empresa) {
         //En el caso de que $u sea una instancia de TutorEmpresa
         foreach ($db->devuelveEmpresas() as $empresa) {
             if ($empresa->getId_empresa() == $u->getId_empresa()) {
                 //Asignamos el nombre de la empresa del tutor empresa a una variable Smarty
-                $plantilla->assign("nombre_empresa", $empresa->getNombre_legal());
+                $plantilla->assign("nombre_empresa", $empresa->getNombre());
             }
         }
     }
-
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado
     $tabla = $_SESSION['rol'];
 
@@ -103,11 +102,11 @@ if (isset($_SESSION['user'])) {
         }
     } else if (isset($_POST['baja'])) {
         //En el caso de que se quiera eliminar el usuario con el que se ha accedido a la plataforma
-        $pass = md5($_POST['password']);
+        $pass = sha1($_POST['password']);
         switch ($tabla) {
             //Identificamos el rol del usuario logueado
             case "tutor_empresa":
-                if ($db->verificaTutorEmpresa($u->getUser(), $pass)) {
+                if ($db->verificaEmpresa($u->getUser(), $pass)) {
                     if ($db->bajaUsuario($u->getId_tutor_e(), $u->getUser(), $tabla, null)) {
                         header('Location: exito_admin.php');
                     } else {
@@ -146,14 +145,26 @@ if (isset($_SESSION['user'])) {
                 break;
         }
     } else if (isset($_POST['solicitar'])) {
-        //Rescatamos los valores introducidos por el tutor de empresa
-        $cantidad = $_POST['cantidad'];
+        //Rescatamos el ciclo seleccionado del que se solicitan alumnos
         $id_ciclo = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
-
+        $cantidad = $_POST['cantidad_alumnos'];
         if (is_numeric($cantidad)) {
             //Comprobamos que la cantidad introducida es un número
+            if (isset($_POST['proyecto'])) {
+                $proyecto = 1;
+            } else {
+                $proyecto = 0;
+            }
+            //Procedemos a dar de alta la solicitud
+            $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad, $_POST['observaciones'], $proyecto);
 
-            $db->altaSolicitud($u->getId_tutor_e(), $id_ciclo, $cantidad);
+            
+//            echo("<h1>$id_ciclo</h1>");
+//            echo("<h1>".$u->getId_empresa() . "</h1>");
+//            echo("<h1>$cantidad</h1>");
+//            echo("<h1>".$_POST['observaciones']."</h1>");
+//            echo("<h1>$proyecto</h1>");
+            
             if (!$_SESSION['error']) {
                 header('Location: exito_admin.php');
             } else {

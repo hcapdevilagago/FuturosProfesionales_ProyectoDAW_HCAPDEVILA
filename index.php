@@ -36,7 +36,7 @@ session_unset();
 
 if (isset($_POST['acceder'])) {
     if (isset($_POST['user']) && isset($_POST['pass'])) {
-        if ($db->verificaUsuario($_POST['user'], md5($_POST['pass']))) {
+        if ($db->verificaUsuario($_POST['user'], sha1($_POST['pass']))) {
             //En el caso de que el usuario introducido exista en la base de datos, y corresponde con un usuario existente
             $_SESSION['user'] = $_POST['user'];
             $_SESSION['pass'] = $_POST['pass'];
@@ -76,7 +76,7 @@ if (isset($_POST['acceder'])) {
         $id_tutor_c = $db->devuelveTutorCentro($_POST['tutores'])->getId_tutor_c();
         $id_ciclo_a = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
         $user_a = $_POST['user'];
-        $pass_a = md5($_POST['pass']);
+        $pass_a = sha1($_POST['pass']);
         $nombre_a = $_POST['nombre'];
         $dni_a = $_POST['dni'];
         $email_a = $_POST['email'];
@@ -97,7 +97,7 @@ if (isset($_POST['acceder'])) {
         //Comprobamos que si se ha pulsado el botón de añadir nuevo tutor empresa, ha seleccionado una empresa
         $id_empresa_e = $db->devuelveEmpresa($_POST['empresas'])->getId_empresa();
         $user_t = $_POST['user'];
-        $pass_t = md5($_POST['pass']);
+        $pass_t = sha1($_POST['pass']);
         $nombre_t = $_POST['nombre'];
         $dni_t = $_POST['dni'];
         $telefono_t = $_POST['tel'];

@@ -35,7 +35,7 @@ class Database {
         $this->conexion = null;
         try {
             //Instanciamos un objeto de la clase PDO e intentamos realizar la conexión            
-            $this->conexion = new PDO("mysql:host=localhost;dbname=proyecto;charset=utf8", "root", "root");
+            $this->conexion = new PDO("mysql:host=localhost;dbname=futuros_profesionales;charset=utf8", "root", "root");
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $ex) {
             die("<h2>No se ha podido realizar la conexión con la base de datos."
@@ -93,7 +93,7 @@ class Database {
      */
     function devuelveEmpresa($nombre) {
         //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare("SELECT * FROM empresa WHERE nombre_legal = ?");
+        $consulta = $this->conexion->prepare("SELECT * FROM empresa WHERE nombre = ?");
 
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $nombre);
@@ -103,7 +103,7 @@ class Database {
 
         //Creamos un nuevo objeto con los datos de una empresa
         if ($e = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $empresa = new Empresa($e['id_empresa'], $e['cif'], $e['nombre_legal'], $e['direccion_fiscal'], $e['email_rrhh'], $e['horario'], $e['descripcion'], $e['telefono']);
+            $empresa = new Empresa($e['id_empresa'], $e['nombre'], $e['cif'], $e['direccion_fiscal'], $e['telefono'], $e['email'], $e['horario'], $e['representante_nombre'], $e['representante_dni'], $e['descripcion'], $e['actividad'], $e['user'], $e['pass']);
         }
 
         //Retornamos el objeto de la clase Empresa
@@ -120,9 +120,9 @@ class Database {
         $consulta = $this->conexion->prepare("SELECT * FROM empresa");
         //Ejecutamos la consulta
         $consulta->execute();
-        //Creamos un nuevo objeto con los datos de una empresa
         while ($e = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $empresa = new Empresa($e['id_empresa'], $e['cif'], $e['nombre_legal'], $e['direccion_fiscal'], $e['email_rrhh'], $e['horario'], $e['descripcion'], $e['telefono']);
+            //Creamos un nuevo objeto con los datos de una empresa y lo vamos añadiendo al array de objetos
+            $empresa = new Empresa($e['id_empresa'], $e['nombre'], $e['cif'], $e['direccion_fiscal'], $e['telefono'], $e['email'], $e['horario'], $e['representante_nombre'], $e['representante_dni'], $e['descripcion'], $e['actividad'], $e['user'], $e['pass']);
             $array_objetos->append($empresa);
         }
 
@@ -202,8 +202,8 @@ class Database {
      * @description Comprueba los métodos de verificación de usuarios y devuelve un booleano que indica si el usuario es válido o no
      */
     function verificaUsuario($user, $pass) {
-        if ($this->verificaTutorEmpresa($user, $pass)) {
-            $_SESSION['rol'] = 'tutor_empresa';
+        if ($this->verificaEmpresa($user, $pass)) {
+            $_SESSION['rol'] = 'empresa';
             return true;
         } else if ($this->verificaTutorCentro($user, $pass)) {
             $_SESSION['rol'] = 'tutor_centro';
@@ -238,11 +238,11 @@ class Database {
     }
 
     /**
-     * @description Devuelve un booleano que indica si el tutor_empresa es válido o no
+     * @description Devuelve un booleano que indica si los datos de acceso de la empresa son válidos o no
      */
-    function verificaTutorEmpresa($user, $pass) {
+    function verificaEmpresa($user, $pass) {
         //Generamos la sentencia para realizar la comprobación, el usuario introducido debe existir y la password coincida
-        $sentencia = "SELECT * FROM tutor_empresa WHERE user = ? AND pass = ?";
+        $sentencia = "SELECT * FROM empresa WHERE user = ? AND pass = ?";
 
         //Preparamos la sentencia, nos devolverá la consulta
         $consulta = $this->conexion->prepare($sentencia);
@@ -283,14 +283,14 @@ class Database {
      *
      * @description Devuelve UN objeto del usuario del rol indicado que corresponde al user pasado como parámetro de entrada
      * @param string $rol hace referencia al rol del usuario que deseamos buscar
-     * @return object [Alumno, TutorEmpresa, TutorCentro] encontrado dado el user pasado como parámetro de entrada
+     * @return string contendrá el rol del user pasado como parámetro de entrada
      */
     function obtieneRol($user) {
         for ($x = 1; $x < 4; $x++) {
             switch ($x) {
                 //Generamos 3 sentencias, 3 roles que se encargarán de devolver el rol que coincida con el nombre de usuario pasado como parámetro
                 case 1:
-                    $rol = 'tutor_empresa';
+                    $rol = 'empresa';
                     $sentencia = "SELECT * FROM $rol WHERE user = ?";
                     break;
                 case 2:
@@ -336,7 +336,7 @@ class Database {
      * @description Devuelve UN objeto del usuario del rol indicado que corresponde al user pasado como parámetro de entrada
      * @param string $rol hace referencia al rol del usuario que deseamos buscar
      * @param string $user hace referencia al nombre del usuario que deseamos buscar
-     * @return object [Alumno, TutorEmpresa, TutorCentro] encontrado dado el user pasado como parámetro de entrada
+     * @return object [Empresa, TutorCentro, Alumno] encontrado dado el user pasado como parámetro de entrada
      */
     function obtieneUsuario($rol, $user) {
         //Generamos la sentencia que se encargará de devolver el usuario que coincida con el nombre de usuario en la tabla correspondiente
@@ -354,28 +354,42 @@ class Database {
         if ($u = $consulta->fetch(PDO::FETCH_ASSOC)) {
             //Creamos un nuevo objeto con los datos del usuario con dicho ROL de acceso
             switch ($rol) {
-                case 'tutor_empresa':
-                    $id_tutor_e = $u['id_tutor_e'];
-                    $id_empresa_e = $u['id_empresa'];
-                    $user = $u['user'];
-                    $pass = $u['pass'];
+                case 'empresa':
+                    //Recuperamos las tuplas del resultado de la ejecución de la consulta
+                    $id_empresa = $u['id_empresa'];
                     $nombre = $u['nombre'];
-                    $dni = $u['dni'];
+                    $cif = $u['cif'];
+                    $direccion_fiscal = $u['direccion_fiscal'];
                     $telefono = $u['telefono'];
                     $email = $u['email'];
-                    $usuario = new TutorEmpresa($id_tutor_e, $id_empresa_e, $user, $pass, $nombre, $dni, $telefono, $email);
+                    $horario = $u['horario'];
+                    $representante_nombre = $u['representante_nombre'];
+                    $representante_dni = $u['representante_dni'];
+                    $descripcion = $u['descripcion'];
+                    $actividad = $u['actividad'];
+                    $user = $u['user'];
+                    $pass = $u['pass'];
+
+                    //Creamos un objeto con los datos que se han recuperado de la sentencia SELECT ejecutada anteriormente
+                    $usuario = new Empresa($id_empresa, $nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $user, $pass);
                     break;
                 case 'tutor_centro':
+                    //Recuperamos las tuplas del resultado de la ejecución de la consulta
+
                     $id_tutor_c = $u['id_tutor_c'];
                     $user = $u['user'];
                     $pass = $u['pass'];
                     $nombre = $u['nombre'];
-                    $email = $u['email'];
                     $dni = $u['dni'];
+                    $email = $u['email'];
                     $telefono = $u['telefono'];
-                    $usuario = new TutorCentro($id_tutor_c, $user, $pass, $nombre, $email, $dni, $telefono);
+                    $privilegios_admin = $u['privilegios_admin'];
+
+                    //Creamos un objeto con los datos que se han recuperado de la sentencia SELECT ejecutada anteriormente
+                    $usuario = new TutorCentro($id_tutor_c, $user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin);
                     break;
                 case 'alumno':
+                    //Recuperamos las tuplas del resultado de la ejecución de la consulta
                     $id_alumno = $u['id_alumno'];
                     $id_ciclo = $u['id_ciclo'];
                     $id_tutor_c = $u['id_tutor_c'];
@@ -385,6 +399,8 @@ class Database {
                     $dni = $u['dni'];
                     $telefono = $u['telefono'];
                     $email = $u['email'];
+
+                    //Creamos un objeto con los datos que se han recuperado de la sentencia SELECT ejecutada anteriormente
                     $usuario = new Alumno($id_alumno, $id_ciclo, $id_tutor_c, $user, $pass, $nombre, $dni, $telefono, $email);
                     break;
             }
@@ -631,18 +647,30 @@ class Database {
         return ($consulta->rowCount()) ? true : false;
     }
 
-    function altaSolicitud($id_tutor_e, $id_ciclo, $cantidad_alumnos) {
+    /**
+     * 
+     * @description Esta función se encarga de añadir una nueva solicitud de alumnos por parte de una empresa
+     * @param type $id_ciclo hace referecia al identificador único del ciclo formativo del que se solicitan alumnos
+     * @param type $id_empresa hace referencia al identificador único de la empresa
+     * @param type $cantidad_alumnos hace referencia al nº de alumnos que la empresa desea acoger en prácticas
+     * @param type $fecha_creacion recoge la fecha en la que se ha realizado la solicitud
+     * @param type $observaciones hace referencia a una pequeña descripción de lo que busca la empresa y lo que harán los alumnos
+     * @param type $proyecto hace referencia a que si en la empresa van a permitir al alumno hacer el proyecto mientras hace las prácticas
+     */
+    function altaSolicitud($id_ciclo, $id_empresa, $cantidad_alumnos, $observaciones, $proyecto) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO solicitud (id_tutor_e, id_ciclo, cantidad_alumnos) VALUES (?,?,?)";
+            $sentencia = "INSERT INTO solicitud (id_ciclo, id_empresa, cantidad_alumnos, fecha_creacion, observaciones, proyecto) VALUES (?,?,?,NOW(),?,?)";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_tutor_e, PDO::PARAM_INT);
-            $stmt->bindParam(2, $id_ciclo, PDO::PARAM_STR);
+            $stmt->bindParam(1, $id_ciclo, PDO::PARAM_STR);
+            $stmt->bindParam(2, $id_empresa, PDO::PARAM_INT);
             $stmt->bindParam(3, $cantidad_alumnos, PDO::PARAM_INT);
+            $stmt->bindParam(4, $observaciones, PDO::PARAM_STR);
+            $stmt->bindParam(5, $proyecto, PDO::PARAM_BOOL);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();

@@ -30,5 +30,5 @@
         {include file="baja_tutor.tpl"}
     {/if}
 {else}
-    <h1>BIENVENIDO HECTOR</h1>
+    {include file="empresas/solicitar_alumnos.tpl"}
 {/if}

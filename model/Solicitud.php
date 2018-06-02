@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Clase Modelo de la Solicitud de alumnos que realizan los tutores de la Empresa
+ * Clase Modelo de la Solicitud de alumnos que realizan los usuarios de Rol Empresa
  * 
  * Fecha de creación: 12/05/2018
  * Fecha de modificación: 12/05/2018
@@ -17,50 +17,80 @@ class Solicitud {
      */
 
     private $id_solicitud;
-    private $id_tutor_e;
     private $id_ciclo;
+    private $id_empresa;
     private $cantidad_alumnos;
+    private $fecha_creacion;
+    private $observaciones;
+    private $proyecto;
 
     /**
      * @description Este constructor es invocado a la hora de realizar una instancia de un nuevo objeto new Solicitud()
      */
-    function __construct($id_solicitud, $id_tutor_e, $id_ciclo, $cantidad_alumnos) {
-        $this->$id_tutor_e = $$id_tutor_e;
+    function __construct($id_solicitud, $id_ciclo, $id_empresa, $cantidad_alumnos, $fecha_creacion, $observaciones, $proyecto) {
         $this->id_solicitud = $id_solicitud;
         $this->id_ciclo = $id_ciclo;
+        $this->id_empresa = $id_empresa;
         $this->cantidad_alumnos = $cantidad_alumnos;
+        $this->fecha_creacion = $fecha_creacion;
+        $this->observaciones = $observaciones;
+        $this->proyecto = $proyecto;
     }
 
     function getId_solicitud() {
         return $this->id_solicitud;
     }
 
-    function getId_tutor_e() {
-        return $this->id_tutor_e;
-    }
-
     function getId_ciclo() {
         return $this->id_ciclo;
+    }
+
+    function getId_empresa() {
+        return $this->id_empresa;
     }
 
     function getCantidad_alumnos() {
         return $this->cantidad_alumnos;
     }
 
-    function setId_solicitud($id_solicitud) {
-        $this->id_solicitud = $id_solicitud;
+    function getFecha_creacion() {
+        return $this->fecha_creacion;
     }
 
-    function setId_tutor_e($id_tutor_e) {
-        $this->id_tutor_e = $id_tutor_e;
+    function getObservaciones() {
+        return $this->observaciones;
+    }
+
+    function getProyecto() {
+        return $this->proyecto;
+    }
+
+    function setId_solicitud($id_solicitud) {
+        $this->id_solicitud = $id_solicitud;
     }
 
     function setId_ciclo($id_ciclo) {
         $this->id_ciclo = $id_ciclo;
     }
 
+    function setId_empresa($id_empresa) {
+        $this->id_empresa = $id_empresa;
+    }
+
     function setCantidad_alumnos($cantidad_alumnos) {
         $this->cantidad_alumnos = $cantidad_alumnos;
+    }
+
+    function setFecha_creacion($fecha_creacion) {
+        $this->fecha_creacion = $fecha_creacion;
+    }
+
+    function setObservaciones($observaciones) {
+        $this->observaciones = $observaciones;
+    }
+
+    function setProyecto($proyecto) {
+        $this->proyecto = $proyecto;
     }
 
 }

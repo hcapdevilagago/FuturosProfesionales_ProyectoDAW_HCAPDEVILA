@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-31 00:08:19
+/* Smarty version 3.1.32, created on 2018-06-01 10:19:23
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\registrar_tutor.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f20d35668c5_26008280',
+  'unifunc' => 'content_5b11018b676239_13034693',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '878573f0798dbb283c7249bb102dc88cefe5d46c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\registrar_tutor.tpl',
-      1 => 1527718097,
+      1 => 1527805276,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f20d35668c5_26008280 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b11018b676239_13034693 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>

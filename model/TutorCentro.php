@@ -20,21 +20,23 @@ class TutorCentro {
     private $user;
     private $pass;
     private $nombre;
-    private $email;
     private $dni;
+    private $email;
     private $telefono;
+    private $privilegios_admin;
 
     /**
      * @description Este constructor es invocado a la hora de realizar una instancia de un nuevo objeto new TutorCentro()
      */
-    function __construct($id_tutor_c, $user, $pass, $nombre, $email, $dni, $telefono) {
+    function __construct($id_tutor_c, $user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin) {
         $this->id_tutor_c = $id_tutor_c;
         $this->user = $user;
         $this->pass = $pass;
         $this->nombre = $nombre;
-        $this->email = $email;
         $this->dni = $dni;
+        $this->email = $email;
         $this->telefono = $telefono;
+        $this->privilegios_admin = $privilegios_admin;
     }
 
     function getId_tutor_c() {
@@ -53,16 +55,20 @@ class TutorCentro {
         return $this->nombre;
     }
 
-    function getEmail() {
-        return $this->email;
-    }
-
     function getDni() {
         return $this->dni;
     }
 
+    function getEmail() {
+        return $this->email;
+    }
+
     function getTelefono() {
         return $this->telefono;
+    }
+
+    function getPrivilegios_admin() {
+        return $this->privilegios_admin;
     }
 
     function setId_tutor_c($id_tutor_c) {
@@ -81,16 +87,20 @@ class TutorCentro {
         $this->nombre = $nombre;
     }
 
-    function setEmail($email) {
-        $this->email = $email;
-    }
-
     function setDni($dni) {
         $this->dni = $dni;
     }
 
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
     function setTelefono($telefono) {
         $this->telefono = $telefono;
+    }
+
+    function setPrivilegios_admin($privilegios_admin) {
+        $this->privilegios_admin = $privilegios_admin;
     }
 
 }

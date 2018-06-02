@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <img src="./images/logo4.png" style="float: left; padding-top:0.5%; padding-bottom: -5%;" height="4%" width="4%"/>
-                    <a class="navbar-brand" href="index.php" >Bienvenid@, {$nombre}</a>
+                    <a class="navbar-brand" href="index.php" >Conectad@, {$nombre}</a>
                 </div>
                 <!-- Mensajería de la aplicación -->
                 <ul class="nav navbar-right top-nav">
@@ -89,8 +89,8 @@
                 <!-- Mensajería de la aplicación -->
                 {if $rol eq "alumno"}
                     {include file="alumnos/menu_alumno.tpl"}
-                {elseif $rol eq "tutor_empresa"}
-                    {include file="empresas/menu_tutor_empresa.tpl"}
+                {elseif $rol eq "empresa"}
+                    {include file="empresas/menu_empresa.tpl"}
                 {elseif $rol eq "tutor_centro"}
                     {include file="centro/menu_tutor_centro.tpl"}
                 {/if}
