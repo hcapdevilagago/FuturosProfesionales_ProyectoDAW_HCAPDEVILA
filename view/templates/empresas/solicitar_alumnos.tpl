@@ -41,7 +41,7 @@
                                         <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo</label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                                <input  name="cantidad_alumnos" type="number" value="1" class="form-control" >
+                                                <input minlength="1" name="cantidad_alumnos" type="number" value="1" class="form-control" >
                                                 <span class="glyphicon form-control-feedback"></span>
                                                 <span class="help-block with-errors"></span>
                                             </div>
@@ -55,7 +55,7 @@
                                         </label>   
                                     </div>
                                     <div class="form-group text-center" style="margin: 0 auto; margin-top: 1%; width: 80%;">
-                                        <textarea name="observaciones" placeholder="Indique cualquier observación oportuna que quiera dejar reflejada en su solicitud, por ejemplo las actividades que van a desarrollar el/los alumno/s que solicitan." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <textarea maxlength="1500" name="observaciones" placeholder="Indique cualquier observación oportuna que quiera dejar reflejada en su solicitud, por ejemplo las actividades que van a desarrollar el/los alumno/s que solicitan." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                                     </div>
                                     <div class="form-group has-feedback text-center">
                                         <label>

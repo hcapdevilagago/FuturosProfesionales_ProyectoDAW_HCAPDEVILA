@@ -479,21 +479,40 @@ class Database {
         return $array_objetos;
     }
 
-    function modificaTutorEmpresa($id_tutor_e, $user, $nombre, $dni, $email, $telefono) {
+    /**
+     * @description Esta función se encarga de modificar los datos de una empresa
+     * @param string $nombre hace referencia al nombre completo de la empresa
+     * @param string $cif hace referencia al código de identificación fiscal de la empresa
+     * @param string $direccion_fiscal hace referencia a la dirección fiscal de la empresa
+     * @param string $telefono hace referencia al número de teléfono de contacto de la empresa
+     * @param string $email hace referencia al correo electrónico de contacto de la empresa
+     * @param string $horario hace referencia al período de tiempo que se trabaja en dicha empresa
+     * @param string $representante_nombre hace referencia al nombre del representante de la empresa
+     * @param string $representante_dni hace referencia al dni del representante de la empresa
+     * @param string $descripcion hace referencia a la descripción detallada de la empresa
+     * @param string $actividad hace referencia a las actividades que la empresa realiza
+     * @param integer $id_empresa hace referencia al identificador único de la base de datos (primary key)
+     */
+    function modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa) {
         try {
             //Genero la consulta para realizar la actualización de los datos de la database
-            $sentencia = "UPDATE tutor_empresa SET user = ?, nombre = ?, dni = ?, email = ?, telefono = ? WHERE id_tutor_e = ?";
+            $sentencia = "UPDATE empresa SET nombre = ?, cif = ?, direccion_fiscal = ?, telefono = ?, email = ?, horario = ?, representante_nombre = ?, representante_dni = ?, descripcion = ?, actividad = ? WHERE id_empresa = ?";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $user, PDO::PARAM_STR);
-            $stmt->bindParam(2, $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(3, $dni, PDO::PARAM_STR);
-            $stmt->bindParam(4, $email, PDO::PARAM_STR);
-            $stmt->bindParam(5, $telefono, PDO::PARAM_STR);
-            $stmt->bindParam(6, $id_tutor_e, PDO::PARAM_INT);
+            $stmt->bindParam(1, $nombre);
+            $stmt->bindParam(2, $cif);
+            $stmt->bindParam(3, $direccion_fiscal);
+            $stmt->bindParam(4, $telefono);
+            $stmt->bindParam(5, $email);
+            $stmt->bindParam(6, $horario);
+            $stmt->bindParam(7, $representante_nombre);
+            $stmt->bindParam(8, $representante_dni);
+            $stmt->bindParam(9, $descripcion);
+            $stmt->bindParam(10, $actividad);
+            $stmt->bindParam(11, $id_empresa);
 
             //Ejecutamos la consulta para modificar el registro de la base de datos
             $stmt->execute();
@@ -526,14 +545,14 @@ class Database {
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_tutor_c, PDO::PARAM_INT);
-            $stmt->bindParam(2, $id_ciclo, PDO::PARAM_INT);
-            $stmt->bindParam(3, $user, PDO::PARAM_STR);
-            $stmt->bindParam(4, $pass, PDO::PARAM_STR);
-            $stmt->bindParam(5, $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(6, $dni, PDO::PARAM_STR);
-            $stmt->bindParam(7, $email, PDO::PARAM_STR);
-            $stmt->bindParam(8, $telefono, PDO::PARAM_STR);
+            $stmt->bindParam(1, $id_tutor_c);
+            $stmt->bindParam(2, $id_ciclo);
+            $stmt->bindParam(3, $user);
+            $stmt->bindParam(4, $pass);
+            $stmt->bindParam(5, $nombre);
+            $stmt->bindParam(6, $dni);
+            $stmt->bindParam(7, $email);
+            $stmt->bindParam(8, $telefono);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -560,7 +579,7 @@ class Database {
             $stmt->bindParam(7, $representante_nombre);
             $stmt->bindParam(8, $representante_dni);
             $stmt->bindParam(9, $descripcion);
-            $stmt->bindParam(10, $actividad, PDO::PARAM_STR);
+            $stmt->bindParam(10, $actividad);
             $stmt->bindParam(11, $user);
             $stmt->bindParam(12, $pass);
 
@@ -580,13 +599,13 @@ class Database {
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_empresa, PDO::PARAM_INT);
-            $stmt->bindParam(2, $user, PDO::PARAM_STR);
-            $stmt->bindParam(3, $pass, PDO::PARAM_STR);
-            $stmt->bindParam(4, $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(5, $telefono, PDO::PARAM_STR);
-            $stmt->bindParam(6, $email, PDO::PARAM_STR);
-            $stmt->bindParam(7, $dni, PDO::PARAM_STR);
+            $stmt->bindParam(1, $id_empresa);
+            $stmt->bindParam(2, $user);
+            $stmt->bindParam(3, $pass);
+            $stmt->bindParam(4, $nombre);
+            $stmt->bindParam(5, $telefono);
+            $stmt->bindParam(6, $email);
+            $stmt->bindParam(7, $dni);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -596,13 +615,29 @@ class Database {
     }
 
     /**
-     * @description Devuelve un booleano que indica si se ha podido eliminar el usuario
+     * @description Función que se encarga de dar de baja usuarios
+     * @param integer $id hace referencia al identificador único del usuario - primary key de la tabla
+     * @param string $tabla hace referencia al nombre de la tabla de la que queremos dar de baja el usuario
+     * @param string $id_ciclo hace referencia al identificador único del ciclo formativo - primary key de la tabla
+     * @return boolean que hace referencia al proceso de borrado del usuario que se pretende eliminar de la tabla
      */
-    function bajaUsuario($id, $user, $tabla, $id_ciclo) {
+    function bajaUsuario($id, $tabla, $id_ciclo) {
         switch ($tabla) {
-            case "tutor_empresa":
+            case "empresa":
                 //Generamos la sentencia para realizar la eliminación de la solicitud
-                $sentencia = "DELETE FROM solicitud WHERE id_tutor_e = ?";
+                $sentencia = "DELETE FROM solicitud WHERE id_empresa = ?";
+
+                //Preparamos la sentencia, nos devolverá la consulta
+                $consulta = $this->conexion->prepare($sentencia);
+
+                //Preparamos la sentencia parametrizada
+                $consulta->bindParam(1, $id);
+
+                //Ejecutamos la consulta
+                $consulta->execute();
+
+                //Generamos la sentencia para realizar la eliminación de la solicitud
+                $sentencia = "DELETE FROM tutor_empresa WHERE id_empresa = ?";
 
                 //Preparamos la sentencia, nos devolverá la consulta
                 $consulta = $this->conexion->prepare($sentencia);
@@ -614,8 +649,7 @@ class Database {
                 $consulta->execute();
 
                 //Generamos la sentencia para realizar la eliminación del usuario
-                $sentencia = "DELETE FROM $tabla WHERE user = ?";
-
+                $sentencia = "DELETE FROM $tabla WHERE id_empresa = ?";
                 break;
             case "tutor_centro":
                 //Generamos la sentencia para realizar la eliminación de los alumnos
@@ -655,19 +689,18 @@ class Database {
                 $consulta->execute();
 
                 //Generamos la sentencia para realizar la eliminación del usuario
-                $sentencia = "DELETE FROM $tabla WHERE user = ?";
+                $sentencia = "DELETE FROM $tabla WHERE id_tutor_c = ?";
                 break;
             case "alumno":
-                $sentencia = "DELETE FROM $tabla WHERE user = ?";
+//                $sentencia = "DELETE FROM $tabla WHERE user = ?";
                 break;
         }
-
 
         //Preparamos la sentencia, nos devolverá la consulta
         $consulta = $this->conexion->prepare($sentencia);
 
         //Preparamos la sentencia parametrizada
-        $consulta->bindParam(1, $user);
+        $consulta->bindParam(1, $id);
 
         //Ejecutamos la consulta
         $consulta->execute();
@@ -679,12 +712,11 @@ class Database {
     /**
      * 
      * @description Esta función se encarga de añadir una nueva solicitud de alumnos por parte de una empresa
-     * @param type $id_ciclo hace referecia al identificador único del ciclo formativo del que se solicitan alumnos
-     * @param type $id_empresa hace referencia al identificador único de la empresa
-     * @param type $cantidad_alumnos hace referencia al nº de alumnos que la empresa desea acoger en prácticas
-     * @param type $fecha_creacion recoge la fecha en la que se ha realizado la solicitud
-     * @param type $observaciones hace referencia a una pequeña descripción de lo que busca la empresa y lo que harán los alumnos
-     * @param type $proyecto hace referencia a que si en la empresa van a permitir al alumno hacer el proyecto mientras hace las prácticas
+     * @param string $id_ciclo hace referecia al identificador único del ciclo formativo del que se solicitan alumnos
+     * @param integer $id_empresa hace referencia al identificador único de la empresa
+     * @param integer $cantidad_alumnos hace referencia al nº de alumnos que la empresa desea acoger en prácticas
+     * @param string $observaciones hace referencia a una pequeña descripción de lo que busca la empresa y lo que harán los alumnos
+     * @param boolean $proyecto hace referencia a que si en la empresa van a permitir al alumno hacer el proyecto mientras hace las prácticas
      */
     function altaSolicitud($id_ciclo, $id_empresa, $cantidad_alumnos, $observaciones, $proyecto) {
         try {
@@ -695,11 +727,11 @@ class Database {
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_ciclo, PDO::PARAM_STR);
-            $stmt->bindParam(2, $id_empresa, PDO::PARAM_INT);
-            $stmt->bindParam(3, $cantidad_alumnos, PDO::PARAM_INT);
-            $stmt->bindParam(4, $observaciones, PDO::PARAM_STR);
-            $stmt->bindParam(5, $proyecto, PDO::PARAM_BOOL);
+            $stmt->bindParam(1, $id_ciclo);
+            $stmt->bindParam(2, $id_empresa);
+            $stmt->bindParam(3, $cantidad_alumnos);
+            $stmt->bindParam(4, $observaciones);
+            $stmt->bindParam(5, $proyecto);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();

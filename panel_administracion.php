@@ -59,7 +59,12 @@ if (isset($_SESSION['user'])) {
                 $plantilla->assign("nombre_empresa", $empresa->getNombre());
             }
         }
+    } else if ($u instanceof TutorCentro) {
+        //En el caso de que sea un tutor del centro educativo vamos a almacenar el valor del registro privilegios_admin
+        $_SESSION['privilegios_admin'] = $u->getPrivilegios_admin();
+        $plantilla->assign("privilegios_admin", $_SESSION['privilegios_admin']);
     }
+
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado
     $tabla = $_SESSION['rol'];
 
@@ -67,26 +72,29 @@ if (isset($_SESSION['user'])) {
         switch ($tabla) {
             //Identificamos el rol del usuario logueado
             case "empresa":
-//                $id_tutor = $u->getId_tutor_e();
-//                $empresa = $db->devuelveEmpresa($_POST['empresa']);
+                $nombre = $_POST['nombre'];
+                $cif = $_POST['cif'];
+                $direccion_fiscal = $_POST['direccion_fiscal'];
+                $telefono = $_POST['telefono'];
+                $email = $_POST['actividad'];
+                $horario = $_POST['horario'];
+                $representante_nombre = $_POST['representante_nombre'];
+                $representante_dni = $_POST['representante_dni'];
+                $descripcion = $_POST['descripcion'];
+                $actividad = $_POST['actividad'];
+                $id_empresa = $u->getId_empresa();
+                $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
+                $_SESSION['user'] = $db->obtieneUsuario($tabla, $u->getUser());
+                break;
+            case "tutor_centro":
+//                $id = $u->getId_tutor_c();
+//                $id_ciclo = $_POST[''];
 //                $usuario = $_POST['usuario'];
 //                $nombre = $_POST['nombre'];
 //                $dni = $_POST['dni'];
 //                $email = $_POST['email'];
 //                $tel = $_POST['tel'];
-//                $db->modificaTutorEmpresa($id_tutor, $usuario, $nombre, $dni, $email, $tel);
-//                $_SESSION['user'] = $usuario;
-                break;
-            case "tutor_centro":
-                $id = $u->getId_tutor_c();
-                $id_ciclo = $_POST[''];
-                $usuario = $_POST['usuario'];
-                $nombre = $_POST['nombre'];
-                $dni = $_POST['dni'];
-                $email = $_POST['email'];
-                $tel = $_POST['tel'];
-                $db->modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono);
-                $_SESSION['user'] = $usuario;
+//                $db->modificaTutorCentro($id, $user, $nombre, $dni, $email, $telefono);
                 break;
             case "alumno":
 //                $id_tutor = $u->getId_tutor_e();
@@ -107,7 +115,7 @@ if (isset($_SESSION['user'])) {
             //Identificamos el rol del usuario logueado
             case "empresa":
                 if ($db->verificaEmpresa($u->getUser(), $pass)) {
-                    if ($db->bajaUsuario($u->getId_tutor_e(), $u->getUser(), $tabla, null)) {
+                    if ($db->bajaUsuario($u->getId_empresa(), $tabla, null)) {
                         header('Location: exito_admin.php');
                     } else {
                         header('Location: error_admin.php');
@@ -118,12 +126,14 @@ if (isset($_SESSION['user'])) {
                 break;
             case "tutor_centro":
                 if ($db->verificaTutorCentro($u->getUser(), $pass)) {
+                    //Verificamos que la contraseña introducida coincide con la del usuario
                     foreach ($ciclos as $ciclo) {
+                        //Buscamos el id del ciclo del tutor
                         if ($ciclo->getId_tutor_c() == $u->getId_tutor_c()) {
                             $id_ciclo = $ciclo->getId_ciclo();
                         }
                     }
-                    if ($db->bajaUsuario($u->getId_tutor_c(), $u->getUser(), $tabla, $id_ciclo)) {
+                    if ($db->bajaUsuario($u->getId_tutor_c(), $tabla, $id_ciclo)) {
                         header('Location: exito_admin.php');
                     } else {
                         header('Location: error_admin.php');
@@ -147,24 +157,17 @@ if (isset($_SESSION['user'])) {
     } else if (isset($_POST['solicitar'])) {
         //Rescatamos el ciclo seleccionado del que se solicitan alumnos
         $id_ciclo = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
-        $cantidad = $_POST['cantidad_alumnos'];
-        if (is_numeric($cantidad)) {
-            //Comprobamos que la cantidad introducida es un número
+        $cantidad_alumnos = $_POST['cantidad_alumnos'];
+        if (is_numeric($cantidad_alumnos) && $cantidad_alumnos > 0 && $cantidad_alumnos < 100) {
+            //Comprobamos que la cantidad introducida es un número mayor que 0 y menor que 100
             if (isset($_POST['proyecto'])) {
                 $proyecto = 1;
             } else {
                 $proyecto = 0;
             }
             //Procedemos a dar de alta la solicitud
-            $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad, $_POST['observaciones'], $proyecto);
+            $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['observaciones'], $proyecto);
 
-            
-//            echo("<h1>$id_ciclo</h1>");
-//            echo("<h1>".$u->getId_empresa() . "</h1>");
-//            echo("<h1>$cantidad</h1>");
-//            echo("<h1>".$_POST['observaciones']."</h1>");
-//            echo("<h1>$proyecto</h1>");
-            
             if (!$_SESSION['error']) {
                 header('Location: exito_admin.php');
             } else {

@@ -22,7 +22,7 @@
                         <span class="underline"></span>
                     </label>
                     <label class="form-input">
-                        <input maxlength="30" type="password" name="pass" style="text-align: center;" required/>
+                        <input maxlength="255" type="password" name="pass" style="text-align: center;" required/>
                         <span class="label">CONTRASEÑA DE ACCESO <span style="color:red;">*</span></span>
                         <div class="underline"></div>
                     </label>
@@ -67,7 +67,7 @@
                         <div class="underline"></div>
                     </label>
                     <label class="form-input">
-                        <input maxlength="50" type="text" name="actividad" style="text-align: center;" required/>
+                        <textarea maxlength="50" name="actividad" class="form-control" rows="2" required></textarea>
                         <span class="label">ACTIVIDAD <span style="color:red;">*</span></span>
                         <div class="underline"></div>
                     </label>

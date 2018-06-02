@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-02 11:06:17
+/* Smarty version 3.1.32, created on 2018-06-02 18:39:08
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\menu_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b125e097b1d36_36170393',
+  'unifunc' => 'content_5b12c82c4f41e7_17292218',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bda7927fd9244a77ee4c05ce4d361d0a9c6144eb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\menu_empresa.tpl',
-      1 => 1527930373,
+      1 => 1527957545,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:empresas/solicitar_alumnos.tpl' => 2,
-    'file:modificar_tutor.tpl' => 1,
-    'file:baja_tutor.tpl' => 1,
+    'file:empresas/modificar_empresa.tpl' => 1,
+    'file:baja_perfil.tpl' => 1,
   ),
 ),false)) {
-function content_5b125e097b1d36_36170393 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b12c82c4f41e7_17292218 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
@@ -34,10 +34,10 @@ function content_5b125e097b1d36_36170393 (Smarty_Internal_Template $_smarty_tpl)
                     <a href="panel_administracion.php?accion=solicitar_alumnos"><i class="fa fa-fw fa-graduation-cap"></i> Solicitar alumnos</a>
                 </li>
                 <li>
-                    <a href="panel_administracion.php?accion=modificar_tutor"><i class="fa fa-fw fa-edit"></i> Modificar tutor</a>
+                    <a href="panel_administracion.php?accion=modificar_empresa"><i class="fa fa-fw fa-edit"></i> Modificar empresa</a>
                 </li>
                 <li>
-                    <a href="panel_administracion.php?accion=baja_tutor"><i class="fa fa-fw fa-trash"></i> Baja tutor</a>
+                    <a href="panel_administracion.php?accion=baja_perfil"><i class="fa fa-fw fa-trash"></i> Baja empresa</a>
                 </li>
             </ul>
         </li>              
@@ -51,11 +51,11 @@ function content_5b125e097b1d36_36170393 (Smarty_Internal_Template $_smarty_tpl)
     <?php if ($_GET['accion'] == 'solicitar_alumnos') {?>
         <?php $_smarty_tpl->_subTemplateRender("file:empresas/solicitar_alumnos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-    <?php } elseif ($_GET['accion'] == 'modificar_tutor') {?>
-        <?php $_smarty_tpl->_subTemplateRender("file:modificar_tutor.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+    <?php } elseif ($_GET['accion'] == 'modificar_empresa') {?>
+        <?php $_smarty_tpl->_subTemplateRender("file:empresas/modificar_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-    <?php } elseif ($_GET['accion'] == 'baja_tutor') {?>
-        <?php $_smarty_tpl->_subTemplateRender("file:baja_tutor.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+    <?php } elseif ($_GET['accion'] == 'baja_perfil') {?>
+        <?php $_smarty_tpl->_subTemplateRender("file:baja_perfil.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <?php }
 } else { ?>

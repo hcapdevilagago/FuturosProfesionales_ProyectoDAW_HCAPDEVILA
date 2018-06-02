@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-02 00:44:18
+/* Smarty version 3.1.32, created on 2018-06-02 12:31:27
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\solicitar_alumnos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b11cc422ce326_03130525',
+  'unifunc' => 'content_5b1271ff1622b2_18030278',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e921784271557db782dab5b26031769ca6345243' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\solicitar_alumnos.tpl',
-      1 => 1527893050,
+      1 => 1527935481,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b11cc422ce326_03130525 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b1271ff1622b2_18030278 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -73,7 +73,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                         <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo</label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                                <input  name="cantidad_alumnos" type="number" value="1" class="form-control" >
+                                                <input minlength="1" name="cantidad_alumnos" type="number" value="1" class="form-control" >
                                                 <span class="glyphicon form-control-feedback"></span>
                                                 <span class="help-block with-errors"></span>
                                             </div>
@@ -88,7 +88,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                         </label>   
                                     </div>
                                     <div class="form-group text-center" style="margin: 0 auto; margin-top: 1%; width: 80%;">
-                                        <textarea name="observaciones" placeholder="Indique cualquier observación oportuna que quiera dejar reflejada en su solicitud, por ejemplo las actividades que van a desarrollar el/los alumno/s que solicitan." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <textarea maxlength="1500" name="observaciones" placeholder="Indique cualquier observación oportuna que quiera dejar reflejada en su solicitud, por ejemplo las actividades que van a desarrollar el/los alumno/s que solicitan." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                                     </div>
                                     <div class="form-group has-feedback text-center">
                                         <label>
