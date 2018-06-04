@@ -70,45 +70,55 @@
 <!-- Panel navegación izquierdo y superior -->
 
 <!-- Panel central -->
-<div id="page-wrapper" style="height: 100%;">
-    {if (isset($privilegios_admin) && $privilegios_admin == 1)}
-        {if isset($smarty.get.accion)}
-            {if $smarty.get.accion eq 'ver_solicitudes'}
+{if isset($smarty.session.error)}
+    {php}
+      unset($_SESSION['error']);
+    {/php}
+    {include file="error.tpl"}
+{else}
+    <div id="page-wrapper" style="height: 100%;">
+        {if (isset($privilegios_admin) && $privilegios_admin == 1)}
+            {if isset($smarty.get.accion)}
+                {if $smarty.get.accion eq 'ver_solicitudes'}
+                    {include file="centro/ver_solicitudes.tpl"}
+                {elseif $smarty.get.accion eq 'modificar_tutor_centro'}
+                    {include file="centro/modificar_tutor_centro.tpl"}
+                {elseif $smarty.get.accion eq 'baja_perfil'}
+                    {include file="baja_perfil.tpl"}
+                {elseif $smarty.get.accion eq 'ver_empresas'}
+                    {include file="alumnos/ver_empresas.tpl"}
+                {elseif $smarty.get.accion eq 'alta_familia'}
+                    {include file="administrador/alta_familia.tpl"}
+                {elseif $smarty.get.accion eq 'baja_familia'}
+                    {include file="administrador/baja_familia.tpl"}
+                {elseif $smarty.get.accion eq 'alta_ciclo'}
+                    {include file="administrador/alta_ciclo.tpl"}
+                {elseif $smarty.get.accion eq 'baja_ciclo'}
+                    {include file="administrador/baja_ciclo.tpl"}
+                {elseif $smarty.get.accion eq 'alta_empresa'}
+                    {include file="administrador/alta_empresa.tpl"}
+                {elseif $smarty.get.accion eq 'baja_empresa'}
+                    {include file="administrador/baja_empresa.tpl"}
+                {/if}
+            {else}
                 {include file="centro/ver_solicitudes.tpl"}
-            {elseif $smarty.get.accion eq 'modificar_tutor_centro'}
-                {include file="centro/modificar_tutor_centro.tpl"}
-            {elseif $smarty.get.accion eq 'baja_perfil'}
-                {include file="baja_perfil.tpl"}
-            {elseif $smarty.get.accion eq 'ver_empresas'}
-                {include file="alumnos/ver_empresas.tpl"}
-            {elseif $smarty.get.accion eq 'alta_familia'}
-                {include file="administrador/alta_familia.tpl"}
-            {elseif $smarty.get.accion eq 'baja_familia'}
-                {include file="administrador/baja_familia.tpl"}
-            {elseif $smarty.get.accion eq 'alta_ciclo'}
-                {include file="administrador/alta_ciclo.tpl"}
-            {elseif $smarty.get.accion eq 'baja_ciclo'}
-                {include file="administrador/baja_ciclo.tpl"}
-            {elseif $smarty.get.accion eq 'alta_empresa'}
-                {include file="administrador/alta_empresa.tpl"}
-            {elseif $smarty.get.accion eq 'baja_empresa'}
-                {include file="administrador/baja_empresa.tpl"}
             {/if}
         {else}
-            {include file="centro/ver_solicitudes.tpl"}
-        {/if}
-    {else}
-        {if isset($smarty.get.accion)}
-            {if $smarty.get.accion eq 'ver_solicitudes'}
+            {if isset($smarty.get.accion)}
+                {if $smarty.get.accion eq 'ver_solicitudes'}
+                    {include file="centro/ver_solicitudes.tpl"}
+                {elseif $smarty.get.accion eq 'modificar_tutor_centro'}
+                    {include file="centro/modificar_tutor_centro.tpl"}
+                {elseif $smarty.get.accion eq 'baja_perfil'}
+                    {include file="baja_perfil.tpl"}
+                {/if}
+            {else}
                 {include file="centro/ver_solicitudes.tpl"}
-            {elseif $smarty.get.accion eq 'modificar_tutor_centro'}
-                {include file="centro/modificar_tutor_centro.tpl"}
-            {elseif $smarty.get.accion eq 'baja_perfil'}
-                {include file="baja_perfil.tpl"}
             {/if}
-        {else}
-            {include file="centro/ver_solicitudes.tpl"}
         {/if}
-    {/if}
-</div>
+    </div>
+{/if}
+
+
+
 <!-- Panel central -->

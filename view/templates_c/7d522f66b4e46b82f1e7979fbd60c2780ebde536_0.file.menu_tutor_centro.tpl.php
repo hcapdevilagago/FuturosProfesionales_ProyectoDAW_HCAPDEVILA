@@ -1,23 +1,24 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-02 19:24:02
+/* Smarty version 3.1.32, created on 2018-06-04 12:19:26
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\menu_tutor_centro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b12d2b25678c5_16191148',
+  'unifunc' => 'content_5b15122e8a3693_32109032',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d522f66b4e46b82f1e7979fbd60c2780ebde536' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\menu_tutor_centro.tpl',
-      1 => 1527960238,
+      1 => 1528107552,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:error.tpl' => 1,
     'file:centro/ver_solicitudes.tpl' => 4,
     'file:centro/modificar_tutor_centro.tpl' => 2,
     'file:baja_perfil.tpl' => 2,
@@ -30,7 +31,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:administrador/baja_empresa.tpl' => 1,
   ),
 ),false)) {
-function content_5b12d2b25678c5_16191148 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
     <!-- Panel navegación izquierdo -->
@@ -103,62 +104,72 @@ function content_5b12d2b25678c5_16191148 (Smarty_Internal_Template $_smarty_tpl)
 <!-- Panel navegación izquierdo y superior -->
 
 <!-- Panel central -->
-<div id="page-wrapper" style="height: 100%;">
-    <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
-        <?php if (isset($_GET['accion'])) {?>
-            <?php if ($_GET['accion'] == 'ver_solicitudes') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<?php if (isset($_SESSION['error'])) {?>
+    <?php 
+      unset($_SESSION['error']);
+    ?>
+    <?php $_smarty_tpl->_subTemplateRender("file:error.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+} else { ?>
+    <div id="page-wrapper" style="height: 100%;">
+        <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
+            <?php if (isset($_GET['accion'])) {?>
+                <?php if ($_GET['accion'] == 'ver_solicitudes') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'modificar_tutor_centro') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:centro/modificar_tutor_centro.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'modificar_tutor_centro') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:centro/modificar_tutor_centro.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'baja_perfil') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:baja_perfil.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'baja_perfil') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:baja_perfil.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'ver_empresas') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:alumnos/ver_empresas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'ver_empresas') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:alumnos/ver_empresas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'alta_familia') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_familia.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'alta_familia') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_familia.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'baja_familia') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_familia.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'baja_familia') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_familia.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'alta_ciclo') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_ciclo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'alta_ciclo') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_ciclo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'baja_ciclo') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_ciclo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'baja_ciclo') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_ciclo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'alta_empresa') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'alta_empresa') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php } elseif ($_GET['accion'] == 'baja_empresa') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <?php } elseif ($_GET['accion'] == 'baja_empresa') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <?php }?>
-        <?php } else { ?>
-            <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
-        <?php }?>
-    <?php } else { ?>
-        <?php if (isset($_GET['accion'])) {?>
-            <?php if ($_GET['accion'] == 'ver_solicitudes') {?>
+                <?php }?>
+            <?php } else { ?>
                 <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
-            <?php } elseif ($_GET['accion'] == 'modificar_tutor_centro') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:centro/modificar_tutor_centro.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
-            <?php } elseif ($_GET['accion'] == 'baja_perfil') {?>
-                <?php $_smarty_tpl->_subTemplateRender("file:baja_perfil.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
             <?php }?>
         <?php } else { ?>
-            <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+            <?php if (isset($_GET['accion'])) {?>
+                <?php if ($_GET['accion'] == 'ver_solicitudes') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
+                <?php } elseif ($_GET['accion'] == 'modificar_tutor_centro') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:centro/modificar_tutor_centro.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+                <?php } elseif ($_GET['accion'] == 'baja_perfil') {?>
+                    <?php $_smarty_tpl->_subTemplateRender("file:baja_perfil.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+                <?php }?>
+            <?php } else { ?>
+                <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_solicitudes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+            <?php }?>
         <?php }?>
-    <?php }?>
-</div>
+    </div>
+<?php }?>
+
+
+
 <!-- Panel central -->
 <?php }
 }

@@ -20,15 +20,18 @@
 <!-- Panel navegación izquierdo -->
 </nav>
 <!-- Panel navegación izquierdo y superior -->
-
-{if isset($smarty.get.accion)}
-    {if $smarty.get.accion eq 'solicitar_alumnos'}
-        {include file="empresas/solicitar_alumnos.tpl"}
-    {elseif $smarty.get.accion eq 'modificar_empresa'}
-        {include file="empresas/modificar_empresa.tpl"}
-    {elseif $smarty.get.accion eq 'baja_perfil'}
-        {include file="baja_perfil.tpl"}
-    {/if}
+{if isset($smarty.session.error)}
+    {include file="error.tpl"}
 {else}
-    {include file="empresas/solicitar_alumnos.tpl"}
+    {if isset($smarty.get.accion)}
+        {if $smarty.get.accion eq 'solicitar_alumnos'}
+            {include file="empresas/solicitar_alumnos.tpl"}
+        {elseif $smarty.get.accion eq 'modificar_empresa'}
+            {include file="empresas/modificar_empresa.tpl"}            
+        {elseif $smarty.get.accion eq 'baja_perfil'}
+            {include file="baja_perfil.tpl"}
+        {/if}
+    {else}
+        {include file="empresas/solicitar_alumnos.tpl"}
+    {/if}
 {/if}

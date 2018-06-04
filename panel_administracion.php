@@ -1,11 +1,13 @@
 <?php
 
 //Cargamos las clases en el caso de que no hayan sido cargadas antes
-require_once ('Smarty.class.php');
+//require_once ('Smarty.class.php');
+require_once ('SmartyBC.class.php');
 require_once ('./model/Database.php');
 
 //Creamos un objeto de la clase Smarty que hará referencia a la plantilla
-$plantilla = new Smarty();
+//$plantilla = new Smarty();
+$plantilla = new SmartyBC();
 
 //Asignamos las plantillas en las rutas correspondientes
 $plantilla->template_dir = "./view/templates";
@@ -83,7 +85,11 @@ if (isset($_SESSION['user'])) {
                 $descripcion = $_POST['descripcion'];
                 $actividad = $_POST['actividad'];
                 $id_empresa = $u->getId_empresa();
+
+                //Modificamos el perfil del usuario de dicho rol
                 $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
+                //Recargamos la página para que se vea afectada en los datos del perfil de usuario
+                header("Location: panel_administracion.php");
                 break;
             case "tutor_centro":
                 $id = $u->getId_tutor_c();
@@ -91,20 +97,11 @@ if (isset($_SESSION['user'])) {
                 $dni = $_POST['dni'];
                 $email = $_POST['email'];
                 $telefono = $_POST['telefono'];
+
+                //Modificamos el perfil del usuario de dicho rol
                 $db->modificaTutorCentro($id, $nombre, $dni, $email, $telefono);
-                //Sobreescribimos en la variable de sesión user con el usuario actualizado.
-                $u = $db->obtieneUsuario($tabla, $u->getUser());
-                $_SESSION['user'] = $u;
-
-                //Asignamos el objeto del usuario modificado a la variable Smarty
-                $plantilla->assign("usuario", $u);
-
-                if (!$_SESSION['error']) {
-                    header('Location: exito_admin.php');
-                } else {
-                    session_unset();
-                    header('Location: error_admin.php');
-                }
+                //Recargamos la página para que se vea afectada en los datos del perfil de usuario
+                header("Location: panel_administracion.php");
                 break;
             case "alumno":
 //                $id_tutor = $u->getId_tutor_e();
@@ -125,13 +122,12 @@ if (isset($_SESSION['user'])) {
             //Identificamos el rol del usuario logueado
             case "empresa":
                 if ($db->verificaEmpresa($u->getUser(), $pass)) {
-                    if ($db->bajaUsuario($u->getId_empresa(), $tabla, null)) {
-                        header('Location: exito_admin.php');
-                    } else {
-                        header('Location: error_admin.php');
-                    }
+                    //Damos de baja el usuario de dicho rol
+                    $db->bajaUsuario($u->getId_empresa(), $tabla, null);
+                    //Redirigimos el flujo de la aplicación al index porque la baja se habrá hecho efectiva
+                    header("Location: index.php");
                 } else {
-                    header('Location: error_admin.php');
+                    $_SESSION['error'] = true;
                 }
                 break;
             case "tutor_centro":
@@ -143,24 +139,22 @@ if (isset($_SESSION['user'])) {
                             $id_ciclo = $ciclo->getId_ciclo();
                         }
                     }
-                    if ($db->bajaUsuario($u->getId_tutor_c(), $tabla, $id_ciclo)) {
-                        header('Location: exito_admin.php');
-                    } else {
-                        header('Location: error_admin.php');
-                    }
+                    //Damos de baja el usuario de dicho rol
+                    $db->bajaUsuario($u->getId_tutor_c(), $tabla, $id_ciclo);
+                    //Redirigimos el flujo de la aplicación al index porque la baja se habrá hecho efectiva
+                    header("Location: index.php");
                 } else {
-                    header('Location: error_admin.php');
+                    $_SESSION['error'] = true;
                 }
                 break;
             case "alumno":
                 if ($db->verificaAlumno($u->getUser(), $pass)) {
-                    if ($db->bajaUsuario($u->getId_alumno(), $u->getUser(), $tabla, null)) {
-                        header('Location: exito_admin.php');
-                    } else {
-                        header('Location: error_admin.php');
-                    }
+                    //Damos de baja el usuario de dicho rol
+                    $db->bajaUsuario($u->getId_alumno(), $u->getUser(), $tabla, null);
+                    //Redirigimos el flujo de la aplicación al index porque la baja se habrá hecho efectiva
+                    header("Location: index.php");
                 } else {
-                    header('Location: error_admin.php');
+                    $_SESSION['error'] = true;
                 }
                 break;
         }
@@ -175,17 +169,11 @@ if (isset($_SESSION['user'])) {
             } else {
                 $proyecto = 0;
             }
-            //Procedemos a dar de alta la solicitud
+            
+            //Damos de alta la solicitud de alumnos
             $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['observaciones'], $proyecto);
-
-            if (!$_SESSION['error']) {
-                header('Location: exito_admin.php');
-            } else {
-                session_unset();
-                header('Location: error_admin.php');
-            }
         } else {
-            header('Location: error_admin.php');
+            $_SESSION['error'] = true;
         }
     }
 
@@ -197,4 +185,4 @@ if (isset($_SESSION['user'])) {
 } else {
     //En el caso de que no exista la variable $_SESSION['user'], ridirigimos el flujo a index.php
     header("Location: index.php");
-}
+}    
