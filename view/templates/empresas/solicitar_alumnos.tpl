@@ -25,7 +25,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="ciclos_formativos"  class="col-md-4 control-label">Ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <select name="ciclos" class="form-control selectpicker" required>
                                                     <option value=" ">Por favor, seleccione el ciclo formativo</option>
                                                     {foreach $ciclos as $ciclo}
@@ -40,7 +40,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo  <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <input minlength="1" name="cantidad_alumnos" type="number" value="1" class="form-control" >
                                                 <span class="glyphicon form-control-feedback"></span>
                                                 <span class="help-block with-errors"></span>

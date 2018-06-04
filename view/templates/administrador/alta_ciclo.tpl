@@ -13,7 +13,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="ciclos_formativos"  class="col-md-4 control-label">Familia profesional <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <select name="familias" class="form-control selectpicker" required>
                                                     <option value=" ">Por favor, seleccione una familia profesional</option>
                                                     {foreach $familias as $familia}
@@ -26,11 +26,11 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Identificador del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
                                                 <input maxlength="6" name="id" class="form-control text-center" type="text" required>
                                             </div>
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
@@ -42,7 +42,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="tutores"  class="col-md-4 control-label">Tutor del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                                                 <select name="tutores" class="form-control" required>
                                                     <option value=" ">Por favor, seleccione el tutor del ciclo</option>
                                                     {foreach $tutores as $tutor}

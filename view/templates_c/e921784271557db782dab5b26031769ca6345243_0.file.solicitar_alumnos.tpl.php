@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 16:48:05
+/* Smarty version 3.1.32, created on 2018-06-04 18:08:41
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\solicitar_alumnos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b155125cd3147_46971377',
+  'unifunc' => 'content_5b1564098d93d5_98529975',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e921784271557db782dab5b26031769ca6345243' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\solicitar_alumnos.tpl',
-      1 => 1528123682,
+      1 => 1528128511,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b155125cd3147_46971377 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b1564098d93d5_98529975 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -49,7 +49,7 @@ function content_5b155125cd3147_46971377 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="form-group has-feedback">
                                         <label for="ciclos_formativos"  class="col-md-4 control-label">Ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <select name="ciclos" class="form-control selectpicker" required>
                                                     <option value=" ">Por favor, seleccione el ciclo formativo</option>
                                                     <?php
@@ -72,7 +72,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="form-group has-feedback">
                                         <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo  <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <input minlength="1" name="cantidad_alumnos" type="number" value="1" class="form-control" >
                                                 <span class="glyphicon form-control-feedback"></span>
                                                 <span class="help-block with-errors"></span>

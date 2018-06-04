@@ -13,7 +13,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="ciclos_formativos"  class="col-md-4 control-label">Ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <select name="ciclos" class="form-control selectpicker" required>
                                                     <option value=" ">Por favor, seleccione el ciclo formativo</option>
                                                     {foreach $ciclos as $ciclo}
@@ -33,7 +33,7 @@
                                     <div class="form-group text-center">
                                         <label class="col-md-4 control-label"></label>
                                         <div class="col-md-4">                                            
-                                            <button type="submit" name="baja_ciclo" class="btn btn-danger" style="margin-top: 1%; display: inline-block; width: 300px;"><span class="glyphicon glyphicon-send"></span> CONFIRMAR BAJA DEL CICLO FORMATIVO</button>
+                                            <button type="submit" name="baja_ciclo" class="btn btn-danger" style="margin-top: 1%; display: inline-block; width: 300px;"><span class="glyphicon glyphicon-send"></span> CONFIRMAR BAJA DEL CICLO</button>
                                         </div>
                                     </div>
                                 </fieldset>

@@ -45,6 +45,9 @@ if (isset($_SESSION['user'])) {
     //Asignamos el array de los ciclos formativos a una variable Smarty
     $plantilla->assign("ciclos", $ciclos);
 
+    //Asignamos el array de las empresas a una variable Smarty
+    $plantilla->assign("empresas", $db->devuelveEmpresas());
+
     if ($u instanceof Alumno) {
         //En el caso de que $u sea una instancia de Alumno
         foreach ($ciclos as $ciclo) {
@@ -79,7 +82,7 @@ if (isset($_SESSION['user'])) {
                 $cif = $_POST['cif'];
                 $direccion_fiscal = $_POST['direccion_fiscal'];
                 $telefono = $_POST['telefono'];
-                $email = $_POST['actividad'];
+                $email = $_POST['email'];
                 $horario = $_POST['horario'];
                 $representante_nombre = $_POST['representante_nombre'];
                 $representante_dni = $_POST['representante_dni'];
@@ -195,6 +198,31 @@ if (isset($_SESSION['user'])) {
         $db->bajaCiclo($nombre);
 
         //Recargamos la página para que se vea afectada la baja del ciclo en la plataforma
+        header("Location: panel_administracion.php");
+    } else if (isset($_POST['alta_familia'])) {
+        //Rescatamos los valores de la nueva familia
+        $id_familia = $_POST['id'];
+        $nombre = $_POST['nombre'];
+
+        //Damos de alta la familia profesional
+        $db->altaFamilia($id_familia, $nombre);
+    } else if (isset($_POST['baja_familia'])) {
+        //Rescatamos la familia profesional seleccionada que se quiere dar de baja
+        $f = $db->devuelveFamilia($_POST['familias']);
+
+        //Damos de baja el ciclo formativo
+        $db->bajaFamilia($f->getId_familia(), $f->getNombre());
+
+        //Recargamos la página para que se vea afectada la baja del ciclo en la plataforma
+        header("Location: panel_administracion.php");
+    } else if (isset($_POST['baja_empresa'])) {
+        //Rescatamos la empresa seleccionada que se quiere dar de baja
+        $e = $db->devuelveEmpresa($_POST['empresas']);
+        
+        //Damos de baja la empresa colaboradora
+        $db->bajaEmpresa($e->getId_empresa());
+
+        //Recargamos la página para que se vea afectada la baja de la empresa en la plataforma
         header("Location: panel_administracion.php");
     }
 

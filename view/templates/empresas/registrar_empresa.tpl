@@ -72,7 +72,7 @@
                         </label>
                     </div>
                     <div class="form-input text-center" style="margin: 0 auto; margin-top: 8%;">
-                        <textarea maxlength="50" name="actividad" class="form-control" rows="2" required></textarea>
+                        <textarea maxlength="200" name="actividad" class="form-control" rows="2" required></textarea>
                     </div>
                     <div>       
                         <label class="form-input">

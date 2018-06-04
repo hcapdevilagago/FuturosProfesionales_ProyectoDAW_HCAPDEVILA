@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-02 21:25:17
+/* Smarty version 3.1.32, created on 2018-06-04 17:47:57
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\modificar_tutor_centro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b12ef1d51fa87_30430312',
+  'unifunc' => 'content_5b155f2d355ef5_50918695',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd98bb5c6e59bcd42603775a7fd2af39af0c1912c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\modificar_tutor_centro.tpl',
-      1 => 1527967470,
+      1 => 1528127274,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b12ef1d51fa87_30430312 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b155f2d355ef5_50918695 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white;">
     <div class="w3-row w3-padding w3-border">
@@ -64,7 +64,7 @@ function content_5b12ef1d51fa87_30430312 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Teléfono de contacto <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                                                 <input minlength="9" maxlength="9"name="telefono" value="<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getTelefono();?>
 " class="form-control text-center" type="tel" required>
                                             </div>

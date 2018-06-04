@@ -13,7 +13,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="password"  class="col-md-4 control-label">Contraseña</label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                                 <input class="form-control" id="userPw" type="password" placeholder="Introduzca su contraseña" 
                                                        name="password" data-minLength="5" data-error="some error" required/>
                                                 <span class="glyphicon form-control-feedback"></span>
@@ -24,7 +24,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="confirmPassword"  class="col-md-4 control-label">Confirmar Contraseña</label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                                 <input class="form-control {$borderColor}" id="userPw2" type="password" placeholder="Repita su contraseña" 
                                                        name="confirmPassword" data-match="#confirmPassword" data-minLength="5" data-match-error="some error 2" required/>
                                                 <span class="glyphicon form-control-feedback"></span>

@@ -612,7 +612,7 @@ class Database {
 
     function bajaCiclo($nombre) {
         try {
-            //Genero la consulta para realizar la inserción de los datos en la database
+            //Genero la consulta para realizar el borrado de los datos en la database
             $sentencia = "DELETE FROM ciclo_formativo WHERE nombre = ?";
 
             //Preparamos la sentencia
@@ -620,6 +620,63 @@ class Database {
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
             $stmt->bindParam(1, $nombre);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function altaFamilia($id_familia, $nombre) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sentencia = "INSERT INTO familia_profesional (id_familia, nombre) VALUES (?,?)";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_familia);
+            $stmt->bindParam(2, $nombre);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function bajaFamilia($id_familia) {
+        try {
+            $ciclos = $this->devuelveCiclos();
+            foreach ($ciclos as $ciclo) {
+                if ($ciclo->getId_familia() == $id_familia) {
+                    //Damos de baja las solicitudes de los ciclos de dicha familia
+                    $this->bajaSolicitud($ciclo->getId_ciclo());
+                }
+            }
+
+            //Genero la consulta para realizar el borrado de los datos en la database
+            $sentencia = "DELETE FROM ciclo_formativo WHERE id_familia = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_familia);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+
+            //Genero la consulta para realizar el borrado de los datos en la database
+            $sentencia = "DELETE FROM familia_profesional WHERE id_familia = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_familia);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -649,6 +706,48 @@ class Database {
             $stmt->bindParam(10, $actividad);
             $stmt->bindParam(11, $user);
             $stmt->bindParam(12, $pass);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function bajaEmpresa($id_empresa) {
+        try {
+            //Genero la consulta para realizar el borrado de los datos en la database
+            $sentencia = "DELETE FROM tutor_empresa WHERE id_empresa = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_empresa);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+
+            //Genero la consulta para realizar el borrado de los datos en la database
+            $sentencia = "DELETE FROM solicitud WHERE id_empresa = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_empresa);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();            
+            
+            //Genero la consulta para realizar el borrado de los datos en la database
+            $sentencia = "DELETE FROM empresa WHERE id_empresa = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_empresa);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -800,6 +899,24 @@ class Database {
             $stmt->bindParam(3, $cantidad_alumnos);
             $stmt->bindParam(4, $observaciones);
             $stmt->bindParam(5, $proyecto);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function bajaSolicitud($id_ciclo) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sentencia = "DELETE FROM solicitud WHERE id_ciclo = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_ciclo);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();

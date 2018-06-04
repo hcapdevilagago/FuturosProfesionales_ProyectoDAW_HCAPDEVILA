@@ -37,7 +37,7 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Teléfono de contacto <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                                                 <input minlength="9" maxlength="9"name="telefono" value="{$usuario->getTelefono()}" class="form-control text-center" type="tel" required>
                                             </div>
                                         </div>

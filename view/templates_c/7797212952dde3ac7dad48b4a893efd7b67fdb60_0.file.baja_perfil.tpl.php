@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-02 18:56:04
+/* Smarty version 3.1.32, created on 2018-06-04 17:57:07
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\baja_perfil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b12cc24adbe05_25180617',
+  'unifunc' => 'content_5b156153ad9c75_75631168',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7797212952dde3ac7dad48b4a893efd7b67fdb60' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\baja_perfil.tpl',
-      1 => 1527958559,
+      1 => 1528127823,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b12cc24adbe05_25180617 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b156153ad9c75_75631168 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -37,7 +37,7 @@ function content_5b12cc24adbe05_25180617 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="form-group has-feedback">
                                         <label for="password"  class="col-md-4 control-label">Contraseña</label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                                 <input class="form-control" id="userPw" type="password" placeholder="Introduzca su contraseña" 
                                                        name="password" data-minLength="5" data-error="some error" required/>
                                                 <span class="glyphicon form-control-feedback"></span>
@@ -48,7 +48,7 @@ function content_5b12cc24adbe05_25180617 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="form-group has-feedback">
                                         <label for="confirmPassword"  class="col-md-4 control-label">Confirmar Contraseña</label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                                 <input class="form-control <?php echo $_smarty_tpl->tpl_vars['borderColor']->value;?>
 " id="userPw2" type="password" placeholder="Repita su contraseña" 
                                                        name="confirmPassword" data-match="#confirmPassword" data-minLength="5" data-match-error="some error 2" required/>

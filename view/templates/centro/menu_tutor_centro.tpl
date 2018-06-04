@@ -10,13 +10,13 @@
                         <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
                     </li>
                     <li>
+                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
+                    </li>
+                    <li>
                         <a href="panel_administracion.php?accion=modificar_tutor_centro"><i class="fa fa-fw fa-pencil"></i> Modificar tutor</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=baja_perfil"><i class="fa fa-fw fa-trash"></i> Baja tutor</a>
-                    </li>
-                    <li>
-                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
                     </li>
                 </ul>
             </li>
@@ -26,17 +26,15 @@
                     <li>
                         <a href="panel_administracion.php?accion=alta_familia"><i class="fa fa-fw fa-graduation-cap"></i> Alta familia profesional</a>
                     </li>
-                    <li>
-                        <a href="panel_administracion.php?accion=baja_familia"><i class="fa fa-fw fa-graduation-cap"></i> Baja familia profesional</a>
-                    </li>
+
                     <li>
                         <a href="panel_administracion.php?accion=alta_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Alta ciclo formativo</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=baja_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Baja ciclo formativo</a>
+                        <a href="panel_administracion.php?accion=baja_familia"><i class="fa fa-fw fa-graduation-cap"></i> Baja familia profesional</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=alta_empresa"><i class="fa fa-fw fa-graduation-cap"></i> Alta empresa</a>
+                        <a href="panel_administracion.php?accion=baja_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Baja ciclo formativo</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=baja_empresa"><i class="fa fa-fw fa-graduation-cap"></i> Baja empresa</a>
@@ -53,6 +51,9 @@
                 <ul id="tutores" class="collapse">
                     <li>
                         <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=modificar_tutor_centro"><i class="fa fa-fw fa-pencil"></i> Modificar tutor</a>
@@ -95,8 +96,6 @@
                     {include file="administrador/alta_ciclo.tpl"}
                 {elseif $smarty.get.accion eq 'baja_ciclo'}
                     {include file="administrador/baja_ciclo.tpl"}
-                {elseif $smarty.get.accion eq 'alta_empresa'}
-                    {include file="administrador/alta_empresa.tpl"}
                 {elseif $smarty.get.accion eq 'baja_empresa'}
                     {include file="administrador/baja_empresa.tpl"}
                 {/if}
@@ -118,7 +117,4 @@
         {/if}
     </div>
 {/if}
-
-
-
 <!-- Panel central -->

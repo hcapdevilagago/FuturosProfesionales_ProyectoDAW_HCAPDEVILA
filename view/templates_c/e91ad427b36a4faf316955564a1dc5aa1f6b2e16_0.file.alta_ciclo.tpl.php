@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 17:05:11
+/* Smarty version 3.1.32, created on 2018-06-04 18:07:20
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\administrador\alta_ciclo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b155527a76f74_29115007',
+  'unifunc' => 'content_5b1563b8e61a41_29301839',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e91ad427b36a4faf316955564a1dc5aa1f6b2e16' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\administrador\\alta_ciclo.tpl',
-      1 => 1528124706,
+      1 => 1528127213,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b155527a76f74_29115007 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b1563b8e61a41_29301839 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -36,7 +36,7 @@ function content_5b155527a76f74_29115007 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="form-group has-feedback">
                                         <label for="ciclos_formativos"  class="col-md-4 control-label">Familia profesional <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <select name="familias" class="form-control selectpicker" required>
                                                     <option value=" ">Por favor, seleccione una familia profesional</option>
                                                     <?php
@@ -57,11 +57,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Identificador del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
                                                 <input maxlength="6" name="id" class="form-control text-center" type="text" required>
                                             </div>
                                         </div>
-                                    </div>     
+                                    </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
@@ -73,7 +73,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="form-group has-feedback">
                                         <label for="tutores"  class="col-md-4 control-label">Tutor del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                                                 <select name="tutores" class="form-control" required>
                                                     <option value=" ">Por favor, seleccione el tutor del ciclo</option>
                                                     <?php

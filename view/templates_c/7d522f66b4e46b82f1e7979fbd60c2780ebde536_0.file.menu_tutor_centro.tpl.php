@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 12:19:26
+/* Smarty version 3.1.32, created on 2018-06-05 00:42:07
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\menu_tutor_centro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b15122e8a3693_32109032',
+  'unifunc' => 'content_5b15c03f97aa88_51324329',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d522f66b4e46b82f1e7979fbd60c2780ebde536' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\menu_tutor_centro.tpl',
-      1 => 1528107552,
+      1 => 1528152116,
       2 => 'file',
     ),
   ),
@@ -27,11 +27,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:administrador/baja_familia.tpl' => 1,
     'file:administrador/alta_ciclo.tpl' => 1,
     'file:administrador/baja_ciclo.tpl' => 1,
-    'file:administrador/alta_empresa.tpl' => 1,
     'file:administrador/baja_empresa.tpl' => 1,
   ),
 ),false)) {
-function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b15c03f97aa88_51324329 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
     <!-- Panel navegación izquierdo -->
@@ -44,13 +43,13 @@ function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl)
                         <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
                     </li>
                     <li>
+                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
+                    </li>
+                    <li>
                         <a href="panel_administracion.php?accion=modificar_tutor_centro"><i class="fa fa-fw fa-pencil"></i> Modificar tutor</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=baja_perfil"><i class="fa fa-fw fa-trash"></i> Baja tutor</a>
-                    </li>
-                    <li>
-                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
                     </li>
                 </ul>
             </li>
@@ -60,17 +59,15 @@ function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl)
                     <li>
                         <a href="panel_administracion.php?accion=alta_familia"><i class="fa fa-fw fa-graduation-cap"></i> Alta familia profesional</a>
                     </li>
-                    <li>
-                        <a href="panel_administracion.php?accion=baja_familia"><i class="fa fa-fw fa-graduation-cap"></i> Baja familia profesional</a>
-                    </li>
+
                     <li>
                         <a href="panel_administracion.php?accion=alta_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Alta ciclo formativo</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=baja_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Baja ciclo formativo</a>
+                        <a href="panel_administracion.php?accion=baja_familia"><i class="fa fa-fw fa-graduation-cap"></i> Baja familia profesional</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=alta_empresa"><i class="fa fa-fw fa-graduation-cap"></i> Alta empresa</a>
+                        <a href="panel_administracion.php?accion=baja_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Baja ciclo formativo</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=baja_empresa"><i class="fa fa-fw fa-graduation-cap"></i> Baja empresa</a>
@@ -87,6 +84,9 @@ function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl)
                 <ul id="tutores" class="collapse">
                     <li>
                         <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=modificar_tutor_centro"><i class="fa fa-fw fa-pencil"></i> Modificar tutor</a>
@@ -137,9 +137,6 @@ function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl)
                 <?php } elseif ($_GET['accion'] == 'baja_ciclo') {?>
                     <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_ciclo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-                <?php } elseif ($_GET['accion'] == 'alta_empresa') {?>
-                    <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
                 <?php } elseif ($_GET['accion'] == 'baja_empresa') {?>
                     <?php $_smarty_tpl->_subTemplateRender("file:administrador/baja_empresa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -167,9 +164,6 @@ function content_5b15122e8a3693_32109032 (Smarty_Internal_Template $_smarty_tpl)
         <?php }?>
     </div>
 <?php }?>
-
-
-
 <!-- Panel central -->
 <?php }
 }
