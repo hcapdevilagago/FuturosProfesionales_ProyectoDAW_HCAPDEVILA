@@ -66,11 +66,14 @@
                         <span class="label">DNI DEL REPRESENTANTE <span style="color:red;">*</span></span>
                         <div class="underline"></div>
                     </label>
-                    <label class="form-input">
+                    <div>       
+                        <label class="form-input">
+                            <span class="textarea">ACTIVIDAD DE LA EMPRESA <span style="color:red;">*</span></span>
+                        </label>
+                    </div>
+                    <div class="form-input text-center" style="margin: 0 auto; margin-top: 8%;">
                         <textarea maxlength="50" name="actividad" class="form-control" rows="2" required></textarea>
-                        <span class="label">ACTIVIDAD <span style="color:red;">*</span></span>
-                        <div class="underline"></div>
-                    </label>
+                    </div>
                     <div>       
                         <label class="form-input">
                             <span class="textarea">DESCRIPCIÓN DE LA EMPRESA <span style="color:red;">*</span></span>
@@ -85,7 +88,7 @@
                         </div>
                     </label>
                     <div class="submit-container clearfix" style="text-align: center; margin-top: 5%;">
-                        <input type="submit" style="margin-top: 1%; display: inline-block; width: 200px;" name="limpiar" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
+                        <input type="reset" style="margin-top: 1%; display: inline-block; width: 200px;" name="limpiar" value="LIMPIAR FORMULARIO" class="btn btn-success"/>
                         <input type="submit" style="margin-top: 1%; display: inline-block; width: 300px;" name="anadir_empresa" value="REGISTRAR NUEVA EMPRESA" class="btn btn-success"/>
                     </div>
                 </form>

@@ -18,7 +18,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">CIF de la empresa <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">

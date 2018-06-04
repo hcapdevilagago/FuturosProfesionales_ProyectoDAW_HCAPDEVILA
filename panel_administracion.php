@@ -65,6 +65,7 @@ if (isset($_SESSION['user'])) {
         //En el caso de que sea un tutor del centro educativo vamos a almacenar el valor del registro privilegios_admin
         $_SESSION['privilegios_admin'] = $u->getPrivilegios_admin();
         $plantilla->assign("privilegios_admin", $_SESSION['privilegios_admin']);
+        $plantilla->assign("tutores", $db->devuelveTutoresCentro());
     }
 
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado
@@ -169,12 +170,32 @@ if (isset($_SESSION['user'])) {
             } else {
                 $proyecto = 0;
             }
-            
+
             //Damos de alta la solicitud de alumnos
             $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['observaciones'], $proyecto);
         } else {
             $_SESSION['error'] = true;
         }
+    } else if (isset($_POST['alta_ciclo'])) {
+        //Rescatamos la familia seleccionada en la que se quiere añadir el ciclo formativo
+        $id_ciclo = $_POST['id'];
+        $familia = $db->devuelveFamilia($_POST['familias']);
+        $id_familia = $familia->getId_familia();
+        $tutor = $db->devuelveTutorCentro($_POST['tutores']);
+        $id_tutor_c = $tutor->getId_tutor_c();
+        $nombre = $_POST['nombre'];
+
+        //Damos de alta el ciclo formativo
+        $db->altaCiclo($id_ciclo, $id_familia, $id_tutor_c, $nombre);
+    } else if (isset($_POST['baja_ciclo'])) {
+        //Rescatamos el ciclo seleccionada que se quiere dar de baja
+        $nombre = $_POST['ciclos'];
+
+        //Damos de baja el ciclo formativo
+        $db->bajaCiclo($nombre);
+
+        //Recargamos la página para que se vea afectada la baja del ciclo en la plataforma
+        header("Location: panel_administracion.php");
     }
 
     //Asignamos el array de los ciclos formativos a una variable Smarty

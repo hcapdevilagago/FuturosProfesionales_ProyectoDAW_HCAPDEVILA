@@ -176,6 +176,28 @@ class Database {
     }
 
     /**
+     * @description Devuelve un objeto correspondiente a la familia profesional pasada como parámetro
+     */
+    function devuelveFamilia($nombre) {
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM familia_profesional WHERE nombre = ?");
+
+        //Preparamos la sentencia parametrizada
+        $consulta->bindParam(1, $nombre);
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        //Creamos un nuevo objeto con los datos de una famiilia profesional
+        if ($f = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $familia = new FamiliaProfesional($f['id_familia'], $f['nombre']);
+        }
+
+        //Retornamos el objeto de la clase Familia
+        return $familia;
+    }
+
+    /**
      * @description Devuelve TODOS los objetos de las familias profesionales que hay en la base de datos
      */
     function devuelveFamilias() {
@@ -559,6 +581,45 @@ class Database {
             $stmt->bindParam(6, $dni);
             $stmt->bindParam(7, $email);
             $stmt->bindParam(8, $telefono);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function altaCiclo($id_ciclo, $id_familia, $id_tutor_c, $nombre) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sentencia = "INSERT INTO ciclo_formativo (id_ciclo, id_familia, id_tutor_c, nombre) VALUES (?,?,?,?)";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $id_ciclo);
+            $stmt->bindParam(2, $id_familia);
+            $stmt->bindParam(3, $id_tutor_c);
+            $stmt->bindParam(4, $nombre);
+
+            //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function bajaCiclo($nombre) {
+        try {
+            //Genero la consulta para realizar la inserción de los datos en la database
+            $sentencia = "DELETE FROM ciclo_formativo WHERE nombre = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable y le indicamos el tipo de dato
+            $stmt->bindParam(1, $nombre);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();

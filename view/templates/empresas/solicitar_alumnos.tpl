@@ -23,7 +23,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="ciclos_formativos"  class="col-md-4 control-label">Ciclo formativo</label>
+                                        <label for="ciclos_formativos"  class="col-md-4 control-label">Ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                                 <select name="ciclos" class="form-control selectpicker" required>
@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo</label>
+                                        <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo  <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                                 <input minlength="1" name="cantidad_alumnos" type="number" value="1" class="form-control" >
@@ -50,7 +50,7 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="proyecto" /><span style="font-size: 12px;"> El/los alumno/s que solicita SI podrán avanzar proyecto final de ciclo en {$nombre_empresa} durante el período que estén de prácticas.</span>
+                                                <input type="checkbox" name="proyecto" /><span style="font-size: 12px;"> El/los alumno/s que solicita SI podrán avanzar el proyecto final de ciclo en {$nombre_empresa} durante el período que estén de prácticas.</span>
                                             </div>
                                         </label>   
                                     </div>
@@ -60,7 +60,7 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy de acuerdo con solicitar al CPIFP Los Enlaces el número de alumnos arriba específicado.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy de acuerdo con solicitar al CPIFP Los Enlaces el número de alumnos arriba específicado.  <span style="color:red;">*</span></span>
                                             </div>
                                         </label>   
                                     </div>                

@@ -19,7 +19,7 @@
                 <h3 class="text-center" style="color: red; display: inline-block; font-weight: bold;">No se han realizado los cambios.</h3>
                 <h5 class="text-center" style="padding-top: 1%; color: red; display: inline-block;">La acción que se ha intentado realizar no se ha podido llevar a cabo, 
                     si cree que hay algún problema contacte con el administrador de la Aplicación Web en el siguiente e-mail: <strong><u>info@futurosprofesionales.com</u></strong></h5>
-                <h5 class="text-center" style="padding-top: 1%; color: red; display: inline-block;">Tenga en cuenta las reglas de integridad referencial, puede que sea el problema.</h5>
+                <h5 class="text-center" style="padding-top: 1%; color: red; display: inline-block;">Tenga en cuenta las reglas de integridad referencial, puede que ese sea el problema.</h5>
             </div>
         </div>
     </body>
