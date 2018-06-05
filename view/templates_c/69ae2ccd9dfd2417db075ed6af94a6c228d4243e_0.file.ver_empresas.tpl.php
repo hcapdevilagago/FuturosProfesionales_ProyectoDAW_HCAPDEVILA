@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 19:22:39
+/* Smarty version 3.1.32, created on 2018-06-05 19:31:22
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\ver_empresas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b16c6df4e42c5_95628404',
+  'unifunc' => 'content_5b16c8eaa53352_94424064',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '69ae2ccd9dfd2417db075ed6af94a6c228d4243e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\ver_empresas.tpl',
-      1 => 1528219321,
+      1 => 1528219879,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b16c6df4e42c5_95628404 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b16c8eaa53352_94424064 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -30,7 +30,7 @@ function content_5b16c6df4e42c5_95628404 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="container">
                         <div class="col-lg-9">
                             <div  id="cuadro" style="margin-top: 100px;">
-                                <h2 class="text-center">EMPRESAS REGISTRADAS EN LA BASE DE DATOS</h2><hr style="margin-bottom: 8%;"/>
+                                <h2>EMPRESAS REGISTRADAS EN LA BASE DE DATOS</h2><hr style="margin-bottom: 8%;"/>
                                 <table id="tabla" class="display" cellspacing="0" width="130%">
                                     <thead>
                                         <tr>

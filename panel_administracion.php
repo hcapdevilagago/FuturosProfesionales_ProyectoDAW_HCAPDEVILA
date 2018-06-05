@@ -51,15 +51,7 @@ if (isset($_SESSION['user'])) {
     //Asignamos el array de las solicitudes a una variable Smarty
     $plantilla->assign("solicitudes", $db->devuelveSolicitudes());
 
-    if ($u instanceof Alumno) {
-        //En el caso de que $u sea una instancia de Alumno
-        foreach ($ciclos as $ciclo) {
-            if ($ciclo->getId_ciclo() == $u->getId_ciclo()) {
-                //Asignamos el nombre del ciclo formativo que cursa el alumno a una variable Smarty
-                $plantilla->assign("ciclo_usuario", $ciclo->getNombre());
-            }
-        }
-    } else if ($u instanceof Empresa) {
+    if ($u instanceof Empresa) {
         //En el caso de que $u sea una instancia de Empresa
         foreach ($db->devuelveEmpresas() as $empresa) {
             if ($empresa->getId_empresa() == $u->getId_empresa()) {
@@ -70,12 +62,20 @@ if (isset($_SESSION['user'])) {
 
         //Asignamos el array de las solicitudes a una variable Smarty
         $plantilla->assign("solicitudes_empresa", $db->devuelveSolicitudesPorEmpresa($u->getId_empresa()));
-        
     } else if ($u instanceof TutorCentro) {
         //En el caso de que sea un tutor del centro educativo vamos a almacenar el valor del registro privilegios_admin
         $_SESSION['privilegios_admin'] = $u->getPrivilegios_admin();
         $plantilla->assign("privilegios_admin", $_SESSION['privilegios_admin']);
         $plantilla->assign("tutores", $db->devuelveTutoresCentro());
+        $tutor_ciclos = array();
+        foreach ($ciclos as $ciclo) {
+            //Añadimos al array los ciclos de los que está a cargo este tutor_centro
+            if ($ciclo->getId_tutor_c() == $u->getId_tutor_c()) {
+                array_push($tutor_ciclos, $ciclo->getId_ciclo());
+            }
+        }
+        //Asignamos el id del ciclo formativo que cursa el alumno a una variable Smarty
+        $plantilla->assign("tutor_ciclos", $tutor_ciclos);
     }
 
     //Almacenamos el valor de la tabla que hace referencia también al rol del usuario que se ha logueado

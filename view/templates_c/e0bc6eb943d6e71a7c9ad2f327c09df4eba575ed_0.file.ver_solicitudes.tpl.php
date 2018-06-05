@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 19:31:07
-  from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\ver_solicitudes.tpl' */
+/* Smarty version 3.1.32, created on 2018-06-05 19:47:47
+  from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\administrador\ver_solicitudes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b16c8db31d518_52309332',
+  'unifunc' => 'content_5b16ccc3ce65f2_79048945',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '3c23a191739859a7ffa03accf90479bd9a104fc7' => 
+    'e0bc6eb943d6e71a7c9ad2f327c09df4eba575ed' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\ver_solicitudes.tpl',
+      0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\administrador\\ver_solicitudes.tpl',
       1 => 1528219865,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b16c8db31d518_52309332 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b16ccc3ce65f2_79048945 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">

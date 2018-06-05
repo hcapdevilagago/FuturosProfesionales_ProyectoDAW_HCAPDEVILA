@@ -7,10 +7,10 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#tutores"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Tutores<i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="tutores" class="collapse">
                     <li>
-                        <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
+                        <a href="panel_administracion.php?accion=ver_solicitudes_tutor"><i class="fa fa-fw fa-eye"></i> Ver mis solicitudes</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
+                        <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-eye"></i> Ver empresas</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=modificar_tutor_centro"><i class="fa fa-fw fa-pencil"></i> Modificar tutor</a>
@@ -23,6 +23,9 @@
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#administrador"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Administrador<i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="administrador" class="collapse nav-second-level">
+                    <li>
+                        <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver todas solicitudes</a>
+                    </li>
                     <li>
                         <a href="panel_administracion.php?accion=alta_familia"><i class="fa fa-fw fa-graduation-cap"></i> Alta familia profesional</a>
                     </li>
@@ -50,7 +53,7 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#tutores"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Tutores<i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="tutores" class="collapse">
                     <li>
-                        <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
+                        <a href="panel_administracion.php?accion=ver_solicitudes_tutor"><i class="fa fa-fw fa-eye"></i> Ver solicitudes</a>
                     </li>
                     <li>
                         <a href="panel_administracion.php?accion=ver_empresas"><i class="fa fa-fw fa-trash"></i> Ver empresas</a>
@@ -80,8 +83,10 @@
     <div id="page-wrapper" style="height: 100%;">
         {if (isset($privilegios_admin) && $privilegios_admin == 1)}
             {if isset($smarty.get.accion)}
-                {if $smarty.get.accion eq 'ver_solicitudes'}
-                    {include file="centro/ver_solicitudes.tpl"}
+                {if $smarty.get.accion eq 'ver_solicitudes_tutor'}
+                    {include file="centro/ver_solicitudes_tutor.tpl"}
+                {elseif $smarty.get.accion eq 'ver_solicitudes'}
+                    {include file="administrador/ver_solicitudes.tpl"}
                 {elseif $smarty.get.accion eq 'modificar_tutor_centro'}
                     {include file="centro/modificar_tutor_centro.tpl"}
                 {elseif $smarty.get.accion eq 'baja_perfil'}
@@ -100,19 +105,21 @@
                     {include file="administrador/baja_empresa.tpl"}
                 {/if}
             {else}
-                {include file="centro/ver_solicitudes.tpl"}
+                {include file="centro/ver_solicitudes_tutor.tpl"}
             {/if}
         {else}
             {if isset($smarty.get.accion)}
-                {if $smarty.get.accion eq 'ver_solicitudes'}
-                    {include file="centro/ver_solicitudes.tpl"}
+                {if $smarty.get.accion eq 'ver_solicitudes_tutor'}
+                    {include file="centro/ver_solicitudes_tutor.tpl"}
+                {elseif $smarty.get.accion eq 'ver_empresas'}
+                    {include file="centro/ver_empresas.tpl"}
                 {elseif $smarty.get.accion eq 'modificar_tutor_centro'}
                     {include file="centro/modificar_tutor_centro.tpl"}
                 {elseif $smarty.get.accion eq 'baja_perfil'}
                     {include file="baja_perfil.tpl"}
                 {/if}
             {else}
-                {include file="centro/ver_solicitudes.tpl"}
+                {include file="centro/ver_solicitudes_tutor.tpl"}
             {/if}
         {/if}
     </div>

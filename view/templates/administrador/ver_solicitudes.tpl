@@ -6,9 +6,9 @@
                 <div class="select-boxes">
                     <div class="container">
                         <div class="col-lg-9">
-                            <div  id="cuadro" style="margin-top: 100px;">
-                                <h2 class="text-center">SOLICITUDES REGISTRADAS EN LA BASE DE DATOS</h2><hr style="margin-bottom: 8%;"/>
-                                <table id="tabla" class="display" cellspacing="0" width="130%">
+                            <div id="cuadro" style="margin-top: 100px;">
+                                <h2>SOLICITUDES REGISTRADAS EN LA BASE DE DATOS</h2><hr style="margin-bottom: 8%;"/>
+                                <table id="tabla" class="display" cellspacing="0" width="120%">
                                     <thead>
                                         <tr>
                                             <th>Empresa</th>
