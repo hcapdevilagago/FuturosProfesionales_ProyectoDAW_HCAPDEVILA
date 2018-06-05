@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 23:41:41
+/* Smarty version 3.1.32, created on 2018-06-05 00:56:36
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\administrador\baja_ciclo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b15b215911f78_41773371',
+  'unifunc' => 'content_5b15c3a4f10dc8_79077117',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4b79ee81f7a42e231e7a49cacce17a44014859e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\administrador\\baja_ciclo.tpl',
-      1 => 1528148497,
+      1 => 1528152993,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b15b215911f78_41773371 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b15c3a4f10dc8_79077117 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -57,7 +57,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del ciclo formativo seleccionado. También se eliminarán todos los alumnos y tutores del centro educativo que pertenezcan a este ciclo formativo.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del ciclo formativo seleccionado.<br/>También se eliminarán todos los alumnos y tutores del centro educativo que pertenezcan a este ciclo formativo.</span>
                                             </div>
                                         </label>   
                                     </div>                

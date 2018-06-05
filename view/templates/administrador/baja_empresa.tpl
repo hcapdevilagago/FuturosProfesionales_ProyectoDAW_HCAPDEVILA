@@ -26,7 +26,7 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja de la empresa colaboradora seleccionada. También se eliminarán todas las solicitudes de alumnos relacionadas con dicha empresa y los tutores de empresa que esta tenga.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja de la empresa colaboradora seleccionada.<br/>También se eliminarán todas las solicitudes de alumnos relacionadas con dicha empresa y los tutores de empresa que esta tenga.</span>
                                             </div>
                                         </label>
                                     </div>

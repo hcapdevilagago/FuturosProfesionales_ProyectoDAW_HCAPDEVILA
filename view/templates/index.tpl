@@ -39,7 +39,6 @@
                         <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>
                 </form>
                 <form id="form2" action="index.php" method="POST">
-{*                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR ALUMNO" class="btn btn-warning"/>*}
                     <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR EMPRESA" class="btn btn-warning"/>
                     <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
                 </form>

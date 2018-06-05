@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 23:39:34
+/* Smarty version 3.1.32, created on 2018-06-05 18:14:58
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\registrar_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b15b1969dfb43_55746808',
+  'unifunc' => 'content_5b16b702c0a890_40533076',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0d2592d3d847b73b2214600b784b9bbc6969f233' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\registrar_empresa.tpl',
-      1 => 1528129114,
+      1 => 1528215294,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b15b1969dfb43_55746808 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b16b702c0a890_40533076 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -80,7 +80,7 @@ function content_5b15b1969dfb43_55746808 (Smarty_Internal_Template $_smarty_tpl)
                     </label>
                     <label class="form-input">
                         <input maxlength="50" type="text" name="horario" placeholder="Por favor, siga el siguiente formato: L-V (09:00H-18:00H)" style="text-align: center;" required/>
-                        <span class="label">HORARIO LABORAL <span style="color:red;">*</span></span>
+                        <span class="label">HORARIO <span style="color:red;">*</span></span>
                         <div class="underline"></div>
                     </label>
                     <label class="form-input">

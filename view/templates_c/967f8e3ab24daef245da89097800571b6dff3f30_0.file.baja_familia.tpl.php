@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 19:04:50
+/* Smarty version 3.1.32, created on 2018-06-05 00:57:34
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\administrador\baja_familia.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b157132aedd82_79240683',
+  'unifunc' => 'content_5b15c3ded005a8_72886059',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '967f8e3ab24daef245da89097800571b6dff3f30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\administrador\\baja_familia.tpl',
-      1 => 1528131546,
+      1 => 1528153047,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b157132aedd82_79240683 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b15c3ded005a8_72886059 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -57,7 +57,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja de la familia profesional seleccionada. También se eliminarán todas las solicitudes y todos los ciclos formativos relacionados con esta familia profesional.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja de la familia profesional seleccionada.<br/>También se eliminarán todas las solicitudes y todos los ciclos formativos relacionados con esta familia profesional.</span>
                                             </div>
                                         </label>   
                                     </div>                

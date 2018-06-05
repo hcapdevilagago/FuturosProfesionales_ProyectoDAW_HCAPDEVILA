@@ -1,6 +1,6 @@
 <div style="padding: 5%">
     <div>
-        <h4 class="text-center" style="color: red; font-weight: bold;">MENSAJE INFORMATIVO DE LA APLICACIÓN WEB</h4><hr/>
+        <h4 class="text-center" style="color: red; font-weight: bold;">MENSAJE DE ERROR DE LA APLICACIÓN WEB</h4><hr/>
         <img src="images/logo1.png" height="20%" width="20%" style="margin-left: auto; margin-right: auto; display: block;"/>
     </div>
     <div class="text-center" style="margin-top: 2%;">

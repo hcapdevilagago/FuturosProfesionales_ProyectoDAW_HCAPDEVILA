@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 00:48:28
+/* Smarty version 3.1.32, created on 2018-06-05 00:57:02
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\administrador\baja_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b15c1bc592785_67080490',
+  'unifunc' => 'content_5b15c3be259fc3_92731751',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7a8b46b5a0f0e838a63a1d3f83481d0ee8c1e642' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\administrador\\baja_empresa.tpl',
-      1 => 1528152503,
+      1 => 1528153019,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b15c1bc592785_67080490 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b15c3be259fc3_92731751 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -57,10 +57,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja de la empresa colaboradora seleccionada. También se eliminarán todas las solicitudes de alumnos relacionadas con dicha empresa y los tutores de empresa que esta tenga.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja de la empresa colaboradora seleccionada.<br/>También se eliminarán todas las solicitudes de alumnos relacionadas con dicha empresa y los tutores de empresa que esta tenga.</span>
                                             </div>
-                                        </label>   
-                                    </div>                
+                                        </label>
+                                    </div>
                                     <div class="form-group text-center">
                                         <label class="col-md-4 control-label"></label>
                                         <div class="col-md-4">                                            

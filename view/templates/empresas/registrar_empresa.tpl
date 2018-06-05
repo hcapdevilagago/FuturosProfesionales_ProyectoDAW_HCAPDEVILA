@@ -53,7 +53,7 @@
                     </label>
                     <label class="form-input">
                         <input maxlength="50" type="text" name="horario" placeholder="Por favor, siga el siguiente formato: L-V (09:00H-18:00H)" style="text-align: center;" required/>
-                        <span class="label">HORARIO LABORAL <span style="color:red;">*</span></span>
+                        <span class="label">HORARIO <span style="color:red;">*</span></span>
                         <div class="underline"></div>
                     </label>
                     <label class="form-input">

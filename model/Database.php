@@ -4,7 +4,7 @@
  * Clase Modelo de la Database que se encarga de la gestión completa de la base de datos de la Aplicación Web Futuros Profesionales
  * 
  * Fecha de creación: 12/05/2018
- * Fecha de modificación: 12/05/2018
+ * Fecha de modificación: 31/05/2018
  * 
  * Proyecto Fin de Ciclo de Grado Superior - Desarrollo de Aplicaciones Web
  * Tutora de 2º DAW: Teresa Martínez Suñer
@@ -18,6 +18,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAP
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/FamiliaProfesional.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/CicloFormativo.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Empresa.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Solicitud.php');
 
 //Iniciamos la sesión para poder utilizar las variables de este ámbito en esta clase
 session_start();
@@ -127,6 +128,55 @@ class Database {
         }
 
         //Retornamos el array con los objetos de cada empresa
+        return $array_objetos;
+    }
+
+    /**
+     * @description Devuelve TODOS los objetos de las solicitudes que hay registradas en la base de datos de la empresa pasada como parámetro
+     */
+    function devuelveSolicitudesPorEmpresa($id_empresa) {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a las solicitudes que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM solicitud WHERE id_empresa = ?");
+        
+        //Preparamos la sentencia parametrizada
+        $consulta->bindParam(1, $id_empresa);
+        
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        while ($s = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            //Creamos un nuevo objeto con los datos de una solicitud y lo vamos añadiendo al array de objetos
+            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['observaciones'], $s['proyecto']);
+            $array_objetos->append($solicitud);
+        }
+
+        //Retornamos el array con los objetos de cada solicitud
+        return $array_objetos;
+    }
+
+    /**
+     * @description Devuelve TODOS los objetos de las solicitudes que hay registradas en la base de datos
+     */
+    function devuelveSolicitudes() {
+        //Generamos un Array en el que almacenaremos objetos que harán referencia a las solicitudes que hay en la base de datos
+        $array_objetos = new ArrayObject();
+
+        //Preparamos la sentencia, nos devolverá la consulta
+        $consulta = $this->conexion->prepare("SELECT * FROM solicitud");
+
+        //Ejecutamos la consulta
+        $consulta->execute();
+
+        while ($s = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            //Creamos un nuevo objeto con los datos de una solicitud y lo vamos añadiendo al array de objetos
+            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['actividad'], $s['observaciones'], $s['proyecto']);
+            $array_objetos->append($solicitud);
+        }
+
+        //Retornamos el array con los objetos de cada solicitud
         return $array_objetos;
     }
 
@@ -738,8 +788,8 @@ class Database {
             $stmt->bindParam(1, $id_empresa);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
-            $stmt->execute();            
-            
+            $stmt->execute();
+
             //Genero la consulta para realizar el borrado de los datos en la database
             $sentencia = "DELETE FROM empresa WHERE id_empresa = ?";
 
@@ -885,10 +935,10 @@ class Database {
      * @param string $observaciones hace referencia a una pequeña descripción de lo que busca la empresa y lo que harán los alumnos
      * @param boolean $proyecto hace referencia a que si en la empresa van a permitir al alumno hacer el proyecto mientras hace las prácticas
      */
-    function altaSolicitud($id_ciclo, $id_empresa, $cantidad_alumnos, $observaciones, $proyecto) {
+    function altaSolicitud($id_ciclo, $id_empresa, $cantidad_alumnos, $actividad, $observaciones, $proyecto) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO solicitud (id_ciclo, id_empresa, cantidad_alumnos, fecha_creacion, observaciones, proyecto) VALUES (?,?,?,NOW(),?,?)";
+            $sentencia = "INSERT INTO solicitud (id_ciclo, id_empresa, cantidad_alumnos, fecha_creacion, actividad, observaciones, proyecto) VALUES (?,?,?,NOW(),?,?,?)";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
@@ -897,8 +947,9 @@ class Database {
             $stmt->bindParam(1, $id_ciclo);
             $stmt->bindParam(2, $id_empresa);
             $stmt->bindParam(3, $cantidad_alumnos);
-            $stmt->bindParam(4, $observaciones);
-            $stmt->bindParam(5, $proyecto);
+            $stmt->bindParam(4, $actividad);
+            $stmt->bindParam(5, $observaciones);
+            $stmt->bindParam(6, $proyecto);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();

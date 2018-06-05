@@ -6,32 +6,45 @@
                 <div class="select-boxes">
                     <div class="container">
                         <div class="col-lg-9">
-                            <br /><br />
-                            <form class="form-horizontal" action=" " method="POST"  id="reg_form">
-                                <fieldset>
-                                    <legend class="text-center">VER SOLICITUDES DE ALUMNOS REALIZADAS POR LAS EMPRESAS</legend>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                </fieldset>
-                            </form>
+                            <div  id="cuadro" style="margin-top: 100px;">
+                                <h2 class="text-center">SOLICITUDES REGISTRADAS EN LA BASE DE DATOS</h2><hr style="margin-bottom: 8%;"/>
+                                <table id="tabla" class="display" cellspacing="0" width="130%">
+                                    <thead>
+                                        <tr>
+                                            <th>Empresa</th>
+                                            <th>Ciclo</th>
+                                            <th>Cantidad alumnos</th>
+                                            <th>Fecha</th>
+                                            <th>Actividad</th>
+                                            <th>Observaciones</th>
+                                            <th>Proyecto</th>
+                                        </tr>
+                                    </thead>
+                                    {foreach $solicitudes as $solicitud}
+                                        <tr>
+                                            <th>
+                                                {foreach $empresas as $empresa}
+                                                    {if $empresa->getId_empresa() eq $solicitud->getId_empresa()}
+                                                        {$empresa->getNombre()}
+                                                    {/if}
+                                                {/foreach}
+                                            </th>
+                                            <th>
+                                                {foreach $ciclos as $ciclo}
+                                                    {if $solicitud->getId_ciclo() eq $ciclo->getId_ciclo()}
+                                                        {$ciclo->getNombre()}
+                                                    {/if}
+                                                {/foreach}
+                                            </th>
+                                            <th>{$solicitud->getCantidad_alumnos()}</th>
+                                            <th>{$solicitud->getFecha_creacion()}</th>
+                                            <th>{$solicitud->getActividad()}</th>
+                                            <th>{$solicitud->getObservaciones()}</th>
+                                            <th>{if $solicitud->getProyecto() == 0}<input type="checkbox" disabled/>{else}<input type="checkbox" checked disabled/>{/if}</th>
+                                        </tr>
+                                    {/foreach}
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -87,7 +87,7 @@
                 {elseif $smarty.get.accion eq 'baja_perfil'}
                     {include file="baja_perfil.tpl"}
                 {elseif $smarty.get.accion eq 'ver_empresas'}
-                    {include file="alumnos/ver_empresas.tpl"}
+                    {include file="centro/ver_empresas.tpl"}
                 {elseif $smarty.get.accion eq 'alta_familia'}
                     {include file="administrador/alta_familia.tpl"}
                 {elseif $smarty.get.accion eq 'baja_familia'}

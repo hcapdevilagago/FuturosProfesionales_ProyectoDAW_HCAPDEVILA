@@ -21,18 +21,20 @@ class Solicitud {
     private $id_empresa;
     private $cantidad_alumnos;
     private $fecha_creacion;
+    private $actividad;
     private $observaciones;
     private $proyecto;
 
     /**
      * @description Este constructor es invocado a la hora de realizar una instancia de un nuevo objeto new Solicitud()
      */
-    function __construct($id_solicitud, $id_ciclo, $id_empresa, $cantidad_alumnos, $fecha_creacion, $observaciones, $proyecto) {
+    function __construct($id_solicitud, $id_ciclo, $id_empresa, $cantidad_alumnos, $fecha_creacion, $actividad, $observaciones, $proyecto) {
         $this->id_solicitud = $id_solicitud;
         $this->id_ciclo = $id_ciclo;
         $this->id_empresa = $id_empresa;
         $this->cantidad_alumnos = $cantidad_alumnos;
         $this->fecha_creacion = $fecha_creacion;
+        $this->actividad = $actividad;
         $this->observaciones = $observaciones;
         $this->proyecto = $proyecto;
     }
@@ -55,6 +57,10 @@ class Solicitud {
 
     function getFecha_creacion() {
         return $this->fecha_creacion;
+    }
+
+    function getActividad() {
+        return $this->actividad;
     }
 
     function getObservaciones() {
@@ -83,6 +89,10 @@ class Solicitud {
 
     function setFecha_creacion($fecha_creacion) {
         $this->fecha_creacion = $fecha_creacion;
+    }
+
+    function setActividad($actividad) {
+        $this->actividad = $actividad;
     }
 
     function setObservaciones($observaciones) {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 13:59:59
+/* Smarty version 3.1.32, created on 2018-06-05 18:10:49
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b1529bfc6b665_98607305',
+  'unifunc' => 'content_5b16b609680ad9_95073718',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb3c58294693ee4041554167a5deca7487cd14b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
-      1 => 1528113595,
+      1 => 1528214812,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b1529bfc6b665_98607305 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b16b609680ad9_95073718 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!--
 ******************************************************************

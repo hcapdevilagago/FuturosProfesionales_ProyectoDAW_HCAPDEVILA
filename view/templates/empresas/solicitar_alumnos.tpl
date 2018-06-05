@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo  <span style="color:red;">*</span></label>
+                                        <label for="cantidad"  class="col-md-4 control-label">Cantidad de alumnos formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">
                                             <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                 <input minlength="1" name="cantidad_alumnos" type="number" value="1" class="form-control" >
@@ -50,21 +50,19 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="proyecto" /><span style="font-size: 12px;"> El/los alumno/s que solicita SI podrán avanzar el proyecto final de ciclo en {$nombre_empresa} durante el período que estén de prácticas.</span>
+                                                <input type="checkbox" name="proyecto" /><span style="font-size: 12px;"> Posibilidad de realizar el proyecto final de ciclo en {$nombre_empresa} durante el período de prácticas.</span>
                                             </div>
-                                        </label>   
+                                        </label>
                                     </div>
                                     <div class="form-group text-center" style="margin: 0 auto; margin-top: 1%; width: 80%;">
-                                        <textarea maxlength="1500" name="observaciones" placeholder="Indique cualquier observación oportuna que quiera dejar reflejada en su solicitud, por ejemplo las actividades que van a desarrollar el/los alumno/s que solicitan." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <label class="col-md-4 control-label">Actividades a realizar <span style="color:red;">*</span></label>
+                                        <textarea maxlength="200" name="actividad" placeholder="Indique aquí las actividades que los alumnos realizarán en el período de prácticas." class="form-control" rows="2" required></textarea>
                                     </div>
-                                    <div class="form-group has-feedback text-center">
-                                        <label>
-                                            <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy de acuerdo con solicitar al CPIFP Los Enlaces el número de alumnos arriba específicado.  <span style="color:red;">*</span></span>
-                                            </div>
-                                        </label>   
-                                    </div>                
-                                    <div class="form-group text-center">
+                                    <div class="form-group text-center" style="margin: 0 auto; margin-top: 1%; width: 80%;">
+                                        <label class="col-md-4 control-label">Observaciones </label>
+                                        <textarea maxlength="1500" name="observaciones" placeholder="Escriba cualquier observación oportuna que quiera dejar reflejada en su solicitud." class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group text-center" style="margin-top: 4%;">
                                         <label class="col-md-4 control-label"></label>
                                         <div class="col-md-4">                                            
                                             <button type="submit" name="solicitar" class="btn btn-success" style="margin-top: 1%; display: inline-block; width: 300px;"><span class="glyphicon glyphicon-send"></span> SOLICITAR ALUMNOS</button>

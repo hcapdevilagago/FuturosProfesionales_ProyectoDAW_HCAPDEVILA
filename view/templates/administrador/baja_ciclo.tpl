@@ -26,7 +26,7 @@
                                     <div class="form-group has-feedback text-center">
                                         <label>
                                             <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del ciclo formativo seleccionado. También se eliminarán todos los alumnos y tutores del centro educativo que pertenezcan a este ciclo formativo.</span>
+                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del ciclo formativo seleccionado.<br/>También se eliminarán todos los alumnos y tutores del centro educativo que pertenezcan a este ciclo formativo.</span>
                                             </div>
                                         </label>   
                                     </div>                

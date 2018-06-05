@@ -48,6 +48,9 @@ if (isset($_SESSION['user'])) {
     //Asignamos el array de las empresas a una variable Smarty
     $plantilla->assign("empresas", $db->devuelveEmpresas());
 
+    //Asignamos el array de las solicitudes a una variable Smarty
+    $plantilla->assign("solicitudes", $db->devuelveSolicitudes());
+
     if ($u instanceof Alumno) {
         //En el caso de que $u sea una instancia de Alumno
         foreach ($ciclos as $ciclo) {
@@ -64,6 +67,10 @@ if (isset($_SESSION['user'])) {
                 $plantilla->assign("nombre_empresa", $empresa->getNombre());
             }
         }
+
+        //Asignamos el array de las solicitudes a una variable Smarty
+        $plantilla->assign("solicitudes_empresa", $db->devuelveSolicitudesPorEmpresa($u->getId_empresa()));
+        
     } else if ($u instanceof TutorCentro) {
         //En el caso de que sea un tutor del centro educativo vamos a almacenar el valor del registro privilegios_admin
         $_SESSION['privilegios_admin'] = $u->getPrivilegios_admin();
@@ -175,7 +182,7 @@ if (isset($_SESSION['user'])) {
             }
 
             //Damos de alta la solicitud de alumnos
-            $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['observaciones'], $proyecto);
+            $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['actividad'], $_POST['observaciones'], $proyecto);
         } else {
             $_SESSION['error'] = true;
         }
@@ -218,7 +225,7 @@ if (isset($_SESSION['user'])) {
     } else if (isset($_POST['baja_empresa'])) {
         //Rescatamos la empresa seleccionada que se quiere dar de baja
         $e = $db->devuelveEmpresa($_POST['empresas']);
-        
+
         //Damos de baja la empresa colaboradora
         $db->bajaEmpresa($e->getId_empresa());
 

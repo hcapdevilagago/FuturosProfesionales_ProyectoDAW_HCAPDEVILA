@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 00:42:07
+/* Smarty version 3.1.32, created on 2018-06-05 18:08:26
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\menu_tutor_centro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b15c03f97aa88_51324329',
+  'unifunc' => 'content_5b16b57a6b1b02_65346181',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d522f66b4e46b82f1e7979fbd60c2780ebde536' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\menu_tutor_centro.tpl',
-      1 => 1528152116,
+      1 => 1528214733,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:centro/ver_solicitudes.tpl' => 4,
     'file:centro/modificar_tutor_centro.tpl' => 2,
     'file:baja_perfil.tpl' => 2,
-    'file:alumnos/ver_empresas.tpl' => 1,
+    'file:centro/ver_empresas.tpl' => 1,
     'file:administrador/alta_familia.tpl' => 1,
     'file:administrador/baja_familia.tpl' => 1,
     'file:administrador/alta_ciclo.tpl' => 1,
@@ -30,7 +30,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:administrador/baja_empresa.tpl' => 1,
   ),
 ),false)) {
-function content_5b15c03f97aa88_51324329 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b16b57a6b1b02_65346181 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
     <!-- Panel navegación izquierdo -->
@@ -123,7 +123,7 @@ function content_5b15c03f97aa88_51324329 (Smarty_Internal_Template $_smarty_tpl)
                     <?php $_smarty_tpl->_subTemplateRender("file:baja_perfil.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
                 <?php } elseif ($_GET['accion'] == 'ver_empresas') {?>
-                    <?php $_smarty_tpl->_subTemplateRender("file:alumnos/ver_empresas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                    <?php $_smarty_tpl->_subTemplateRender("file:centro/ver_empresas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
                 <?php } elseif ($_GET['accion'] == 'alta_familia') {?>
                     <?php $_smarty_tpl->_subTemplateRender("file:administrador/alta_familia.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
