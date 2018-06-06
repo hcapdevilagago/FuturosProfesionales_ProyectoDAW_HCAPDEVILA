@@ -83,31 +83,39 @@ if (isset($_SESSION['user'])) {
             //Identificamos el rol del usuario logueado
             case "empresa":
                 $nombre = $_POST['nombre'];
-                $cif = $_POST['cif'];
+                $cif = strtoupper($_POST['cif']);
                 $direccion_fiscal = $_POST['direccion_fiscal'];
-                $telefono = $_POST['telefono'];
-                $email = $_POST['email'];
-                $horario = $_POST['horario'];
-                $representante_nombre = $_POST['representante_nombre'];
-                $representante_dni = $_POST['representante_dni'];
-                $descripcion = $_POST['descripcion'];
-                $actividad = $_POST['actividad'];
-                $id_empresa = $u->getId_empresa();
-                //Modificamos el perfil del usuario de dicho rol
-                $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
-                //Recargamos la página para que se vea afectada en los datos del perfil de usuario
-                header("Location: panel_administracion.php");
+                if (is_numeric($_POST['telefono'])) {
+                    $telefono = $_POST['telefono'];
+                    $email = $_POST['email'];
+                    $horario = $_POST['horario'];
+                    $representante_nombre = $_POST['representante_nombre'];
+                    $representante_dni = strtoupper($_POST['representante_dni']);
+                    $descripcion = $_POST['descripcion'];
+                    $actividad = $_POST['actividad'];
+                    $id_empresa = $u->getId_empresa();
+                    //Modificamos el perfil del usuario de dicho rol
+                    $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
+                    //Recargamos la página para que se vea afectada en los datos del perfil de usuario
+                    header("Location: panel_administracion.php");
+                } else {
+                    $_SESSION['error'] = true;
+                }
                 break;
             case "tutor_centro":
                 $id = $u->getId_tutor_c();
                 $nombre = $_POST['nombre'];
-                $dni = $_POST['dni'];
+                $dni = strtoupper($_POST['dni']);
                 $email = $_POST['email'];
-                $telefono = $_POST['telefono'];
-                //Modificamos el perfil del usuario de dicho rol
-                $db->modificaTutorCentro($id, $nombre, $dni, $email, $telefono);
-                //Recargamos la página para que se vea afectada en los datos del perfil de usuario
-                header("Location: panel_administracion.php");
+                if (is_numeric($_POST['telefono'])) {
+                    $telefono = $_POST['telefono'];
+                    //Modificamos el perfil del usuario de dicho rol
+                    $db->modificaTutorCentro($id, $nombre, $dni, $email, $telefono);
+                    //Recargamos la página para que se vea afectada en los datos del perfil de usuario
+                    header("Location: panel_administracion.php");
+                } else {
+                    $_SESSION['error'] = true;
+                }
                 break;
         }
     } else if (isset($_POST['baja'])) {
@@ -177,18 +185,22 @@ if (isset($_SESSION['user'])) {
         $user = $_POST['user'];
         $pass = sha1($_POST['pass']);
         $nombre = $_POST['nombre'];
-        $dni = $_POST['dni'];
+        $dni = strtoupper($_POST['dni']);
         $email = $_POST['email'];
-        $telefono = $_POST['telefono'];
-        if (isset($_POST['privilegios_admin'])) {
-            $privilegios_admin = 1;
+        if (is_numeric($_POST['telefono'])) {
+            $telefono = $_POST['telefono'];
+            if (isset($_POST['privilegios_admin'])) {
+                $privilegios_admin = 1;
+            } else {
+                $privilegios_admin = 0;
+            }
+            //Damos de alta el nuevo tutor del centro educativo
+            $db->altaTutorCentro($user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin);
+            //Recargamos la página para que se vea afectada la alta del nuevo tutor del centro educativo en la plataforma
+            header("Location: panel_administracion.php");
         } else {
-            $privilegios_admin = 0;
+            $_SESSION['error'] = true;
         }
-        //Damos de alta el nuevo tutor del centro educativo
-        $db->altaTutorCentro($user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin);
-        //Recargamos la página para que se vea afectada la alta del nuevo tutor del centro educativo en la plataforma
-        header("Location: panel_administracion.php");
     } else if (isset($_POST['baja_tutor'])) {
         //Rescatamos el objeto del tutor del centro que se desea dar de baja
         $t = $db->devuelveTutorCentro($_POST['tutores']);
