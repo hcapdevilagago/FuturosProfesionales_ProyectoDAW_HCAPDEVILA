@@ -4,11 +4,11 @@
         <div class="w3-col l12 s12">
             <div class="w3-container w3-white w3-margin w3-padding-large">
                 <div class="select-boxes">
-                    <div class="container">
+                    <h2 class="text-center" style="margin-top: 6%;">EMPRESAS REGISTRADAS EN LA BASE DE DATOS</h2><hr/>
+                    <div class="container">                                     
                         <div class="col-lg-9">
-                            <div  id="cuadro" style="margin-top: 100px;">
-                                <h2>EMPRESAS REGISTRADAS EN LA BASE DE DATOS</h2><hr style="margin-bottom: 8%;"/>
-                                <table id="tabla" class="display" cellspacing="0" width="130%">
+                            <div id="cuadro">
+                                <table id="tabla" class="display centerTable" cellspacing="0" width="130%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>

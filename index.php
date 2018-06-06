@@ -19,9 +19,6 @@ session_start();
 //Creamos un nuevo objeto de la clase Database
 $db = new Database();
 
-//Asignamos el array de las familias profesionales a una variable Smarty
-$plantilla->assign("familias", $db->devuelveFamilias());
-
 //Asignamos el array de los ciclos formativos a una variable Smarty
 $plantilla->assign("ciclos", $db->devuelveCiclos());
 

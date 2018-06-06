@@ -27,20 +27,16 @@
                         <a href="panel_administracion.php?accion=ver_solicitudes"><i class="fa fa-fw fa-eye"></i> Ver todas solicitudes</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=alta_familia"><i class="fa fa-fw fa-graduation-cap"></i> Alta familia profesional</a>
-                    </li>
-
-                    <li>
                         <a href="panel_administracion.php?accion=alta_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Alta ciclo formativo</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=baja_familia"><i class="fa fa-fw fa-graduation-cap"></i> Baja familia profesional</a>
+                        <a href="panel_administracion.php?accion=baja_ciclo"><i class="fa fa-fw fa-trash"></i> Baja ciclo formativo</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=baja_ciclo"><i class="fa fa-fw fa-graduation-cap"></i> Baja ciclo formativo</a>
+                        <a href="panel_administracion.php?accion=alta_tutor_centro"><i class="fa fa-fw fa-graduation-cap"></i> Alta tutor centro</a>
                     </li>
                     <li>
-                        <a href="panel_administracion.php?accion=baja_empresa"><i class="fa fa-fw fa-graduation-cap"></i> Baja empresa</a>
+                        <a href="panel_administracion.php?accion=baja_tutor_centro"><i class="fa fa-fw fa-trash"></i> Baja tutor centro</a>
                     </li>
                 </ul>
             </li>
@@ -101,8 +97,10 @@
                     {include file="administrador/alta_ciclo.tpl"}
                 {elseif $smarty.get.accion eq 'baja_ciclo'}
                     {include file="administrador/baja_ciclo.tpl"}
-                {elseif $smarty.get.accion eq 'baja_empresa'}
-                    {include file="administrador/baja_empresa.tpl"}
+                {elseif $smarty.get.accion eq 'alta_tutor_centro'}
+                    {include file="administrador/alta_tutor_centro.tpl"}
+                {elseif $smarty.get.accion eq 'baja_tutor_centro'}
+                    {include file="administrador/baja_tutor_centro.tpl"}
                 {/if}
             {else}
                 {include file="centro/ver_solicitudes_tutor.tpl"}

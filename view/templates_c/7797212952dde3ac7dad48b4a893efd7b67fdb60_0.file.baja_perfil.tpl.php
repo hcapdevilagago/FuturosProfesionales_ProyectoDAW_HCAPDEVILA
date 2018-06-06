@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 17:57:07
+/* Smarty version 3.1.32, created on 2018-06-06 00:26:06
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\baja_perfil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b156153ad9c75_75631168',
+  'unifunc' => 'content_5b170dfe963591_43443047',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7797212952dde3ac7dad48b4a893efd7b67fdb60' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\baja_perfil.tpl',
-      1 => 1528127823,
+      1 => 1528237564,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b156153ad9c75_75631168 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b170dfe963591_43443047 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -57,15 +57,15 @@ function content_5b156153ad9c75_75631168 (Smarty_Internal_Template $_smarty_tpl)
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group has-feedback text-center">
-                                        <label>
-                                            <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del perfil de <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['nombre']->value, 'UTF-8');?>
- con rol <?php echo (mb_strtoupper($_smarty_tpl->tpl_vars['rol']->value, 'UTF-8'));?>
-.<br/><?php if ($_smarty_tpl->tpl_vars['rol']->value == 'empresa') {?>También se eliminarán las solicitudes de alumnos realizadas por esta empresa, y sus tutores registrados en la base de datos.<?php } else { ?>También se eliminarán todos los alumnos que tengan a este usuario como tutor del centro educativo.<?php }?></span>
+                                    <div class="row" style="margin: 3%;">
+                                        <div class="col-lg-12">
+                                            <div class="alert alert-info alert-dismissable">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                <i class="fa fa-info-circle"></i> <strong><?php if ($_smarty_tpl->tpl_vars['rol']->value == 'empresa') {?>Se eliminarán las solicitudes de alumnos realizadas por esta empresa que estén registradas en la base de datos.<?php } else { ?>Se eliminarán todas las solicitudes y ciclos que estén tutorizados por <?php echo $_smarty_tpl->tpl_vars['nombre']->value;?>
+.<?php }?></span></strong>
                                             </div>
-                                        </label>   
-                                    </div>                
+                                        </div>
+                                    </div>
                                     <div class="form-group text-center">
                                         <label class="col-md-4 control-label"></label>
                                         <div class="col-md-4">                                            

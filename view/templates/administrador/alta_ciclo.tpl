@@ -10,19 +10,6 @@
                             <form class="form-horizontal" action=" " method="POST"  id="reg_form">
                                 <fieldset>
                                     <legend class="text-center">ALTA CICLO FORMATIVO</legend>
-                                    <div class="form-group has-feedback">
-                                        <label for="ciclos_formativos"  class="col-md-4 control-label">Familia profesional <span style="color:red;">*</span></label>
-                                        <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                                <select name="familias" class="form-control selectpicker" required>
-                                                    <option value=" ">Por favor, seleccione una familia profesional</option>
-                                                    {foreach $familias as $familia}
-                                                        <option>{$familia->getNombre()}</option>
-                                                    {/foreach}
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Identificador del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">

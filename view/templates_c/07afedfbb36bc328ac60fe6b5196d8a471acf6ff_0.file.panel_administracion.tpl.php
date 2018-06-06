@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 18:08:54
+/* Smarty version 3.1.32, created on 2018-06-06 04:18:43
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\panel_administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b16b596848a43_51210824',
+  'unifunc' => 'content_5b174483397061_83350299',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07afedfbb36bc328ac60fe6b5196d8a471acf6ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\panel_administracion.tpl',
-      1 => 1528214927,
+      1 => 1528251520,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:centro/menu_tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b16b596848a43_51210824 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b174483397061_83350299 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -68,7 +68,7 @@ function content_5b16b596848a43_51210824 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="icon-bar"></span>
                     </button>
                     <img src="./images/logo4.png" style="float: left; padding-top:0.5%; padding-bottom: -5%;" height="4%" width="4%"/>
-                    <a class="navbar-brand" href="panel_administracion.php" >Conectad@, <?php echo $_smarty_tpl->tpl_vars['nombre']->value;?>
+                    <a class="navbar-brand" href="panel_administracion.php" >Conectad@, <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['nombre']->value, 'UTF-8');?>
 </a>
                 </div>
                 <!-- Mensajería de la aplicación -->

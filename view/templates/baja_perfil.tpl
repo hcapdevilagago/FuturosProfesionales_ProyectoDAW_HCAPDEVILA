@@ -32,13 +32,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group has-feedback text-center">
-                                        <label>
-                                            <div style="margin-top: 1%;">
-                                                <input type="checkbox" name="terminos" value="términos_y_condiciones" required/><span style="font-size: 12px;"> Estoy seguro, y soy consciente de que se va a proceder con la baja del perfil de {$nombre|upper} con rol {($rol|upper)}.<br/>{if $rol eq 'empresa'}También se eliminarán las solicitudes de alumnos realizadas por esta empresa, y sus tutores registrados en la base de datos.{else}También se eliminarán todos los alumnos que tengan a este usuario como tutor del centro educativo.{/if}</span>
+                                    <div class="row" style="margin: 3%;">
+                                        <div class="col-lg-12">
+                                            <div class="alert alert-info alert-dismissable">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                <i class="fa fa-info-circle"></i> <strong>{if $rol eq 'empresa'}Se eliminarán las solicitudes de alumnos realizadas por esta empresa que estén registradas en la base de datos.{else}Se eliminarán todas las solicitudes y ciclos que estén tutorizados por {$nombre}.{/if}</span></strong>
                                             </div>
-                                        </label>   
-                                    </div>                
+                                        </div>
+                                    </div>
                                     <div class="form-group text-center">
                                         <label class="col-md-4 control-label"></label>
                                         <div class="col-md-4">                                            

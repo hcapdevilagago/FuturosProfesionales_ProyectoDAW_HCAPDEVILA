@@ -1,7 +1,6 @@
 <?php
 
 //Cargamos las clases en el caso de que no hayan sido cargadas antes
-//require_once ('Smarty.class.php');
 require_once ('SmartyBC.class.php');
 require_once ('./model/Database.php');
 
@@ -37,9 +36,6 @@ if (isset($_SESSION['user'])) {
     //Asignamos el objeto del usuario a una variable Smarty
     $plantilla->assign("usuario", $u);
 
-    //Asignamos el array de las familias profesionales a una variable Smarty
-    $plantilla->assign("familias", $db->devuelveFamilias());
-
     $ciclos = $db->devuelveCiclos();
 
     //Asignamos el array de los ciclos formativos a una variable Smarty
@@ -74,6 +70,7 @@ if (isset($_SESSION['user'])) {
                 array_push($tutor_ciclos, $ciclo->getId_ciclo());
             }
         }
+
         //Asignamos el id del ciclo formativo que cursa el alumno a una variable Smarty
         $plantilla->assign("tutor_ciclos", $tutor_ciclos);
     }
@@ -96,7 +93,6 @@ if (isset($_SESSION['user'])) {
                 $descripcion = $_POST['descripcion'];
                 $actividad = $_POST['actividad'];
                 $id_empresa = $u->getId_empresa();
-
                 //Modificamos el perfil del usuario de dicho rol
                 $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
                 //Recargamos la página para que se vea afectada en los datos del perfil de usuario
@@ -108,22 +104,10 @@ if (isset($_SESSION['user'])) {
                 $dni = $_POST['dni'];
                 $email = $_POST['email'];
                 $telefono = $_POST['telefono'];
-
                 //Modificamos el perfil del usuario de dicho rol
                 $db->modificaTutorCentro($id, $nombre, $dni, $email, $telefono);
                 //Recargamos la página para que se vea afectada en los datos del perfil de usuario
                 header("Location: panel_administracion.php");
-                break;
-            case "alumno":
-//                $id_tutor = $u->getId_tutor_e();
-//                $empresa = $db->devuelveEmpresa($_POST['empresa']);
-//                $usuario = $_POST['usuario'];
-//                $nombre = $_POST['nombre'];
-//                $dni = $_POST['dni'];
-//                $email = $_POST['email'];
-//                $tel = $_POST['tel'];
-//                $db->modificaTutorEmpresa($id_tutor, $usuario, $nombre, $dni, $email, $tel);
-//                $_SESSION['user'] = $usuario;
                 break;
         }
     } else if (isset($_POST['baja'])) {
@@ -158,16 +142,6 @@ if (isset($_SESSION['user'])) {
                     $_SESSION['error'] = true;
                 }
                 break;
-            case "alumno":
-                if ($db->verificaAlumno($u->getUser(), $pass)) {
-                    //Damos de baja el usuario de dicho rol
-                    $db->bajaUsuario($u->getId_alumno(), $u->getUser(), $tabla, null);
-                    //Redirigimos el flujo de la aplicación al index porque la baja se habrá hecho efectiva
-                    header("Location: index.php");
-                } else {
-                    $_SESSION['error'] = true;
-                }
-                break;
         }
     } else if (isset($_POST['solicitar'])) {
         //Rescatamos el ciclo seleccionado del que se solicitan alumnos
@@ -180,55 +154,54 @@ if (isset($_SESSION['user'])) {
             } else {
                 $proyecto = 0;
             }
-
             //Damos de alta la solicitud de alumnos
             $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['actividad'], $_POST['observaciones'], $proyecto);
         } else {
             $_SESSION['error'] = true;
         }
     } else if (isset($_POST['alta_ciclo'])) {
-        //Rescatamos la familia seleccionada en la que se quiere añadir el ciclo formativo
+        //Rescatamos la valores para dar de alta el nuevo ciclo
         $id_ciclo = $_POST['id'];
-        $familia = $db->devuelveFamilia($_POST['familias']);
-        $id_familia = $familia->getId_familia();
         $tutor = $db->devuelveTutorCentro($_POST['tutores']);
         $id_tutor_c = $tutor->getId_tutor_c();
         $nombre = $_POST['nombre'];
 
         //Damos de alta el ciclo formativo
-        $db->altaCiclo($id_ciclo, $id_familia, $id_tutor_c, $nombre);
+        $db->altaCiclo($id_ciclo, $id_tutor_c, $nombre);
     } else if (isset($_POST['baja_ciclo'])) {
-        //Rescatamos el ciclo seleccionada que se quiere dar de baja
-        $nombre = $_POST['ciclos'];
-
-        //Damos de baja el ciclo formativo
-        $db->bajaCiclo($nombre);
-
+        //Damos de baja el ciclo formativo, pasándole como parámetro de entrada el id del ciclo a borrar
+        $db->bajaCiclo($db->devuelveCiclo($_POST['ciclos'])->getId_ciclo());
         //Recargamos la página para que se vea afectada la baja del ciclo en la plataforma
         header("Location: panel_administracion.php");
-    } else if (isset($_POST['alta_familia'])) {
-        //Rescatamos los valores de la nueva familia
-        $id_familia = $_POST['id'];
+    } else if (isset($_POST['alta_tutor'])) {
+        $user = $_POST['user'];
+        $pass = sha1($_POST['pass']);
         $nombre = $_POST['nombre'];
-
-        //Damos de alta la familia profesional
-        $db->altaFamilia($id_familia, $nombre);
-    } else if (isset($_POST['baja_familia'])) {
-        //Rescatamos la familia profesional seleccionada que se quiere dar de baja
-        $f = $db->devuelveFamilia($_POST['familias']);
-
-        //Damos de baja el ciclo formativo
-        $db->bajaFamilia($f->getId_familia(), $f->getNombre());
-
-        //Recargamos la página para que se vea afectada la baja del ciclo en la plataforma
+        $dni = $_POST['dni'];
+        $email = $_POST['email'];
+        $telefono = $_POST['telefono'];
+        if (isset($_POST['privilegios_admin'])) {
+            $privilegios_admin = 1;
+        } else {
+            $privilegios_admin = 0;
+        }
+        //Damos de alta el nuevo tutor del centro educativo
+        $db->altaTutorCentro($user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin);
+        //Recargamos la página para que se vea afectada la alta del nuevo tutor del centro educativo en la plataforma
         header("Location: panel_administracion.php");
-    } else if (isset($_POST['baja_empresa'])) {
-        //Rescatamos la empresa seleccionada que se quiere dar de baja
-        $e = $db->devuelveEmpresa($_POST['empresas']);
-
-        //Damos de baja la empresa colaboradora
-        $db->bajaEmpresa($e->getId_empresa());
-
+    } else if (isset($_POST['baja_tutor'])) {
+        //Rescatamos el objeto del tutor del centro que se desea dar de baja
+        $t = $db->devuelveTutorCentro($_POST['tutores']);
+        //Reservamos una variable que es una instancia de un array, que contendrá los ids de cada uno de los ciclos a los que pertenece el tutor seleccionado
+        $tutor_ciclos = array();
+        foreach ($ciclos as $ciclo) {
+            //Añadimos al array los ciclos de los que está a cargo este tutor_centro
+            if ($ciclo->getId_tutor_c() == $t->getId_tutor_c()) {
+                array_push($tutor_ciclos, $ciclo->getId_ciclo());
+            }
+        }
+        //Procedemos a dar de baja el usuario de la base de datos        
+        $db->bajaUsuario($t->getId_tutor_c(), $tabla, $tutor_ciclos);
         //Recargamos la página para que se vea afectada la baja de la empresa en la plataforma
         header("Location: panel_administracion.php");
     }
@@ -241,4 +214,4 @@ if (isset($_SESSION['user'])) {
 } else {
     //En el caso de que no exista la variable $_SESSION['user'], ridirigimos el flujo a index.php
     header("Location: index.php");
-}    
+}

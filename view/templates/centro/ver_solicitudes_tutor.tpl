@@ -4,16 +4,16 @@
         <div class="w3-col l12 s12">
             <div class="w3-container w3-white w3-margin w3-padding-large">
                 <div class="select-boxes">
-                    <div class="container">
+                    <h2 class="text-center" style="margin-top: 6%;">SOLICITUDES PARA EL TUTOR {$user|upper}</h2><hr/>
+                    <div class="container">                                     
                         <div class="col-lg-9">
-                            <div id="cuadro" style="margin-top: 100px;">
-                                <h2>SOLICITUDES PARA EL TUTOR</h2><hr style="margin-bottom: 8%;"/>
-                                <table id="tabla" class="display" cellspacing="0" width="120%">
+                            <div id="cuadro" style="text-align:center;">
+                                <table id="tabla" class="display centerTable" cellspacing="0" width="130%">
                                     <thead>
                                         <tr>
                                             <th>Empresa</th>
-                                            <th>Ciclo</th>
-                                            <th>Cantidad alumnos</th>
+                                            <th>Ciclo formativo</th>
+                                            <th>Nº alumnos</th>
                                             <th>Fecha</th>
                                             <th>Actividad</th>
                                             <th>Observaciones</th>

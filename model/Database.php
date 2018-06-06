@@ -13,9 +13,7 @@
  */
 //Cargamos las clases de cada ROL de usuario en el caso de que no hayan sido cargada antes
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/TutorCentro.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/TutorEmpresa.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Alumno.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/FamiliaProfesional.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/CicloFormativo.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Empresa.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/FuturosProfesionales_ProyectoDAW_HCAPDEVILA/model/Solicitud.php');
@@ -59,7 +57,7 @@ class Database {
 
         //Creamos un nuevo objeto con los datos de una empresa
         if ($t = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['email'], $t['dni'], $t['telefono']);
+            $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['dni'], $t['email'], $t['telefono'], $t['privilegios_admin']);
         }
 
         //Retornamos el objeto del tutor del centro educativo
@@ -140,10 +138,10 @@ class Database {
 
         //Preparamos la sentencia, nos devolverá la consulta
         $consulta = $this->conexion->prepare("SELECT * FROM solicitud WHERE id_empresa = ?");
-        
+
         //Preparamos la sentencia parametrizada
         $consulta->bindParam(1, $id_empresa);
-        
+
         //Ejecutamos la consulta
         $consulta->execute();
 
@@ -195,7 +193,7 @@ class Database {
 
         //Creamos un nuevo objeto con los datos de una empresa
         if ($c = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_familia'], $c['id_tutor_c'], $c['nombre']);
+            $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_tutor_c'], $c['nombre']);
         }
 
         //Retornamos el objeto de la clase Empresa
@@ -217,56 +215,11 @@ class Database {
 
         //Creamos un nuevo objeto con los datos de un ciclo formativo
         while ($c = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_familia'], $c['id_tutor_c'], $c['nombre']);
+            $ciclo = new CicloFormativo($c['id_ciclo'], $c['id_tutor_c'], $c['nombre']);
             $array_objetos->append($ciclo);
         }
 
         //Retornamos el array con los objetos de cada ciclo
-        return $array_objetos;
-    }
-
-    /**
-     * @description Devuelve un objeto correspondiente a la familia profesional pasada como parámetro
-     */
-    function devuelveFamilia($nombre) {
-        //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare("SELECT * FROM familia_profesional WHERE nombre = ?");
-
-        //Preparamos la sentencia parametrizada
-        $consulta->bindParam(1, $nombre);
-
-        //Ejecutamos la consulta
-        $consulta->execute();
-
-        //Creamos un nuevo objeto con los datos de una famiilia profesional
-        if ($f = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $familia = new FamiliaProfesional($f['id_familia'], $f['nombre']);
-        }
-
-        //Retornamos el objeto de la clase Familia
-        return $familia;
-    }
-
-    /**
-     * @description Devuelve TODOS los objetos de las familias profesionales que hay en la base de datos
-     */
-    function devuelveFamilias() {
-        //Generamos un Array en el que almacenaremos objetos que harán referencia a las familias profesionales que hay en la base de datos
-        $array_objetos = new ArrayObject();
-
-        //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare("SELECT * FROM familia_profesional");
-
-        //Ejecutamos la consulta
-        $consulta->execute();
-
-        //Creamos un nuevo objeto con los datos de una familia profesional
-        while ($f = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $familia = new FamiliaProfesional($f['id_familia'], $f['nombre']);
-            $array_objetos->append($familia);
-        }
-
-        //Retornamos el array con los objetos de cada familia
         return $array_objetos;
     }
 
@@ -280,33 +233,9 @@ class Database {
         } else if ($this->verificaTutorCentro($user, $pass)) {
             $_SESSION['rol'] = 'tutor_centro';
             return true;
-        } else if ($this->verificaAlumno($user, $pass)) {
-            $_SESSION['rol'] = 'alumno';
-            return true;
         } else {
             return false;
         }
-    }
-
-    /**
-     * @description Devuelve un booleano que indica si el alumno es válido o no
-     */
-    function verificaAlumno($user, $pass) {
-        //Generamos la sentencia para realizar la comprobación, el usuario introducido debe existir y la password coincida
-        $sentencia = "SELECT * FROM alumno WHERE user = ? AND pass = ?";
-
-        //Preparamos la sentencia, nos devolverá la consulta
-        $consulta = $this->conexion->prepare($sentencia);
-
-        //Preparamos la sentencia parametrizada
-        $consulta->bindParam(1, $user);
-        $consulta->bindParam(2, $pass);
-
-        //Ejecutamos la consulta
-        $consulta->execute();
-
-        //En el caso de que el usuario exista y la clave sea la correcta, devolvemos TRUE, en caso contrario devolvemos FALSE
-        return ($consulta->rowCount()) ? true : false;
     }
 
     /**
@@ -349,58 +278,6 @@ class Database {
 
         //En el caso de que el usuario exista y la clave sea la correcta, devolvemos TRUE, en caso contrario devolvemos FALSE
         return ($consulta->rowCount()) ? true : false;
-    }
-
-    /**
-     *
-     * @description Devuelve UN objeto del usuario del rol indicado que corresponde al user pasado como parámetro de entrada
-     * @param string $rol hace referencia al rol del usuario que deseamos buscar
-     * @return string contendrá el rol del user pasado como parámetro de entrada
-     */
-    function obtieneRol($user) {
-        for ($x = 1; $x < 4; $x++) {
-            switch ($x) {
-                //Generamos 3 sentencias, 3 roles que se encargarán de devolver el rol que coincida con el nombre de usuario pasado como parámetro
-                case 1:
-                    $rol = 'empresa';
-                    $sentencia = "SELECT * FROM $rol WHERE user = ?";
-                    break;
-                case 2:
-                    $rol = 'tutor_centro';
-                    $sentencia = "SELECT * FROM $rol WHERE user = ?";
-                    break;
-                case 3:
-                    $rol = 'alumno';
-                    $sentencia = "SELECT * FROM $rol WHERE user = ?";
-                    break;
-            }
-            //Preparamos la sentencia, nos devolverá la consulta
-            $consulta = $this->conexion->prepare($sentencia);
-
-            //Preparamos la sentencia parametrizada
-            $consulta->bindParam(1, $user);
-
-            //Ejecutamos la consulta
-            $consulta->execute();
-
-            if ($u = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                //Creamos un nuevo objeto con los datos del usuario con dicho ROL de acceso
-                switch ($rol) {
-                    case 'tutor_empresa':
-                        return $rol;
-                        break;
-                    case 'tutor_centro':
-                        return $rol;
-                        break;
-                    case 'alumno':
-                        return $rol;
-                        break;
-                }
-            }
-        }
-
-        //Retornamos null por el motivo de que el usuario es incorrecto, y no se ha encontrado en ninguna de las 3 tablas
-        return null;
     }
 
     /**
@@ -502,18 +379,23 @@ class Database {
 
         //Creamos un nuevo objeto con los datos del usuario
         switch ($rol) {
-            case 'tutor_empresa':
+            case 'empresa':
                 while ($u = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                    $id_tutor_e = $u['id_tutor_e'];
-                    $id_empresa_e = $u['id_empresa'];
-                    $user = $u['user'];
-                    $pass = $u['pass'];
+                    $id_empresa = $u['id_empresa'];
                     $nombre = $u['nombre'];
-                    $dni = $u['dni'];
+                    $cif = $u['cif'];
+                    $direccion_fiscal = $u['direccion_fiscal'];
                     $telefono = $u['telefono'];
                     $email = $u['email'];
-                    $usuario = new TutorEmpresa($id_tutor_e, $id_empresa_e, $user, $pass, $nombre, $dni, $telefono, $email);
-                    $array_objetos->append($usuario);
+                    $horario = $u['horario'];
+                    $representante_nombre = $u['representante_nombre'];
+                    $representante_dni = $u['representante_dni'];
+                    $descripcion = $u['descripcion'];
+                    $actividad = $u['actividad'];
+                    $user = $u['user'];
+                    $pass = $u['pass'];
+                    $empresa = new Empresa($id_empresa, $nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $user, $pass);
+                    $array_objetos->append($empresa);
                 }
                 break;
             case 'tutor_centro':
@@ -526,21 +408,6 @@ class Database {
                     $dni = $u['dni'];
                     $telefono = $u['telefono'];
                     $usuario = new TutorCentro($id_tutor_c, $user, $pass, $nombre, $email, $dni, $telefono);
-                    $array_objetos->append($usuario);
-                }
-                break;
-            case 'alumno':
-                while ($u = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                    $id_alumno = $u['id_alumno'];
-                    $id_ciclo = $u['id_ciclo'];
-                    $id_tutor_c = $u['id_tutor_c'];
-                    $user = $u['user'];
-                    $pass = $u['pass'];
-                    $nombre = $u['nombre'];
-                    $dni = $u['dni'];
-                    $telefono = $u['telefono'];
-                    $email = $u['email'];
-                    $usuario = new Alumno($id_alumno, $id_ciclo, $id_tutor_c, $user, $pass, $nombre, $dni, $telefono, $email);
                     $array_objetos->append($usuario);
                 }
                 break;
@@ -614,44 +481,18 @@ class Database {
         }
     }
 
-    function altaAlumno($id_tutor_c, $id_ciclo, $user, $pass, $nombre, $dni, $email, $telefono) {
+    function altaCiclo($id_ciclo, $id_tutor_c, $nombre) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO alumno (id_tutor_c, id_ciclo, user, pass, nombre, dni, email, telefono) VALUES (?,?,?,?,?,?,?,?)";
-
-            //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sentencia);
-
-            //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_tutor_c);
-            $stmt->bindParam(2, $id_ciclo);
-            $stmt->bindParam(3, $user);
-            $stmt->bindParam(4, $pass);
-            $stmt->bindParam(5, $nombre);
-            $stmt->bindParam(6, $dni);
-            $stmt->bindParam(7, $email);
-            $stmt->bindParam(8, $telefono);
-
-            //Devolvemos un boolean, que indica si se han añadido nuevos registros
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            $_SESSION['error'] = true;
-        }
-    }
-
-    function altaCiclo($id_ciclo, $id_familia, $id_tutor_c, $nombre) {
-        try {
-            //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO ciclo_formativo (id_ciclo, id_familia, id_tutor_c, nombre) VALUES (?,?,?,?)";
+            $sentencia = "INSERT INTO ciclo_formativo (id_ciclo, id_tutor_c, nombre) VALUES (?,?,?)";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
             $stmt->bindParam(1, $id_ciclo);
-            $stmt->bindParam(2, $id_familia);
-            $stmt->bindParam(3, $id_tutor_c);
-            $stmt->bindParam(4, $nombre);
+            $stmt->bindParam(2, $id_tutor_c);
+            $stmt->bindParam(3, $nombre);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -660,35 +501,22 @@ class Database {
         }
     }
 
-    function bajaCiclo($nombre) {
-        try {
-            //Genero la consulta para realizar el borrado de los datos en la database
-            $sentencia = "DELETE FROM ciclo_formativo WHERE nombre = ?";
-
-            //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sentencia);
-
-            //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $nombre);
-
-            //Devolvemos un boolean, que indica si se han añadido nuevos registros
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            $_SESSION['error'] = true;
-        }
-    }
-
-    function altaFamilia($id_familia, $nombre) {
+    function altaTutorCentro($user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO familia_profesional (id_familia, nombre) VALUES (?,?)";
+            $sentencia = "INSERT INTO tutor_centro (user, pass, nombre, dni, email, telefono, privilegios_admin) VALUES (?,?,?,?,?,?,?)";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_familia);
-            $stmt->bindParam(2, $nombre);
+            $stmt->bindParam(1, $user);
+            $stmt->bindParam(2, $pass);
+            $stmt->bindParam(3, $nombre);
+            $stmt->bindParam(4, $dni);
+            $stmt->bindParam(5, $email);
+            $stmt->bindParam(6, $telefono);
+            $stmt->bindParam(7, $privilegios_admin);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -697,36 +525,28 @@ class Database {
         }
     }
 
-    function bajaFamilia($id_familia) {
+    function bajaCiclo($id_ciclo) {
         try {
-            $ciclos = $this->devuelveCiclos();
-            foreach ($ciclos as $ciclo) {
-                if ($ciclo->getId_familia() == $id_familia) {
-                    //Damos de baja las solicitudes de los ciclos de dicha familia
-                    $this->bajaSolicitud($ciclo->getId_ciclo());
-                }
-            }
-
             //Genero la consulta para realizar el borrado de los datos en la database
-            $sentencia = "DELETE FROM ciclo_formativo WHERE id_familia = ?";
+            $sentencia = "DELETE FROM solicitud WHERE id_ciclo = ?";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_familia);
+            $stmt->bindParam(1, $id_ciclo);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
 
             //Genero la consulta para realizar el borrado de los datos en la database
-            $sentencia = "DELETE FROM familia_profesional WHERE id_familia = ?";
+            $sentencia = "DELETE FROM ciclo_formativo WHERE id_ciclo = ?";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_familia);
+            $stmt->bindParam(1, $id_ciclo);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -767,18 +587,6 @@ class Database {
     function bajaEmpresa($id_empresa) {
         try {
             //Genero la consulta para realizar el borrado de los datos en la database
-            $sentencia = "DELETE FROM tutor_empresa WHERE id_empresa = ?";
-
-            //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sentencia);
-
-            //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_empresa);
-
-            //Devolvemos un boolean, que indica si se han añadido nuevos registros
-            $stmt->execute();
-
-            //Genero la consulta para realizar el borrado de los datos en la database
             $sentencia = "DELETE FROM solicitud WHERE id_empresa = ?";
 
             //Preparamos la sentencia
@@ -798,30 +606,6 @@ class Database {
 
             //Asignamos a cada posición una variable y le indicamos el tipo de dato
             $stmt->bindParam(1, $id_empresa);
-
-            //Devolvemos un boolean, que indica si se han añadido nuevos registros
-            $stmt->execute();
-        } catch (PDOException $ex) {
-            $_SESSION['error'] = true;
-        }
-    }
-
-    function altaTutorEmpresa($id_empresa, $user, $pass, $nombre, $telefono, $email, $dni) {
-        try {
-            //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO tutor_empresa (id_empresa, user, pass, nombre, telefono, email, dni) VALUES (?,?,?,?,?,?,?)";
-
-            //Preparamos la sentencia
-            $stmt = $this->conexion->prepare($sentencia);
-
-            //Asignamos a cada posición una variable y le indicamos el tipo de dato
-            $stmt->bindParam(1, $id_empresa);
-            $stmt->bindParam(2, $user);
-            $stmt->bindParam(3, $pass);
-            $stmt->bindParam(4, $nombre);
-            $stmt->bindParam(5, $telefono);
-            $stmt->bindParam(6, $email);
-            $stmt->bindParam(7, $dni);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
             $stmt->execute();
@@ -853,45 +637,23 @@ class Database {
                     //Ejecutamos la consulta
                     $consulta->execute();
 
-                    //Generamos la sentencia para realizar la eliminación de la solicitud
-                    $sentencia = "DELETE FROM tutor_empresa WHERE id_empresa = ?";
-
-                    //Preparamos la sentencia, nos devolverá la consulta
-                    $consulta = $this->conexion->prepare($sentencia);
-
-                    //Preparamos la sentencia parametrizada
-                    $consulta->bindParam(1, $id);
-
-                    //Ejecutamos la consulta
-                    $consulta->execute();
-
                     //Generamos la sentencia para realizar la eliminación del usuario
                     $sentencia = "DELETE FROM $tabla WHERE id_empresa = ?";
                     break;
                 case "tutor_centro":
-                    //Generamos la sentencia para realizar la eliminación de los alumnos
-                    $sentencia = "DELETE FROM alumno WHERE id_tutor_c = ?";
+                    foreach ($id_ciclo as $value) {
+                        //Generamos la sentencia para realizar la eliminación de la solicitud
+                        $sentencia = "DELETE FROM solicitud WHERE id_ciclo = ?";
 
-                    //Preparamos la sentencia, nos devolverá la consulta
-                    $consulta = $this->conexion->prepare($sentencia);
+                        //Preparamos la sentencia, nos devolverá la consulta
+                        $consulta = $this->conexion->prepare($sentencia);
 
-                    //Preparamos la sentencia parametrizada
-                    $consulta->bindParam(1, $id);
+                        //Preparamos la sentencia parametrizada
+                        $consulta->bindParam(1, $value);
 
-                    //Ejecutamos la consulta
-                    $consulta->execute();
-
-                    //Generamos la sentencia para realizar la eliminación de la solicitud
-                    $sentencia = "DELETE FROM solicitud WHERE id_ciclo = ?";
-
-                    //Preparamos la sentencia, nos devolverá la consulta
-                    $consulta = $this->conexion->prepare($sentencia);
-
-                    //Preparamos la sentencia parametrizada
-                    $consulta->bindParam(1, $id_ciclo);
-
-                    //Ejecutamos la consulta
-                    $consulta->execute();
+                        //Ejecutamos la consulta
+                        $consulta->execute();
+                    }
 
                     //Generamos la sentencia para realizar la eliminación de los ciclos formativos de este tutor
                     $sentencia = "DELETE FROM ciclo_formativo WHERE id_tutor_c = ?";
@@ -907,9 +669,6 @@ class Database {
 
                     //Generamos la sentencia para realizar la eliminación del usuario
                     $sentencia = "DELETE FROM $tabla WHERE id_tutor_c = ?";
-                    break;
-                case "alumno":
-//                $sentencia = "DELETE FROM $tabla WHERE user = ?";
                     break;
             }
 

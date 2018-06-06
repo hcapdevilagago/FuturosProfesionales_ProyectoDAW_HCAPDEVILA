@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 18:07:20
+/* Smarty version 3.1.32, created on 2018-06-05 23:49:58
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\administrador\alta_ciclo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b1563b8e61a41_29301839',
+  'unifunc' => 'content_5b170586f09db8_34659505',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e91ad427b36a4faf316955564a1dc5aa1f6b2e16' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\administrador\\alta_ciclo.tpl',
-      1 => 1528127213,
+      1 => 1528235395,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b1563b8e61a41_29301839 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b170586f09db8_34659505 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel central -->
 <div class="w3-content" style="background-color:white; height: 100%; ">
     <div class="w3-row w3-padding w3-border">
@@ -33,27 +33,6 @@ function content_5b1563b8e61a41_29301839 (Smarty_Internal_Template $_smarty_tpl)
                             <form class="form-horizontal" action=" " method="POST"  id="reg_form">
                                 <fieldset>
                                     <legend class="text-center">ALTA CICLO FORMATIVO</legend>
-                                    <div class="form-group has-feedback">
-                                        <label for="ciclos_formativos"  class="col-md-4 control-label">Familia profesional <span style="color:red;">*</span></label>
-                                        <div class="col-md-6  inputGroupContainer">
-                                            <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                                <select name="familias" class="form-control selectpicker" required>
-                                                    <option value=" ">Por favor, seleccione una familia profesional</option>
-                                                    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['familias']->value, 'familia');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['familia']->value) {
-?>
-                                                        <option><?php echo $_smarty_tpl->tpl_vars['familia']->value->getNombre();?>
-</option>
-                                                    <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">Identificador del ciclo formativo <span style="color:red;">*</span></label>
                                         <div class="col-md-6  inputGroupContainer">

@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <img src="./images/logo4.png" style="float: left; padding-top:0.5%; padding-bottom: -5%;" height="4%" width="4%"/>
-                    <a class="navbar-brand" href="panel_administracion.php" >Conectad@, {$nombre}</a>
+                    <a class="navbar-brand" href="panel_administracion.php" >Conectad@, {$nombre|upper}</a>
                 </div>
                 <!-- Mensajería de la aplicación -->
                 <ul class="nav navbar-right top-nav">
