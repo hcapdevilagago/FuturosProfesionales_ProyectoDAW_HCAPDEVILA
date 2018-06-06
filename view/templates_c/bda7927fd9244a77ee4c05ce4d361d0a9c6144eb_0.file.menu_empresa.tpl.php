@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-04 12:27:42
+/* Smarty version 3.1.32, created on 2018-06-06 15:23:29
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\menu_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b15141e726d96_25904878',
+  'unifunc' => 'content_5b17e051189ba8_98691398',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bda7927fd9244a77ee4c05ce4d361d0a9c6144eb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\menu_empresa.tpl',
-      1 => 1528108045,
+      1 => 1528291388,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:baja_perfil.tpl' => 1,
   ),
 ),false)) {
-function content_5b15141e726d96_25904878 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b17e051189ba8_98691398 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
@@ -48,6 +48,9 @@ function content_5b15141e726d96_25904878 (Smarty_Internal_Template $_smarty_tpl)
 </nav>
 <!-- Panel navegación izquierdo y superior -->
 <?php if (isset($_SESSION['error'])) {?>
+    <?php 
+      unset($_SESSION['error']);
+    ?>
     <?php $_smarty_tpl->_subTemplateRender("file:error.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 } else { ?>
     <?php if (isset($_GET['accion'])) {?>

@@ -21,6 +21,9 @@
 </nav>
 <!-- Panel navegación izquierdo y superior -->
 {if isset($smarty.session.error)}
+    {php}
+      unset($_SESSION['error']);
+    {/php}
     {include file="error.tpl"}
 {else}
     {if isset($smarty.get.accion)}
