@@ -59,9 +59,10 @@ if (isset($_SESSION['user'])) {
                 $plantilla->assign("nombre_empresa", $empresa->getNombre());
             }
         }
-
+        
         //Asignamos el array de las solicitudes a una variable Smarty
         $plantilla->assign("solicitudes_empresa", $db->devuelveSolicitudesPorEmpresa($u->getId_empresa()));
+        
     } else if ($u instanceof TutorCentro) {
         //En el caso de que sea un tutor del centro educativo vamos a almacenar el valor del registro privilegios_admin
         $_SESSION['privilegios_admin'] = $u->getPrivilegios_admin();

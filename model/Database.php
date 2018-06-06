@@ -146,9 +146,10 @@ class Database {
 
         while ($s = $consulta->fetch(PDO::FETCH_ASSOC)) {
             //Creamos un nuevo objeto con los datos de una solicitud y lo vamos añadiendo al array de objetos
-            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['observaciones'], $s['proyecto']);
+            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['$actividad'], $s['observaciones'], $s['proyecto']);
             $array_objetos->append($solicitud);
-        }
+            echo("AÑADIDO");
+       }
 
         //Retornamos el array con los objetos de cada solicitud
         return $array_objetos;

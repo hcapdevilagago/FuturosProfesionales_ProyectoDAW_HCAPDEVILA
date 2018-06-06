@@ -8,6 +8,9 @@
                     <a href="panel_administracion.php?accion=solicitar_alumnos"><i class="fa fa-fw fa-graduation-cap"></i> Solicitar alumnos</a>
                 </li>
                 <li>
+                    <a href="panel_administracion.php?accion=ver_solicitudes_empresa"><i class="fa fa-fw fa-eye"></i> Ver mis solicitudes</a>
+                </li>
+                <li>
                     <a href="panel_administracion.php?accion=modificar_empresa"><i class="fa fa-fw fa-edit"></i> Modificar empresa</a>
                 </li>
                 <li>
@@ -29,6 +32,8 @@
     {if isset($smarty.get.accion)}
         {if $smarty.get.accion eq 'solicitar_alumnos'}
             {include file="empresas/solicitar_alumnos.tpl"}
+        {elseif $smarty.get.accion eq 'ver_solicitudes_empresa'}
+            {include file="empresas/ver_solicitudes_empresa.tpl"}
         {elseif $smarty.get.accion eq 'modificar_empresa'}
             {include file="empresas/modificar_empresa.tpl"}            
         {elseif $smarty.get.accion eq 'baja_perfil'}
@@ -40,7 +45,7 @@
 {/if}
 <div class="pie" style="margin-bottom: -3%;">
     <div class="container">
-        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los Derechos Reservados</p>
+        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los derechos están reservados.</p>
         <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
     </div>
 </div>

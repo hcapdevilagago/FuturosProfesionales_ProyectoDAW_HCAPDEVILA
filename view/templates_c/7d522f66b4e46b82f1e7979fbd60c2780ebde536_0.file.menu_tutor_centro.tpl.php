@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-06 19:19:58
+/* Smarty version 3.1.32, created on 2018-06-06 19:40:39
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\menu_tutor_centro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b1817beb79f13_24725979',
+  'unifunc' => 'content_5b181c97868df1_47214060',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d522f66b4e46b82f1e7979fbd60c2780ebde536' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\menu_tutor_centro.tpl',
-      1 => 1528305596,
+      1 => 1528306838,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:administrador/baja_tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b1817beb79f13_24725979 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b181c97868df1_47214060 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -173,7 +173,7 @@ function content_5b1817beb79f13_24725979 (Smarty_Internal_Template $_smarty_tpl)
 <?php }?>
 <div class="pie" style="margin-bottom: -3%;">
     <div class="container">
-        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los Derechos Reservados</p>
+        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los derechos están reservados.</p>
         <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
     </div>
 </div>
