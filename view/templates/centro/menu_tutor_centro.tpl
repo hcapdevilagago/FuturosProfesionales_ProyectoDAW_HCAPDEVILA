@@ -1,6 +1,5 @@
 <!-- Panel navegación izquierdo -->
 {if (isset($privilegios_admin) && $privilegios_admin == 1)}
-    <!-- Panel navegación izquierdo -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li class="active">
@@ -67,8 +66,6 @@
 {/if}
 <!-- Panel navegación izquierdo -->
 </nav>
-<!-- Panel navegación izquierdo y superior -->
-
 <!-- Panel central -->
 {if isset($smarty.session.error)}
     {php}
@@ -122,4 +119,10 @@
         {/if}
     </div>
 {/if}
+<div class="pie" style="margin-bottom: -3%;">
+    <div class="container">
+        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los Derechos Reservados</p>
+        <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
+    </div>
+</div>
 <!-- Panel central -->

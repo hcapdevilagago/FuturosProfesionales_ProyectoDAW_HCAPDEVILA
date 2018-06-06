@@ -5,7 +5,6 @@ require_once ('SmartyBC.class.php');
 require_once ('./model/Database.php');
 
 //Creamos un objeto de la clase Smarty que hará referencia a la plantilla
-//$plantilla = new Smarty();
 $plantilla = new SmartyBC();
 
 //Asignamos las plantillas en las rutas correspondientes
@@ -16,6 +15,8 @@ $plantilla->config_dir = "./view/config";
 
 //Iniciamos sesión para utilizar variables de este ámbito
 session_start();
+
+error_log("Se ha escrito el log\n", 3, "./log/error.log");
 
 if (isset($_SESSION['user'])) {
     //En el caso de que exista la variable $_SESSION['user'] creamos un nuevo objeto de la clase Database
@@ -29,6 +30,9 @@ if (isset($_SESSION['user'])) {
 
     //Vamos a recuperar los datos del usuario que está registrado en la plataforma como un objeto
     $u = $db->obtieneUsuario($_SESSION['rol'], $_SESSION['user']);
+
+    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "./log/access.log");
+    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". El usuario " . $u->getNombre() . " estaba conectado en la plataforma con el nombre de usuario: " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "./log/access.log");
 
     //Asignamos el nombre del usuario a una variable Smarty
     $plantilla->assign("nombre", $u->getNombre());

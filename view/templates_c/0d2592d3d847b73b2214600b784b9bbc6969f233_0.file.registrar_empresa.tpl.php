@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 18:14:58
+/* Smarty version 3.1.32, created on 2018-06-06 15:37:43
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\registrar_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b16b702c0a890_40533076',
+  'unifunc' => 'content_5b17e3a79c4189_50611302',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0d2592d3d847b73b2214600b784b9bbc6969f233' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\registrar_empresa.tpl',
-      1 => 1528215294,
+      1 => 1528292259,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b16b702c0a890_40533076 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b17e3a79c4189_50611302 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -107,7 +107,7 @@ function content_5b16b702c0a890_40533076 (Smarty_Internal_Template $_smarty_tpl)
                         </label>
                     </div>
                     <div class="form-input text-center" style="margin: 0 auto; margin-top: 8%;">
-                        <textarea maxlength="1500" name="descripcion" placeholder="Escriba la descripción formal de su empresa en la que se cuenten aspectos relevantes que se quieran destacar." class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <textarea maxlength="1500" name="descripcion" placeholder="Escriba la descripción formal de su empresa en la que se cuenten aspectos relevantes que se quieran destacar." class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea>
                     </div>
                     <label>
                         <div style="margin-top: 5%;">

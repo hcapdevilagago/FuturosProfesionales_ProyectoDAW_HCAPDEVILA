@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 18:10:49
+/* Smarty version 3.1.32, created on 2018-06-06 19:08:09
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b16b609680ad9_95073718',
+  'unifunc' => 'content_5b1814f99215d4_95973231',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb3c58294693ee4041554167a5deca7487cd14b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\index.tpl',
-      1 => 1528214812,
+      1 => 1528304888,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b16b609680ad9_95073718 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_5b1814f99215d4_95973231 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+<!DOCTYPE html>
 <!--
 ******************************************************************
 ***** PROYECTO FINAL DE CICLO DESARROLLO DE APLICACIONES WEB *****
@@ -62,23 +63,31 @@ function content_5b16b609680ad9_95073718 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="label">CONTRASEÑA</span>
                         <div class="underline"></div>
                     </label>
-                    <div class="submit-container clearfix" style="text-align: center; margin-top: 4rem;">  
-                        <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>
-                </form>
-                <form id="form2" action="index.php" method="POST">
-                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR EMPRESA" class="btn btn-warning"/>
-                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
-                </form>
-            </div>
-            <span class="label">USUARIO</span>
-            <?php if (isset($_smarty_tpl->tpl_vars['msj_error']->value)) {?>
-                <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                <span class="label" style="margin-top: 1%; color: red;"><span class="glyphicon glyphicon-remove"></span> <?php echo $_smarty_tpl->tpl_vars['msj_error']->value;?>
+                    <?php if (isset($_smarty_tpl->tpl_vars['msj_error']->value)) {?>
+                        <!--En el caso de que el usuario introducido NO exista en la base de datos-->
+                        <span class="label" style="margin-top: 1%; color: red;"><span class="glyphicon glyphicon-remove"></span> <?php echo $_smarty_tpl->tpl_vars['msj_error']->value;?>
 </span>
-                <div class="underline"></div>
-            <?php }?>
+                        <div class="underline"></div>
+                    <?php }?>
+                    <div class="submit-container clearfix text-center" style="margin-top: 2rem;">  
+                        <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>   
+                    </div>
+                </form>
+                <div class="submit-container clearfix text-center" style="margin-top: .5rem;">  
+                    <form id="form2" action="index.php" method="POST">
+                        <input type="submit" style="margin-top: 2%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR EMPRESA" class="btn btn-warning"/>
+                        <input type="submit" style="margin-top: 2%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
+                    </form>
+                </div>
+            </div>
+            <div id="footer">
+                <div class="container text-center">
+                    <p class="text-muted credit"><strong>CPIFP Los Enlaces - ZARAGOZA</strong></p>
+                    <p class="text-muted credit">C/ Jarque de Moncayo, 10 - CP 50012</p>
+                    <p style="margin-bottom: 10%;" class="text-muted credit">TEL: 976 300 804 - FAX: 976 314 403</p>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html><?php }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-05-31 01:02:34
+/* Smarty version 3.1.32, created on 2018-06-06 19:08:25
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\recuperar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b0f2d8ad8f377_30680168',
+  'unifunc' => 'content_5b181509b33695_48379241',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f613dded79f4c9ae21415795ffe5c38dfc8c59ac' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\recuperar.tpl',
-      1 => 1527721352,
+      1 => 1528214829,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b0f2d8ad8f377_30680168 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b181509b33695_48379241 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -33,7 +33,7 @@ function content_5b0f2d8ad8f377_30680168 (Smarty_Internal_Template $_smarty_tpl)
         <?php echo '<script'; ?>
  src="//code.jquery.com/jquery-1.11.1.min.js"><?php echo '</script'; ?>
 >
-        <title>:: REGISTRAR ALUMNO ::</title>
+        <title>:: RECUPERACIÓN DE CONTRASEÑA ::</title>
     </head>
     <body>
         <div class="recuperacion" style="padding: 4%">

@@ -20,6 +20,19 @@
         <script src="js/jquery.dataTables.min.js"></script>
         <script src="js/dataTables.bootstrap.min.js"></script>
         <script src="js/datatables.js"></script>
+
+        <style>
+            .pie {
+                color: #FFF;
+                text-align: center;
+                position:absolute;
+                left:0px;
+                right:0px;
+                bottom:0px;
+                height: 15%;
+                z-index:0;
+            }
+        </style>
     </head>
     <body>
         <!-- DIV principal - Contenedor -->

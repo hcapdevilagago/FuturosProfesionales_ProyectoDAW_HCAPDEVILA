@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-06 04:18:43
+/* Smarty version 3.1.32, created on 2018-06-06 19:14:57
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\panel_administracion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b174483397061_83350299',
+  'unifunc' => 'content_5b1816911a02c1_18217053',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07afedfbb36bc328ac60fe6b5196d8a471acf6ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\panel_administracion.tpl',
-      1 => 1528251520,
+      1 => 1528305281,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:centro/menu_tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b174483397061_83350299 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b1816911a02c1_18217053 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
     <head>
@@ -55,6 +55,19 @@ function content_5b174483397061_83350299 (Smarty_Internal_Template $_smarty_tpl)
         <?php echo '<script'; ?>
  src="js/datatables.js"><?php echo '</script'; ?>
 >
+
+        <style>
+            .pie {
+                color: #FFF;
+                text-align: center;
+                position:absolute;
+                left:0px;
+                right:0px;
+                bottom:0px;
+                height: 15%;
+                z-index:0;
+            }
+        </style>
     </head>
     <body>
         <!-- DIV principal - Contenedor -->

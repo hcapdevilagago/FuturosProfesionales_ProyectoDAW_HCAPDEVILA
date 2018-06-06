@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-05 21:53:11
+/* Smarty version 3.1.32, created on 2018-06-06 19:19:58
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\centro\menu_tutor_centro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b16ea2747e783_26989704',
+  'unifunc' => 'content_5b1817beb79f13_24725979',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d522f66b4e46b82f1e7979fbd60c2780ebde536' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\centro\\menu_tutor_centro.tpl',
-      1 => 1528228386,
+      1 => 1528305596,
       2 => 'file',
     ),
   ),
@@ -32,10 +32,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:administrador/baja_tutor_centro.tpl' => 1,
   ),
 ),false)) {
-function content_5b16ea2747e783_26989704 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b1817beb79f13_24725979 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <?php if ((isset($_smarty_tpl->tpl_vars['privilegios_admin']->value) && $_smarty_tpl->tpl_vars['privilegios_admin']->value == 1)) {?>
-    <!-- Panel navegación izquierdo -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li class="active">
@@ -102,8 +101,6 @@ function content_5b16ea2747e783_26989704 (Smarty_Internal_Template $_smarty_tpl)
 <?php }?>
 <!-- Panel navegación izquierdo -->
 </nav>
-<!-- Panel navegación izquierdo y superior -->
-
 <!-- Panel central -->
 <?php if (isset($_SESSION['error'])) {?>
     <?php 
@@ -174,6 +171,12 @@ function content_5b16ea2747e783_26989704 (Smarty_Internal_Template $_smarty_tpl)
         <?php }?>
     </div>
 <?php }?>
+<div class="pie" style="margin-bottom: -3%;">
+    <div class="container">
+        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los Derechos Reservados</p>
+        <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
+    </div>
+</div>
 <!-- Panel central -->
 <?php }
 }

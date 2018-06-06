@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 ******************************************************************
@@ -35,21 +36,29 @@
                         <span class="label">CONTRASEÑA</span>
                         <div class="underline"></div>
                     </label>
-                    <div class="submit-container clearfix" style="text-align: center; margin-top: 4rem;">  
-                        <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>
+                    {if isset($msj_error)}
+                        <!--En el caso de que el usuario introducido NO exista en la base de datos-->
+                        <span class="label" style="margin-top: 1%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
+                        <div class="underline"></div>
+                    {/if}
+                    <div class="submit-container clearfix text-center" style="margin-top: 2rem;">  
+                        <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="acceder" value="ACCEDER AL SITIO" class="btn btn-success"/>   
+                    </div>
                 </form>
-                <form id="form2" action="index.php" method="POST">
-                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR EMPRESA" class="btn btn-warning"/>
-                    <input type="submit" style="margin-top: 3%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
-                </form>
+                <div class="submit-container clearfix text-center" style="margin-top: .5rem;">  
+                    <form id="form2" action="index.php" method="POST">
+                        <input type="submit" style="margin-top: 2%; display:inline-block; width: 250px;" name="registrar" value="REGISTRAR EMPRESA" class="btn btn-warning"/>
+                        <input type="submit" style="margin-top: 2%; display:inline-block; width: 250px;" name="registrar" value="¿Ha olvidado la contraseña?" class="btn btn-link"/>
+                    </form>
+                </div>
             </div>
-            <span class="label">USUARIO</span>
-            {if isset($msj_error)}
-                <!--En el caso de que el usuario introducido NO exista en la base de datos-->
-                <span class="label" style="margin-top: 1%; color: red;"><span class="glyphicon glyphicon-remove"></span> {$msj_error}</span>
-                <div class="underline"></div>
-            {/if}
+            <div id="footer">
+                <div class="container text-center">
+                    <p class="text-muted credit"><strong>CPIFP Los Enlaces - ZARAGOZA</strong></p>
+                    <p class="text-muted credit">C/ Jarque de Moncayo, 10 - CP 50012</p>
+                    <p style="margin-bottom: 10%;" class="text-muted credit">TEL: 976 300 804 - FAX: 976 314 403</p>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

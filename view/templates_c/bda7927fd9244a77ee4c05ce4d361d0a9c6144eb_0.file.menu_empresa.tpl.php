@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-06 15:23:29
+/* Smarty version 3.1.32, created on 2018-06-06 19:22:29
   from 'C:\xampp\htdocs\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\view\templates\empresas\menu_empresa.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b17e051189ba8_98691398',
+  'unifunc' => 'content_5b1818559eb1a8_36706606',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bda7927fd9244a77ee4c05ce4d361d0a9c6144eb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FuturosProfesionales_ProyectoDAW_HCAPDEVILA\\view\\templates\\empresas\\menu_empresa.tpl',
-      1 => 1528291388,
+      1 => 1528305595,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:baja_perfil.tpl' => 1,
   ),
 ),false)) {
-function content_5b17e051189ba8_98691398 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b1818559eb1a8_36706606 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Panel navegación izquierdo -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
@@ -46,7 +46,7 @@ function content_5b17e051189ba8_98691398 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 <!-- Panel navegación izquierdo -->
 </nav>
-<!-- Panel navegación izquierdo y superior -->
+<!-- Panel central -->
 <?php if (isset($_SESSION['error'])) {?>
     <?php 
       unset($_SESSION['error']);
@@ -68,6 +68,12 @@ function content_5b17e051189ba8_98691398 (Smarty_Internal_Template $_smarty_tpl)
         <?php $_smarty_tpl->_subTemplateRender("file:empresas/solicitar_alumnos.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
     <?php }
-}
-}
+}?>
+<div class="pie" style="margin-bottom: -3%;">
+    <div class="container">
+        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los Derechos Reservados</p>
+        <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
+    </div>
+</div>
+<!-- Panel central --><?php }
 }

@@ -80,7 +80,7 @@
                         </label>
                     </div>
                     <div class="form-input text-center" style="margin: 0 auto; margin-top: 8%;">
-                        <textarea maxlength="1500" name="descripcion" placeholder="Escriba la descripción formal de su empresa en la que se cuenten aspectos relevantes que se quieran destacar." class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <textarea maxlength="1500" name="descripcion" placeholder="Escriba la descripción formal de su empresa en la que se cuenten aspectos relevantes que se quieran destacar." class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea>
                     </div>
                     <label>
                         <div style="margin-top: 5%;">

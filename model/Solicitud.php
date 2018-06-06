@@ -33,7 +33,11 @@ class Solicitud {
         $this->id_ciclo = $id_ciclo;
         $this->id_empresa = $id_empresa;
         $this->cantidad_alumnos = $cantidad_alumnos;
-        $this->fecha_creacion = $fecha_creacion;
+        //Cambiamos el formato de la fecha a mostrar
+        $año = substr($fecha_creacion, 0, 4);
+        $mes = substr($fecha_creacion, 5, -3);
+        $dia = substr($fecha_creacion, -2);       
+        $this->fecha_creacion = $dia . "/" . $mes . "/" . $año;
         $this->actividad = $actividad;
         $this->observaciones = $observaciones;
         $this->proyecto = $proyecto;

@@ -19,7 +19,7 @@
 </div>
 <!-- Panel navegación izquierdo -->
 </nav>
-<!-- Panel navegación izquierdo y superior -->
+<!-- Panel central -->
 {if isset($smarty.session.error)}
     {php}
       unset($_SESSION['error']);
@@ -38,3 +38,10 @@
         {include file="empresas/solicitar_alumnos.tpl"}
     {/if}
 {/if}
+<div class="pie" style="margin-bottom: -3%;">
+    <div class="container">
+        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los Derechos Reservados</p>
+        <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
+    </div>
+</div>
+<!-- Panel central -->
