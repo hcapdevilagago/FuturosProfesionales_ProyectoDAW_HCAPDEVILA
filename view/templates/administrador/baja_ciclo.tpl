@@ -27,7 +27,7 @@
                                         <div class="col-lg-12">
                                             <div class="alert alert-info alert-dismissable">
                                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                <i class="fa fa-info-circle"></i> <strong>Se eliminarán todos los tutores del centro que pertenezcan al ciclo formativo seleccionado.</strong>
+                                                <i class="fa fa-info-circle"></i> <strong>Se eliminarán todos los tutores del centro que pertenezcan al ciclo formativo seleccionado y sus solicitudes de alumnos.</strong>
                                             </div>
                                         </div>
                                     </div>    

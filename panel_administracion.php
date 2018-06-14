@@ -1,8 +1,11 @@
 <?php
-
 //Cargamos las clases en el caso de que no hayan sido cargadas antes
 require_once ('SmartyBC.class.php');
 require_once ('./model/Database.php');
+
+//Incluimos las librerías necesarias en el caso de que no se hayan incluído antes
+include "./phpmailer/class.phpmailer.php";
+include "./phpmailer/class.smtp.php";
 
 //Creamos un objeto de la clase Smarty que hará referencia a la plantilla
 $plantilla = new SmartyBC();
@@ -15,8 +18,6 @@ $plantilla->config_dir = "./view/config";
 
 //Iniciamos sesión para utilizar variables de este ámbito
 session_start();
-
-error_log("Se ha escrito el log\n", 3, "./log/error.log");
 
 if (isset($_SESSION['user'])) {
     //En el caso de que exista la variable $_SESSION['user'] creamos un nuevo objeto de la clase Database
@@ -31,8 +32,8 @@ if (isset($_SESSION['user'])) {
     //Vamos a recuperar los datos del usuario que está registrado en la plataforma como un objeto
     $u = $db->obtieneUsuario($_SESSION['rol'], $_SESSION['user']);
 
-    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "./log/access.log");
-    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". El usuario " . $u->getNombre() . " estaba conectado en la plataforma con el nombre de usuario: " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "./log/access.log");
+    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/access.log");
+    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". El usuario " . $u->getNombre() . " estaba conectado en la plataforma con el nombre de usuario: " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/access.log");
 
     //Asignamos el nombre del usuario a una variable Smarty
     $plantilla->assign("nombre", $u->getNombre());
@@ -59,10 +60,9 @@ if (isset($_SESSION['user'])) {
                 $plantilla->assign("nombre_empresa", $empresa->getNombre());
             }
         }
-        
+
         //Asignamos el array de las solicitudes a una variable Smarty
         $plantilla->assign("solicitudes_empresa", $db->devuelveSolicitudesPorEmpresa($u->getId_empresa()));
-        
     } else if ($u instanceof TutorCentro) {
         //En el caso de que sea un tutor del centro educativo vamos a almacenar el valor del registro privilegios_admin
         $_SESSION['privilegios_admin'] = $u->getPrivilegios_admin();
@@ -101,6 +101,9 @@ if (isset($_SESSION['user'])) {
                     $id_empresa = $u->getId_empresa();
                     //Modificamos el perfil del usuario de dicho rol
                     $db->modificaEmpresa($nombre, $cif, $direccion_fiscal, $telefono, $email, $horario, $representante_nombre, $representante_dni, $descripcion, $actividad, $id_empresa);
+                    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha modificado el perfil de usuario de " . $u->getNombre() . ": " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+
                     //Recargamos la página para que se vea afectada en los datos del perfil de usuario
                     header("Location: panel_administracion.php");
                 } else {
@@ -116,6 +119,9 @@ if (isset($_SESSION['user'])) {
                     $telefono = $_POST['telefono'];
                     //Modificamos el perfil del usuario de dicho rol
                     $db->modificaTutorCentro($id, $nombre, $dni, $email, $telefono);
+                    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha modificado el perfil de usuario de " . $u->getNombre() . ": " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+
                     //Recargamos la página para que se vea afectada en los datos del perfil de usuario
                     header("Location: panel_administracion.php");
                 } else {
@@ -132,6 +138,9 @@ if (isset($_SESSION['user'])) {
                 if ($db->verificaEmpresa($u->getUser(), $pass)) {
                     //Damos de baja el usuario de dicho rol
                     $db->bajaUsuario($u->getId_empresa(), $tabla, null);
+                    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha dado de baja el perfil de usuario de " . $u->getNombre() . ": " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+
                     //Redirigimos el flujo de la aplicación al index porque la baja se habrá hecho efectiva
                     header("Location: index.php");
                 } else {
@@ -141,14 +150,19 @@ if (isset($_SESSION['user'])) {
             case "tutor_centro":
                 if ($db->verificaTutorCentro($u->getUser(), $pass)) {
                     //Verificamos que la contraseña introducida coincide con la del usuario
-                    foreach ($ciclos as $ciclo) {
-                        //Buscamos el id del ciclo del tutor
+                    $tutor_ciclos = array();
+                    $ciclos_formativos = $db->devuelveCiclos();
+                    foreach ($ciclos_formativos as $ciclo) {
+                        //Buscamos los id del ciclo del tutor
                         if ($ciclo->getId_tutor_c() == $u->getId_tutor_c()) {
-                            $id_ciclo = $ciclo->getId_ciclo();
+                            array_push($tutor_ciclos, $ciclo->getId_ciclo());
                         }
                     }
-                    //Damos de baja el usuario de dicho rol
-                    $db->bajaUsuario($u->getId_tutor_c(), $tabla, $id_ciclo);
+                    //Procedemos a dar de baja el usuario de la base de datos        
+                    $db->bajaUsuario($u->getId_tutor_c(), $tabla, $tutor_ciclos);
+                    error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                    error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha dado de baja el perfil de usuario de " . $u->getNombre() . ": " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+
                     //Redirigimos el flujo de la aplicación al index porque la baja se habrá hecho efectiva
                     header("Location: index.php");
                 } else {
@@ -169,6 +183,26 @@ if (isset($_SESSION['user'])) {
             }
             //Damos de alta la solicitud de alumnos
             $db->altaSolicitud($id_ciclo, $u->getId_empresa(), $cantidad_alumnos, $_POST['actividad'], $_POST['observaciones'], $proyecto);
+
+            //Recuperamos el nombre del ciclo formativo del que se solicitan los alumnos
+            $nombre_ciclo_solicitado = $db->devuelveCiclo($_POST['ciclos'])->getNombre();
+            $id_ciclo_solicitado = $db->devuelveCiclo($_POST['ciclos'])->getId_ciclo();
+
+            //Almacenamos los tutores del centro para identificar el email del tutor que dicho ciclo
+            $tutores = $db->devuelveTutoresCentro();
+            $ciclos = $db->devuelveCiclos();
+            foreach ($ciclos as $ciclo) {
+                if ($ciclo->getId_ciclo() == $id_ciclo) {
+                    foreach ($tutores as $tutor) {
+                        if ($ciclo->getId_tutor_c() == $tutor->getId_tutor_c()) {
+                            //En el caso de que se haya realizado la solicitud enviamos el email al tutor del ciclo
+                            enviarCorreoSolicitud($tutor->getEmail(), mb_strtoupper($u->getNombre(), 'UTF-8'), $cantidad_alumnos, $id_ciclo_solicitado, mb_strtoupper($nombre_ciclo_solicitado, 'UTF-8'));
+                            error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                            error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha realizado una solicitud de alumnos del ciclo $nombre_ciclo_solicitado -> Usuario: " . $u->getNombre() . ": " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+                        }
+                    }
+                }
+            }
         } else {
             $_SESSION['error'] = true;
         }
@@ -181,6 +215,8 @@ if (isset($_SESSION['user'])) {
 
         //Damos de alta el ciclo formativo
         $db->altaCiclo($id_ciclo, $id_tutor_c, $nombre);
+        error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+        error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha dado de alta un nuevo ciclo formativo ($id_ciclo): " . $_SESSION['user'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
     } else if (isset($_POST['baja_ciclo'])) {
         //Damos de baja el ciclo formativo, pasándole como parámetro de entrada el id del ciclo a borrar
         $db->bajaCiclo($db->devuelveCiclo($_POST['ciclos'])->getId_ciclo());
@@ -201,8 +237,13 @@ if (isset($_SESSION['user'])) {
             }
             //Damos de alta el nuevo tutor del centro educativo
             $db->altaTutorCentro($user, $pass, $nombre, $dni, $email, $telefono, $privilegios_admin);
-            //Recargamos la página para que se vea afectada la alta del nuevo tutor del centro educativo en la plataforma
-            header("Location: panel_administracion.php");
+
+            if (!isset($_SESSION['error'])) {
+                error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha dado de alta un nuevo tutor del centro: " . $user . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+                //Recargamos la página para que se vea afectada la alta del nuevo tutor del centro educativo en la plataforma
+                header("Location: panel_administracion.php");
+            }
         } else {
             $_SESSION['error'] = true;
         }
@@ -211,7 +252,8 @@ if (isset($_SESSION['user'])) {
         $t = $db->devuelveTutorCentro($_POST['tutores']);
         //Reservamos una variable que es una instancia de un array, que contendrá los ids de cada uno de los ciclos a los que pertenece el tutor seleccionado
         $tutor_ciclos = array();
-        foreach ($ciclos as $ciclo) {
+        $ciclos_formativos = $db->devuelveCiclos();
+        foreach ($ciclos_formativos as $ciclo) {
             //Añadimos al array los ciclos de los que está a cargo este tutor_centro
             if ($ciclo->getId_tutor_c() == $t->getId_tutor_c()) {
                 array_push($tutor_ciclos, $ciclo->getId_ciclo());
@@ -219,8 +261,29 @@ if (isset($_SESSION['user'])) {
         }
         //Procedemos a dar de baja el usuario de la base de datos        
         $db->bajaUsuario($t->getId_tutor_c(), $tabla, $tutor_ciclos);
+        error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+        error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha dado de baja el tutor del centro: " . $t->getUser() . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+
         //Recargamos la página para que se vea afectada la baja de la empresa en la plataforma
         header("Location: panel_administracion.php");
+    } elseif (isset($_POST['solicitud_accion'])) {
+        switch ($_POST['solicitud_accion']) {
+            case 'Mostrar':
+                $db->mostrarOcultarSolicitud($_POST['id_solicitud'], 1);
+                error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha marcado como visible la solicitud con id: " . $_POST['id_solicitud'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+                break;
+            case 'Ocultar':
+                $db->mostrarOcultarSolicitud($_POST['id_solicitud'], 0);
+                error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha marcado como oculta la solicitud con id: " . $_POST['id_solicitud'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+                break;
+            case 'Eliminar':
+                $db->eliminarSolicitud($_POST['id_solicitud']);
+                error_log("_________________________________________________________________________________________________________________________________________________________________________\n", 3, "log/error.log");
+                error_log("OK :: ROL DEL USUARIO: " . $_SESSION['rol'] . ". Se ha eliminado solicitud con id: " . $_POST['id_solicitud'] . " -> " . strftime("%d/%m/%Y %H:%M:%S") . "\n", 3, "log/error.log");
+                break;
+        }
     }
 
     //Asignamos el array de los ciclos formativos a una variable Smarty
@@ -231,4 +294,46 @@ if (isset($_SESSION['user'])) {
 } else {
     //En el caso de que no exista la variable $_SESSION['user'], ridirigimos el flujo a index.php
     header("Location: index.php");
+}
+
+/**
+ * @description Realiza un envío de correo electrónico al email pasado como parámetro que hace referencia al email del tutor del ciclo indicando el nº de alumnos que se solicitan
+ * @param String $email hace referencia al email del tutor del ciclo del que se solicitan los alumnos
+ * @param String $empresa_nombre hace referencia al nombre de la empresa solicitante
+ * @param Integer $cantidad hace referencia al número de alumnos que se han solicitado
+ * @param String $ciclo_nombre hace referencia al nombre del ciclo formativo del que se solicitan alumnos
+ */
+function enviarCorreoSolicitud($email, $empresa_nombre, $cantidad, $id_ciclo, $ciclo_nombre) {
+    //Asignamos los valores de cada uno de los campos del correo
+    $email_user = "info.futurosprofesionales@gmail.com";
+    $email_password = "cpifplosenlaces";
+    $the_subject = "Futuros profesionales: Una empresa ha realizado una nueva solicitud de alumnos.";
+    $address_to = $email;
+    $from_name = "Futuros Profesionales - CPIFP LOS ENLACES";
+    $phpmailer = new PHPMailer();
+
+    //Datos de la cuenta de correo gmail
+    $phpmailer->Username = $email_user;
+    $phpmailer->Password = $email_password;
+    $phpmailer->SMTPSecure = 'ssl';
+
+    //Datos del servidor de Google
+    $phpmailer->Host = "smtp.gmail.com";
+    $phpmailer->Port = 465;
+    $phpmailer->IsSMTP();
+    $phpmailer->SMTPAuth = true;
+
+    //Datos del mensaje de correo electrónico
+    $phpmailer->setFrom($phpmailer->Username, $from_name);
+    $phpmailer->AddAddress($address_to);
+    $phpmailer->Subject = $the_subject;
+    $phpmailer->Body .= "<h2 style='color:#3498db;'>Ha recibido una solicitud de alumnos para el ciclo $id_ciclo!</h2>";
+    $phpmailer->Body .= "<p>La empresa <strong>$empresa_nombre</strong> ha realizado una solicitud de $cantidad alumnos del ciclo formativo <strong>$id_ciclo: $ciclo_nombre</strong> en la App Web Futuros Profesionales - CPIFP Los Enlaces de Zaragoza.</p><br /><hr />";
+    $phpmailer->Body .= "<h5>Ponte en contacto con $empresa_nombre, esta empresa quiere colaborar acogiendo a un total de $cantidad alumnos.</h5>";
+    $phpmailer->Body .= " <img style='margin-top: 5%;' src='https://www.hectorcapdevila.es/images/cpifp_logo.png' alt='Logotipo del CPIFP LOS ENLACES' height='150' width='250'>";
+    $phpmailer->Body .= "<h4>El equipo del CPIFP LOS ENLACES.</h4><hr />";
+    $phpmailer->Body .= "<h4 style='color: green;'> Por favor considere el medio ambiente antes de imprimir este e-mail!<br />Por favor, tenga en cuenta su responsabilidad ambiental. Antes de imprimir este mensaje de correo, piense si realmente necesita una copia en papel.</h4>";
+    $phpmailer->Body .= "<h5>" . date("d-m-Y H:i:s") . "</h5>";
+    $phpmailer->IsHTML(true);
+    $phpmailer->Send();
 }

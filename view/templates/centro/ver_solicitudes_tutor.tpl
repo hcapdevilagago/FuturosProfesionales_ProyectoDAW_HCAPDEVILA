@@ -4,13 +4,14 @@
         <div class="w3-col l12 s12">
             <div class="w3-container w3-white w3-margin w3-padding-large">
                 <div class="select-boxes">
-                    <h2 class="text-center" style="margin-top: 6%;">SOLICITUDES PARA EL TUTOR {$user|upper}</h2><hr/>
+                    <h3 class="text-center" style="margin-top: 6%;">SOLICITUDES PARA EL TUTOR {$user|upper}</h3><hr/>
                     <div class="container">                                     
                         <div class="col-lg-9">
                             <div id="cuadro" style="text-align:center;">
                                 <table id="tabla" class="display centerTable" cellspacing="0" width="130%">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Empresa</th>
                                             <th>Ciclo formativo</th>
                                             <th>Nº alumnos</th>
@@ -24,6 +25,9 @@
                                         {foreach $tutor_ciclos as $value}
                                             {if $value eq $solicitud->getId_ciclo()}
                                                 <tr>
+                                                    <th>
+                                                        {$solicitud->getId_solicitud()}
+                                                    </th>
                                                     <th>
                                                         {foreach $empresas as $empresa}
                                                             {if $empresa->getId_empresa() eq $solicitud->getId_empresa()}

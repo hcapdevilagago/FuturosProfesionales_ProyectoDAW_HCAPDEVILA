@@ -24,11 +24,12 @@ class Solicitud {
     private $actividad;
     private $observaciones;
     private $proyecto;
+    private $visible;
 
     /**
      * @description Este constructor es invocado a la hora de realizar una instancia de un nuevo objeto new Solicitud()
      */
-    function __construct($id_solicitud, $id_ciclo, $id_empresa, $cantidad_alumnos, $fecha_creacion, $actividad, $observaciones, $proyecto) {
+    function __construct($id_solicitud, $id_ciclo, $id_empresa, $cantidad_alumnos, $fecha_creacion, $actividad, $observaciones, $proyecto, $visible) {
         $this->id_solicitud = $id_solicitud;
         $this->id_ciclo = $id_ciclo;
         $this->id_empresa = $id_empresa;
@@ -36,11 +37,12 @@ class Solicitud {
         //Cambiamos el formato de la fecha a mostrar
         $año = substr($fecha_creacion, 0, 4);
         $mes = substr($fecha_creacion, 5, -3);
-        $dia = substr($fecha_creacion, -2);       
+        $dia = substr($fecha_creacion, -2);
         $this->fecha_creacion = $dia . "/" . $mes . "/" . $año;
         $this->actividad = $actividad;
         $this->observaciones = $observaciones;
         $this->proyecto = $proyecto;
+        $this->visible = $visible;
     }
 
     function getId_solicitud() {
@@ -75,6 +77,10 @@ class Solicitud {
         return $this->proyecto;
     }
 
+    function getVisible() {
+        return $this->visible;
+    }
+
     function setId_solicitud($id_solicitud) {
         $this->id_solicitud = $id_solicitud;
     }
@@ -105,6 +111,10 @@ class Solicitud {
 
     function setProyecto($proyecto) {
         $this->proyecto = $proyecto;
+    }
+
+    function setVisible($visible) {
+        $this->visible = $visible;
     }
 
 }

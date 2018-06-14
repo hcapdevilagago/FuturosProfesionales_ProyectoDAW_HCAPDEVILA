@@ -43,10 +43,4 @@
         {include file="empresas/solicitar_alumnos.tpl"}
     {/if}
 {/if}
-<div class="pie" style="margin-bottom: -3%;">
-    <div class="container">
-        <p class="text-muted credit">© Copyright 2018 <a href="http://www.cpilosenlaces.com/" target="_blank">http://www.cpilosenlaces.com/</a> - Todos los derechos están reservados.</p>
-        <p class="text-muted ">Desarrollo realizado por el alumno <strong>Héctor Capdevila Gago</strong> como trabajo de fin de ciclo de Desarrollo de Aplicaciones Web.</p>
-    </div>
-</div>
 <!-- Panel central -->

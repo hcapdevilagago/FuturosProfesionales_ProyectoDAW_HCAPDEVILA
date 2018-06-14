@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 ******************************************************************
@@ -11,16 +10,17 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="css/bootstrap.3.0.0.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="js/bootstrap.3.0.0.min.js"></script>
+        <script src="js/jquery.js"></script>
         <title>:: FUTUROS PROFESIONALES ::</title>
     </head>
     <body>
         <div class="tile">
             <div class="tile-header">
-                <img src="./images/logo1.png" height="75%" width="75%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>
+                <img src="./images/logo1.png" height="70%" width="70%" style="margin-top:5%; margin-left: auto; margin-right: auto; display: block;"/>
             </div>
             <div class="tile-body">
                 <form id="form" action="index.php" method="POST">
@@ -54,9 +54,8 @@
             </div>
             <div id="footer">
                 <div class="container text-center">
-                    <p class="text-muted credit"><strong>CPIFP Los Enlaces - ZARAGOZA</strong></p>
-                    <p class="text-muted credit">C/ Jarque de Moncayo, 10 - CP 50012</p>
-                    <p style="margin-bottom: 10%;" class="text-muted credit">TEL: 976 300 804 - FAX: 976 314 403</p>
+                    <p class="text-muted credit"><strong>CPIFP LOS ENLACES - ZARAGOZA</strong><br />C/ Jarque de Moncayo, 10 - CP 50012<br />TEL: 976 300 804 - FAX: 976 314 403</p>
+                    <p class="text-muted credit" style="padding-bottom: 2%;">Diseñado y desarrollado por:<br /><strong style="color:black;">HÉCTOR CAPDEVILA GAGO</strong></p>
                 </div>
             </div>
         </div>

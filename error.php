@@ -2,10 +2,12 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
+        <meta HTTP-EQUIV="REFRESH" CONTENT="7;URL=index.php"> 
+        <link rel="shortcut icon" href="images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="css/bootstrap.3.0.0.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="js/bootstrap.3.0.0.min.js"></script>
+        <script src="js/jquery.js"></script>
         <title>:: CAMBIOS ERROR ::</title>
     </head>
     <body>
@@ -18,14 +20,9 @@
                 <img src="images/error.png" height="18%" width="18%" style="margin-left: auto; flaot: left; margin-right: auto;"/>
                 <h3 class="text-center" style="color: red; display: inline-block; font-weight: bold;">No se han realizado los cambios.</h3>
                 <h5 class="text-center" style="padding-top: 1%; color: red; display: inline-block;">La acción que se ha intentado realizar no se ha podido llevar a cabo, 
-                    si cree que hay algún problema contacte con el administrador de la Aplicación Web en el siguiente e-mail: <strong><u>info@futurosprofesionales.com</u></strong></h5>
-                <h5 class="text-center" style="padding-top: 1%; color: red; display: inline-block;">Tenga en cuenta las reglas de integridad referencial, puede que ese sea el problema.</h5>
+                    si cree que hay algún problema contacte con el administrador de la Aplicación Web en el siguiente e-mail: <strong><a style="color: red;" href="mailto:info.futurosprofesionales@gmail.com">info.futurosprofesionales@gmail.com</a></strong></h5>
+                <h5 class="text-center" style="padding-top: 1%; color: red; display: inline-block;">Tenga en cuenta las reglas de integridad referencial, puede que ese sea el problema o algún que otro error de sintaxis.</h5>
             </div>
         </div>
     </body>
 </html>
-<?php
-//Redirigimos el flujo de la ejecución al login de inicio
-header("Refresh: 7; url=index.php");
-exit;
-?>

@@ -4,7 +4,7 @@
  * Clase Modelo de la Database que se encarga de la gestión completa de la base de datos de la Aplicación Web Futuros Profesionales
  * 
  * Fecha de creación: 12/05/2018
- * Fecha de modificación: 31/05/2018
+ * Fecha de modificación: 14/06/2018
  * 
  * Proyecto Fin de Ciclo de Grado Superior - Desarrollo de Aplicaciones Web
  * Tutora de 2º DAW: Teresa Martínez Suñer
@@ -78,7 +78,7 @@ class Database {
 
         //Creamos un nuevo objeto con los datos de un tutor de centro educativo
         while ($t = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['email'], $t['dni'], $t['telefono']);
+            $tutor = new TutorCentro($t['id_tutor_c'], $t['user'], $t['pass'], $t['nombre'], $t['dni'], $t['email'], $t['telefono'], $t['privilegios_admin']);
             $array_objetos->append($tutor);
         }
 
@@ -146,10 +146,9 @@ class Database {
 
         while ($s = $consulta->fetch(PDO::FETCH_ASSOC)) {
             //Creamos un nuevo objeto con los datos de una solicitud y lo vamos añadiendo al array de objetos
-            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['$actividad'], $s['observaciones'], $s['proyecto']);
+            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['actividad'], $s['observaciones'], $s['proyecto'], $s['visible']);
             $array_objetos->append($solicitud);
-            echo("AÑADIDO");
-       }
+        }
 
         //Retornamos el array con los objetos de cada solicitud
         return $array_objetos;
@@ -170,8 +169,12 @@ class Database {
 
         while ($s = $consulta->fetch(PDO::FETCH_ASSOC)) {
             //Creamos un nuevo objeto con los datos de una solicitud y lo vamos añadiendo al array de objetos
-            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['actividad'], $s['observaciones'], $s['proyecto']);
-            $array_objetos->append($solicitud);
+            $solicitud = new Solicitud($s['id_solicitud'], $s['id_ciclo'], $s['id_empresa'], $s['cantidad_alumnos'], $s['fecha_creacion'], $s['actividad'], $s['observaciones'], $s['proyecto'], $s['visible']);
+
+            if ($solicitud->getVisible()) {
+                //Añadimos la solicitud en caso de que la empresa haya decidido ponerla visible
+                $array_objetos->append($solicitud);
+            }
         }
 
         //Retornamos el array con los objetos de cada solicitud
@@ -697,7 +700,7 @@ class Database {
     function altaSolicitud($id_ciclo, $id_empresa, $cantidad_alumnos, $actividad, $observaciones, $proyecto) {
         try {
             //Genero la consulta para realizar la inserción de los datos en la database
-            $sentencia = "INSERT INTO solicitud (id_ciclo, id_empresa, cantidad_alumnos, fecha_creacion, actividad, observaciones, proyecto) VALUES (?,?,?,NOW(),?,?,?)";
+            $sentencia = "INSERT INTO solicitud (id_ciclo, id_empresa, cantidad_alumnos, fecha_creacion, actividad, observaciones, proyecto, visible) VALUES (?,?,?,NOW(),?,?,?,1)";
 
             //Preparamos la sentencia
             $stmt = $this->conexion->prepare($sentencia);
@@ -729,6 +732,108 @@ class Database {
             $stmt->bindParam(1, $id_ciclo);
 
             //Devolvemos un boolean, que indica si se han añadido nuevos registros
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function mostrarOcultarSolicitud($id_solicitud, $valor) {
+        try {
+            //Genero la consulta para realizar la actualización de los datos en la database
+            $sentencia = "UPDATE solicitud SET visible = ? WHERE id_solicitud = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a la posición del interrogante de la sentencia el identificador de la solicitud
+            $stmt->bindParam(1, $valor);
+            $stmt->bindParam(2, $id_solicitud);
+
+            //Ejecutamos la sentencia de actualización del registro
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function eliminarSolicitud($id_solicitud) {
+        try {
+            //Genero la consulta para realizar el borrado de los datos en la database
+            $sentencia = "DELETE FROM solicitud WHERE id_solicitud = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a la posición del interrogante de la sentencia el identificador de la solicitud
+            $stmt->bindParam(1, $id_solicitud);
+
+            //Ejecutamos la sentencia de borrado del registro
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    function existeEmail($email) {
+        try {
+            //Preparamos la sentencia, nos devolverá la consulta. Comprobación de tutores del centro.
+            $consulta = $this->conexion->prepare("SELECT * FROM tutor_centro WHERE email = ?");
+
+            //Preparamos la sentencia parametrizada
+            $consulta->bindParam(1, $email);
+
+            //Ejecutamos la consulta
+            $consulta->execute();
+
+            if ($t = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                $array = array();
+                array_push($array, "tutor_centro");
+                array_push($array, $t['user']);
+                return $array;
+            }
+
+            //Preparamos la sentencia, nos devolverá la consulta. Comprobación de empresas.
+            $consulta = $this->conexion->prepare("SELECT * FROM empresa WHERE email = ?");
+
+            //Preparamos la sentencia parametrizada
+            $consulta->bindParam(1, $email);
+
+            //Ejecutamos la consulta
+            $consulta->execute();
+
+            if ($e = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                $array = array();
+                array_push($array, "empresa");
+                array_push($array, $e['user']);
+                return $array;
+            } else {
+                return null;
+            }
+        } catch (PDOException $ex) {
+            $_SESSION['error'] = true;
+        }
+    }
+
+    /**
+     * @description Esta función se encarga de realizar el cambio de password de un usuario
+     * @param string $email hace referencia al correo electrónico de contacto del usuario
+     * @param string $tabla hace referencia a la tabla a la que pertenece el usuario
+     * @param integer $password hace referencia a la nueva password que se le ha asignado al usuario
+     */
+    function cambiaContraseña($tabla, $password, $email) {
+        try {
+            //Genero la consulta para realizar la actualización de los datos de la database
+            $sentencia = "UPDATE $tabla SET pass = ? WHERE email = ?";
+
+            //Preparamos la sentencia
+            $stmt = $this->conexion->prepare($sentencia);
+
+            //Asignamos a cada posición una variable
+            $stmt->bindParam(1, sha1($password));
+            $stmt->bindParam(2, $email);
+
+            //Ejecutamos la consulta para modificar el registro de la base de datos
             $stmt->execute();
         } catch (PDOException $ex) {
             $_SESSION['error'] = true;

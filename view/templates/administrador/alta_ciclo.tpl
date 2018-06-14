@@ -41,7 +41,7 @@
                                     </div>
                                     <span class="col-md-4 control-label"></span>
                                     <div class="input-group" style="margin-bottom: 5%;">
-                                        <input type="submit" name="alta_ciclo" value="Dar de alta ciclo formativo" class="btn btn-success">
+                                        <input type="submit" name="alta_ciclo" value="DAR DE ALTA CICLO" class="btn btn-success">
                                     </div>
                                 </fieldset>
                             </form>

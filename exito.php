@@ -2,10 +2,12 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
+        <meta HTTP-EQUIV="REFRESH" CONTENT="5;URL=index.php">
+        <link rel="shortcut icon" href="images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="css/bootstrap.3.0.0.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="js/bootstrap.3.0.0.min.js"></script>
+        <script src="js/jquery.js"></script>
         <title>:: CAMBIOS OK ::</title>
     </head>
     <body>
@@ -21,8 +23,3 @@
         </div>
     </body>
 </html>
-<?php
-//Redirigimos el flujo de la ejecución al login de inicio
-header("Refresh: 5; url=index.php");
-exit;
-?>

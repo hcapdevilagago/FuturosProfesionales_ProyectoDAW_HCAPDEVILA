@@ -4,7 +4,7 @@
         <div class="w3-col l12 s12">
             <div class="w3-container w3-white w3-margin w3-padding-large">
                 <div class="select-boxes">
-                    <h2 class="text-center" style="margin-top: 6%;">EMPRESAS REGISTRADAS EN LA BASE DE DATOS</h2><hr/>
+                    <h3 class="text-center" style="margin-top: 6%;">EMPRESAS REGISTRADAS EN LA BASE DE DATOS</h3><hr/>
                     <div class="container">                                     
                         <div class="col-lg-9">
                             <div id="cuadro">

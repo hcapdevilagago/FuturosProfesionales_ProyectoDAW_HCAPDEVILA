@@ -8,6 +8,7 @@
         <meta name="author" content="Héctor Capdevila Gago">
 
         <!--Referenciamos la ubicación de ficheros CSS para el correcto funcionamiento de la aplicación web-->
+        <link rel="shortcut icon" href="images/favicon.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sb-admin.css" rel="stylesheet">
         <link href="css/plugins/morris.css" rel="stylesheet">
